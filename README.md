@@ -1,3 +1,4 @@
 # Runner Re-identification
 
-preparing code and dataset now
+- We published GRUAE training code (2024.03.22)
+- We are preparing data and organizing other scripts.
