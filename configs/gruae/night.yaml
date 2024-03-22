@@ -17,4 +17,5 @@ TRAIN:
   EPOCHS: 500
   OPTIMIZER: "Adam"
 
+NEPTUNE: True
 SEED: 42
