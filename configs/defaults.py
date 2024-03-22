@@ -4,8 +4,8 @@ from yacs.config import CfgNode as CN
 _C = CN()
 
 _C.DATASETS = CN()
-_C.DATASETS.DAYTIME_ROOT = "./data/dataset/GRUAE/large/daytime"
-_C.DATASETS.NIGHT_ROOT = "./data/dataset/GRUAE/large/night"
+_C.DATASETS.DAYTIME_ROOT = "./data/GRUAE/large/daytime"
+_C.DATASETS.NIGHT_ROOT = "./data/GRUAE/large/night"
 _C.DATASETS.TYPE = "DAYTIME"  # or NIGHT
 
 _C.INPUT = CN()
