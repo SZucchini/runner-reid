@@ -1,8 +1,9 @@
 .DS_Store
 @eaDir/
-sh/
-output/gruae/*/checkpoint
-output/gruae/*/images
+run/
+output/gruae/*/checkpoint/
+output/gruae/*/images/
+output/gruae/*/log.txt
 data/
 token/
 .neptune/

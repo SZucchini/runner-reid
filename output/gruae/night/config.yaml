@@ -1,0 +1,23 @@
+DATASETS:
+  DAYTIME_ROOT: ./data/GRUAE/large/daytime
+  NIGHT_ROOT: ./data/GRUAE/large/night
+  TYPE: NIGHT
+INPUT:
+  BATCH_SIZE: 32
+  IMAGE_SIZE:
+  - 64
+  - 64
+  MAX_SEQ_LEN: 47
+MODEL:
+  DEVICE: cuda
+  EVAL: false
+  LATENT_DIM: 128
+NEPTUNE: true
+OUTPUT_DIR: ./output/gruae/night
+PROJECT: secret
+SEED: 42
+TOKEN_PATH: ./token/neptune.txt
+TRAIN:
+  EPOCHS: 500
+  LR: 0.001
+  OPTIMIZER: Adam

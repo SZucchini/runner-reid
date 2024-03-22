@@ -38,10 +38,10 @@ def set_seed(seed):
 
 
 def init_neptune(cfg):
-    with open(cfg.NEPTUNE.TOKEN_PATH, "r") as f:
+    with open(cfg.TOKEN_PATH, "r") as f:
         api_token = f.readline().rstrip("\n")
     run = neptune.init_run(
-        project=cfg.NEPTUNE.PROJECT,
+        project=cfg.PROJECT,
         api_token=api_token,
     )
     return run
@@ -203,14 +203,13 @@ def main():
     parser.add_argument("--token_path", type=str, default="./token/neptune.txt")
     args = parser.parse_args()
 
-    opts = ["OUTPUT_DIR", args.output_dir,
-            "NEPTUNE.PROJECT", args.project, "NEPTUNE.TOKEN_PATH", args.token_path]
+    opts = ["OUTPUT_DIR", args.output_dir, "PROJECT", args.project, "TOKEN_PATH", args.token_path]
     cfg = get_cfg(args.config, opts)
     create_workspace(cfg)
     set_seed(cfg.SEED)
     logger.debug("Config data\n{}\n".format(cfg))
 
-    if cfg.NEPTUNE.USE:
+    if cfg.NEPTUNE:
         run = init_neptune(cfg)
     else:
         run = None
