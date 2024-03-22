@@ -14,7 +14,7 @@ MODEL:
   LATENT_DIM: 128
 NEPTUNE: true
 OUTPUT_DIR: ./output/gruae/night
-PROJECT: NUSBG/GRUAE
+PROJECT: secret
 SEED: 42
 TOKEN_PATH: ./token/neptune.txt
 TRAIN:
