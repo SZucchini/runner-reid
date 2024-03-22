@@ -3,6 +3,7 @@
 run/
 output/gruae/*/checkpoint/
 output/gruae/*/images/
+output/gruae/*/log.txt
 data/
 token/
 .neptune/
