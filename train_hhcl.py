@@ -131,7 +131,7 @@ def main_worker(args):
     # Create datasets
     iters = args.iters if (args.iters > 0) else None
     print("==> Load unlabeled dataset")
-    dataset = get_data(args.dataset, "../../dev-tf-reid/data/dataset/GRUAE_EVAL/daytime/shoes")
+    dataset = get_data(args.dataset, args.data_dir)
 
     # Create model
     model = create_model(args)
@@ -292,7 +292,7 @@ if __name__ == '__main__':
     # path
     working_dir = osp.dirname(osp.abspath(__file__))
     parser.add_argument('--data-dir', type=str, metavar='PATH',
-                        default="../../dev-tf-reid/PPLR/examples/data")
+                        default="./data/HHCL/shoes/daytime")
     parser.add_argument('--logs-dir', type=str, metavar='PATH',
                         default=osp.join(working_dir, 'logs'))
     parser.add_argument('--resume', type=str, metavar='PATH', default='')

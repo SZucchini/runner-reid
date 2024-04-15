@@ -39,7 +39,10 @@ class Custom(BaseImageDataset):
 
         pid_container = set()
         for img_path in img_paths:
-            pid = int(img_path.split('/')[-1].split('.')[0])
+            if "_" in img_path:
+                pid = int(img_path.split('/')[-1].split('_')[0])
+            else:
+                pid = int(img_path.split('/')[-1].split('.')[0])
             if pid == -1:
                 continue  # junk images are just ignored
             pid_container.add(pid)
@@ -47,7 +50,10 @@ class Custom(BaseImageDataset):
 
         dataset = []
         for img_path in img_paths:
-            pid = int(img_path.split('/')[-1].split('.')[0])
+            if "_" in img_path:
+                pid = int(img_path.split('/')[-1].split('_')[0])
+            else:
+                pid = int(img_path.split('/')[-1].split('.')[0])
             camid = 0
             if pid == -1:
                 continue  # junk images are just ignored

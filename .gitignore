@@ -4,6 +4,7 @@ run/
 output/gruae/*/checkpoint/
 output/gruae/*/images/
 output/gruae/*/log.txt
+output/hhcl/
 data/
 token/
 .neptune/
