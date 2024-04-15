@@ -1,236 +1,299 @@
+# -*- coding: utf-8 -*-
+from __future__ import print_function, absolute_import
 import argparse
-import collections
-import os
 import os.path as osp
 import random
+import numpy as np
+import sys
+import collections
 import time
 from datetime import timedelta
-from logging import getLogger, StreamHandler, DEBUG, Formatter
 
-import numpy as np
-import torch
-import torch.nn.functional as F
 from sklearn.cluster import DBSCAN
+
+import torch
 from torch import nn
 from torch.backends import cudnn
+from torch.utils.data import DataLoader
+import torch.nn.functional as F
 
-from configs.hhcl_defaults import get_cfg_defaults
-from models.hhcl.cm import ClusterMemory
-from models.hhcl.dataset import RunnerCustom
-from models.hhcl.trainer import Trainer
-from models.hhcl.utils.dataloader import get_test_loader, get_train_loader
-from models.hhcl.utils.extraction import extract_features
-from models.hhcl.utils.faiss_rerank import compute_jaccard_distance
+from hhcl import datasets
+from hhcl import models
+from hhcl.models.cm import ClusterMemory
+from hhcl.trainers import Trainer
+from hhcl.evaluators import extract_features
+from hhcl.utils.data import IterLoader
+from hhcl.utils.data import transforms as T
+from hhcl.utils.data.sampler import RandomMultipleGallerySampler
+from hhcl.utils.data.preprocessor import Preprocessor
+from hhcl.utils.logging import Logger
+from hhcl.utils.serialization import load_checkpoint, copy_state_dict
+from hhcl.utils.faiss_rerank import compute_jaccard_distance
 
-start_epoch = 0
-best_mAP = 0
-
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-handler_format = Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(handler_format)
-logger = getLogger("Log")
-logger.setLevel(DEBUG)
-for h in logger.handlers[:]:
-    logger.removeHandler(h)
-    h.close()
-logger.addHandler(handler)
+start_epoch = best_mAP = 0
 
 
-def set_seed(seed):
-    random.seed(seed)
-    os.environ['PYTHONHASHSEED'] = str(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
+def get_data(name, data_dir):
+    root = data_dir
+    dataset = datasets.create(name, root)
+    return dataset
 
 
-def get_cfg(config, opts=None):
-    cfg = get_cfg_defaults()
-    cfg.merge_from_file(config)
-    if opts is not None:
-        cfg.merge_from_list(opts)
-    cfg.freeze()
-    return cfg
+def get_train_loader(args, dataset, height, width, batch_size, workers,
+                     num_instances, iters, trainset=None):
+
+    normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225])
+
+    train_transformer = T.Compose([
+        T.Resize((height, width), interpolation=3),
+        T.RandomHorizontalFlip(p=0.5),
+        T.Pad(10),
+        T.RandomCrop((height, width)),
+        T.ToTensor(),
+        normalizer,
+        T.RandomErasing(probability=0.5, mean=[0.485, 0.456, 0.406])
+    ])
+
+    train_set = sorted(dataset.train) if trainset is None else sorted(trainset)
+    rmgs_flag = num_instances > 0
+    if rmgs_flag:
+        sampler = RandomMultipleGallerySampler(train_set, num_instances)
+    else:
+        sampler = None
+    train_loader = IterLoader(
+        DataLoader(Preprocessor(train_set, root=dataset.images_dir, transform=train_transformer),
+                   batch_size=batch_size, num_workers=workers, sampler=sampler,
+                   shuffle=not rmgs_flag, pin_memory=True, drop_last=True), length=iters)
+
+    return train_loader
 
 
-def upload_cfg(cfg):
-    cfg_path = cfg.OUTPUT_DIR + "/config.yaml"
-    with open(cfg_path, 'w') as f:
-        f.write(cfg.dump())
+def get_test_loader(dataset, height, width, batch_size, workers, testset=None):
+    normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225])
+
+    test_transformer = T.Compose([
+        T.Resize((height, width), interpolation=3),
+        T.ToTensor(),
+        normalizer
+    ])
+
+    if testset is None:
+        testset = list(set(dataset.query) | set(dataset.gallery))
+
+    test_loader = DataLoader(
+        Preprocessor(testset, root=dataset.images_dir, transform=test_transformer),
+        batch_size=batch_size, num_workers=workers,
+        shuffle=False, pin_memory=True)
+
+    return test_loader
 
 
-def create_workspace(cfg):
-    if not os.path.exists(cfg.OUTPUT_DIR):
-        os.makedirs(cfg.OUTPUT_DIR)
+def create_model(args):
+    model = models.create(args.arch, num_features=args.features, norm=True, dropout=args.dropout,
+                          num_classes=0, pooling_type=args.pooling_type)
 
-    work_dirs = ["/checkpoint"]
-    for work_dir in work_dirs:
-        path = cfg.OUTPUT_DIR + work_dir
-        if not os.path.exists(path):
-            os.makedirs(path)
+    # Load from checkpoint
+    if args.resume:
+        global start_epoch
+        checkpoint = load_checkpoint(args.resume)
+        copy_state_dict(checkpoint['state_dict'], model, strip='module.')
+        start_epoch = checkpoint['epoch']
 
-
-def custom_forward(self, x_encoder, x_decoder=None):
-    self.batch_size = x_encoder.size()[0]
-    self.seq_length = x_encoder.size()[1]
-
-    x_encoder = x_encoder.view(-1, 3, self.img_size[0], self.img_size[1])
-    x_encoder = self.image_encoder(x_encoder)
-    x_encoder = x_encoder.reshape(self.batch_size, self.seq_length, -1)
-
-    h = torch.randn(1, self.batch_size, self.latent_dim, requires_grad=True)
-    h = h.to(x_encoder.device)
-
-    encoder_output, encoder_hidden = self.encoder_gru(x_encoder, h)
-    return encoder_hidden[0]
-
-
-def load_model(cfg):
-
+    # use CUDA
+    model.cuda()
+    model = nn.DataParallel(model)
     return model
 
 
-def save_checkpoint(model, path):
-    model = model.to("cpu")
-    torch.save(model, path)
-    dict_path = path.replace(".pth", "_dict.pth")
-    torch.save(model.state_dict(), dict_path)
+def main():
+    args = parser.parse_args()
+
+    if args.seed is not None:
+        random.seed(args.seed)
+        np.random.seed(args.seed)
+        torch.manual_seed(args.seed)
+        cudnn.deterministic = True
+
+    main_worker(args)
 
 
-def train(cfg):
+def main_worker(args):
     global start_epoch, best_mAP
-
     start_time = time.monotonic()
+
     cudnn.benchmark = True
 
-    if cfg.DATASETS.TYPE == "DAYTIME":
-        root_dir = cfg.DATASETS.DAYTIME_ROOT
-    elif cfg.DATASETS.TYPE == "NIGHT":
-        root_dir = cfg.DATASETS.NIGHT_ROOT
-    dataset = RunnerCustom(root=root_dir, verbose=True)
+    sys.stdout = Logger(osp.join(args.logs_dir, 'log.txt'))
+    print("==========\nArgs:{}\n==========".format(args))
 
-    model = load_model(cfg)
-    if cfg.TRAIN.MULTI_GPU:
-        model = nn.DataParallel(model)
-    model.to(cfg.MODEL.DEVICE)
-    logger.debug("Model loaded!")
+    # Create datasets
+    iters = args.iters if (args.iters > 0) else None
+    print("==> Load unlabeled dataset")
+    dataset = get_data(args.dataset, "../../dev-tf-reid/data/dataset/GRUAE_EVAL/daytime/shoes")
 
+    # Create model
+    model = create_model(args)
+
+    # Optimizer
+    params = [{"params": [value]} for _, value in model.named_parameters() if value.requires_grad]
+    optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.weight_decay)
+    lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.step_size, gamma=0.1)
+
+    # Trainer
     trainer = Trainer(model)
 
-    params = [{"params": [value]} for _, value in model.named_parameters() if value.requires_grad]
-    optimizer = torch.optim.Adam(params, lr=cfg.TRAIN.LR, weight_decay=cfg.TRAIN.WEIGHT_DECAY)
-    lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer,
-                                                   step_size=cfg.TRAIN.STEP_SIZE, gamma=0.1)
-
-    for epoch in range(start_epoch, cfg.TRAIN.EPOCHS):
+    for epoch in range(start_epoch, args.epochs):
         with torch.no_grad():
-            cluster_loader = get_test_loader(cfg, dataset, testset=dataset.train)
+            print('==> Create pseudo labels for unlabeled data')
+            cluster_loader = get_test_loader(dataset, args.height, args.width,
+                                             args.batch_size, args.workers, testset=sorted(dataset.train))
 
             features, _ = extract_features(model, cluster_loader, print_freq=50)
-            features = torch.cat([features[f[0]].unsqueeze(0) for f, _, _ in dataset.train], 0)
-            rerank_dist = compute_jaccard_distance(features, k1=cfg.TRAIN.KONE, k2=cfg.TRAIN.KTWO)
+            features = torch.cat([features[f].unsqueeze(0) for f, _, _ in sorted(dataset.train)], 0)
+            rerank_dist = compute_jaccard_distance(features, k1=args.k1, k2=args.k2)
 
-            if epoch == start_epoch and not cfg.TRAIN.DYNAMIC_EPS:
-                eps = cfg.TRAIN.EPS
-                logger.debug('Clustering criterion eps: {:.3f}'.format(eps))
+            if epoch == start_epoch:
+                # DBSCAN cluster
+                eps = args.eps
+                print('Clustering criterion eps: {:.3f}'.format(eps))
                 cluster = DBSCAN(eps=eps, min_samples=4, metric='precomputed', n_jobs=-1)
 
-            else:
-                logger.debug('Clustering criterion eps: dynamic')
-                eps = cfg.TRAIN.EPS
-                while True:
-                    cluster = DBSCAN(eps=eps, min_samples=4, metric='precomputed', n_jobs=-1)
-                    pseudo_labels = cluster.fit_predict(rerank_dist)
-                    cnt_outliers = (pseudo_labels == -1).sum()
-
-                    if cnt_outliers < 0.4 * len(pseudo_labels):
-                        logger.debug('DBSCAN clustering finished, eps: {:.3f}'.format(eps))
-                        break
-                    else:
-                        eps += 0.01
-
-                    if eps > 1:
-                        logger.debug('DBSCAN clustering failed, eps: {:.3f}'.format(eps))
-                        break
-
+            # select & cluster images as training set of this epochs
             pseudo_labels = cluster.fit_predict(rerank_dist)
             num_cluster = len(set(pseudo_labels)) - (1 if -1 in pseudo_labels else 0)
 
+        # generate new dataset and calculate cluster centers
         @torch.no_grad()
         def generate_cluster_features(labels, features):
-            cnt = 0
             centers = collections.defaultdict(list)
             for i, label in enumerate(labels):
                 if label == -1:
-                    cnt += 1
                     continue
                 centers[labels[i]].append(features[i])
-
-            logger.debug('Labels length: {}'.format(len(labels)))
-            logger.debug('Cluster {} has {} samples'.format(-1, cnt))
 
             centers = [
                 torch.stack(centers[idx], dim=0).mean(0) for idx in sorted(centers.keys())
             ]
+
             centers = torch.stack(centers, dim=0)
             return centers
 
         cluster_features = generate_cluster_features(pseudo_labels, features)
 
+        def generate_random_features(labels, features, num_cluster, num_instances):
+            indexes = np.zeros(num_cluster*num_instances)
+            for i in range(num_cluster):
+                index = [i+k*num_cluster for k in range(num_instances)]
+                samples = np.random.choice(np.where(pseudo_labels == i)[0], num_instances, True)
+                indexes[index] = samples
+            memory_features = features[indexes]
+            return memory_features
+
+        if args.memorybank == 'CMhybrid_v2':
+            memory_features = generate_random_features(pseudo_labels, features, num_cluster, args.num_instances)
+            mask = (pseudo_labels < 0).astype(int)
+            print('==> Statistics for outliers with pseudo labels. outliers/total = {}/{} = {:.3f}'.format(mask.sum(), pseudo_labels.size, mask.sum()/pseudo_labels.size))
+
         del cluster_loader, features
 
-        memory = ClusterMemory(0, num_cluster, temp=cfg.TRAIN.TEMP,
-                               momentum=cfg.TRAIN.MOMENTUM, mode=cfg.TRAIN.MBANK,
-                               smooth=cfg.TRAIN.SMOOTH, num_instances=cfg.INPUT.INSTANCES).cuda()
-        memory.features = F.normalize(cluster_features.repeat(2, 1), dim=1).cuda()
+        # Create memory bank
+        memory = ClusterMemory(model.module.num_features, num_cluster, temp=args.temp,
+                               momentum=args.momentum, mode=args.memorybank, smooth=args.smooth,
+                               num_instances=args.num_instances).cuda()
+        if args.memorybank == 'CMhybrid':
+            memory.features = F.normalize(cluster_features.repeat(2, 1), dim=1).cuda()
+        elif args.memorybank == 'CMhybrid_v2':
+            memory.features = F.normalize(torch.cat([cluster_features, memory_features], dim=0), dim=1).cuda()
+        else:
+            memory.features = F.normalize(cluster_features, dim=1).cuda()
+
         trainer.memory = memory
 
         pseudo_labeled_dataset = []
-        for i, ((imgs_path, _, cid), label) in enumerate(zip(dataset.train, pseudo_labels)):
+        for i, ((fname, _, cid), label) in enumerate(zip(sorted(dataset.train), pseudo_labels)):
             if label != -1:
-                pseudo_labeled_dataset.append((imgs_path, label.item(), cid))
-        logger.debug('==> Statistics for epoch {}: {} clusters'.format(epoch, num_cluster))
+                pseudo_labeled_dataset.append((fname, label.item(), cid))
 
-        train_loader = get_train_loader(cfg, dataset, trainset=pseudo_labeled_dataset)
-        logger.debug("Got train loader!")
+        print('==> Statistics for epoch {}: {} clusters'.format(epoch, num_cluster))
+
+        train_loader = get_train_loader(args, dataset, args.height, args.width,
+                                        args.batch_size, args.workers, args.num_instances, iters,
+                                        trainset=pseudo_labeled_dataset)
+        print("Got train loader!")
 
         train_loader.new_epoch()
-        logger.debug("New epoch!")
+        print("New epoch!")
 
         trainer.train(epoch, train_loader, optimizer,
-                      print_freq=cfg.PRINT_FREQ, train_iters=len(train_loader))
-        logger.debug("Trained!")
+                      print_freq=args.print_freq, train_iters=len(train_loader))
+        print("Trained!")
 
         lr_scheduler.step()
 
     end_time = time.monotonic()
-    logger.debug('Total running time: {}'.format(timedelta(seconds=end_time - start_time)))
+    print('Total running time: ', timedelta(seconds=end_time - start_time))
 
-    if cfg.TRAIN.MULTI_GPU:
-        model = model.module
-    save_path = osp.join(cfg.OUTPUT_DIR, 'final.pth')
-    save_checkpoint(model, save_path)
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, default="./configs/hhcl/night.yaml")
-    parser.add_argument("--output_dir", type=str, default="./logs/output")
-    args = parser.parse_args()
-
-    opts = ["OUTPUT_DIR", args.output_dir]
-    cfg = get_cfg(args.config, opts)
-    logger.debug("Config data\n{}\n".format(cfg))
-
-    set_seed(cfg.SEED)
-    upload_cfg(cfg)
-    create_workspace(cfg)
-
-    train(cfg)
+    torch.save(model.state_dict(), osp.join(args.logs_dir, 'final.pth'))
+    model.to('cpu')
+    torch.save(model, osp.join(args.logs_dir, 'final_model.pth'))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Hard-sample Guided Hybrid Contrast Learning for Unsupervised Person Re-ID")
+    # data
+    parser.add_argument('-d', '--dataset', type=str, default='dukemtmcreid',
+                        choices=datasets.names())
+    parser.add_argument('-b', '--batch-size', type=int, default=2)
+    parser.add_argument('-j', '--workers', type=int, default=4)
+    parser.add_argument('--height', type=int, default=256, help="input height")
+    parser.add_argument('--width', type=int, default=128, help="input width")
+    parser.add_argument('--num-instances', type=int, default=4,
+                        help="each minibatch consist of "
+                             "(batch_size // num_instances) identities, and "
+                             "each identity has num_instances instances, "
+                             "default: 0 (NOT USE)")
+    # cluster
+    parser.add_argument('--eps', type=float, default=0.6,
+                        help="max neighbor distance for DBSCAN")
+    parser.add_argument('--eps-gap', type=float, default=0.02,
+                        help="multi-scale criterion for measuring cluster reliability")
+    parser.add_argument('--k1', type=int, default=30,
+                        help="hyperparameter for jaccard distance")
+    parser.add_argument('--k2', type=int, default=6,
+                        help="hyperparameter for jaccard distance")
+
+    # model
+    parser.add_argument('-a', '--arch', type=str, default='resnet50',
+                        choices=models.names())
+    parser.add_argument('--features', type=int, default=0)
+    parser.add_argument('--dropout', type=float, default=0)
+    parser.add_argument('--smooth', type=float, default=0, help="label smoothing")
+    parser.add_argument('--hard-weight', type=float, default=0.5, help="hard weights")
+    parser.add_argument('--momentum', type=float, default=0.1,
+                        help="update momentum for the memory bank")
+    parser.add_argument('--pooling-type', type=str, default='gem')
+    parser.add_argument('-mb', '--memorybank', type=str, default='CM', choices=['CM', 'CMhard', 'CMhybrid', 'CMhybrid_v2'])
+
+    # optimizer
+    parser.add_argument('--lr', type=float, default=0.00035,
+                        help="learning rate")
+    parser.add_argument('--weight-decay', type=float, default=5e-4)
+    parser.add_argument('--epochs', type=int, default=50)
+    parser.add_argument('--iters', type=int, default=400)
+    parser.add_argument('--step-size', type=int, default=20)
+    # training configs
+    parser.add_argument('--seed', type=int, default=1)
+    parser.add_argument('--print-freq', type=int, default=10)
+    parser.add_argument('--eval-step', type=int, default=10)
+    parser.add_argument('--temp', type=float, default=0.05,
+                        help="temperature for scaling contrastive loss")
+    # path
+    working_dir = osp.dirname(osp.abspath(__file__))
+    parser.add_argument('--data-dir', type=str, metavar='PATH',
+                        default="../../dev-tf-reid/PPLR/examples/data")
+    parser.add_argument('--logs-dir', type=str, metavar='PATH',
+                        default=osp.join(working_dir, 'logs'))
+    parser.add_argument('--resume', type=str, metavar='PATH', default='')
     main()
