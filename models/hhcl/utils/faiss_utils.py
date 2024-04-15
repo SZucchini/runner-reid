@@ -1,6 +1,7 @@
+import os
+import numpy as np
 import faiss
 import torch
-
 
 def swig_ptr_from_FloatTensor(x):
     assert x.is_contiguous()
@@ -8,14 +9,12 @@ def swig_ptr_from_FloatTensor(x):
     return faiss.cast_integer_to_float_ptr(
         x.storage().data_ptr() + x.storage_offset() * 4)
 
-
 def swig_ptr_from_LongTensor(x):
     assert x.is_contiguous()
     assert x.dtype == torch.int64, 'dtype=%s' % x.dtype
 
     return faiss.cast_integer_to_long_ptr(
         x.storage().data_ptr() + x.storage_offset() * 8)
-
 
 def search_index_pytorch(index, x, k, D=None, I=None):
     """call the search function of an index with pytorch tensor I/O (CPU
@@ -41,7 +40,6 @@ def search_index_pytorch(index, x, k, D=None, I=None):
                    k, Dptr, Iptr)
     torch.cuda.synchronize()
     return D, I
-
 
 def search_raw_array_pytorch(res, xb, xq, k, D=None, I=None,
                              metric=faiss.METRIC_L2):
@@ -85,12 +83,11 @@ def search_raw_array_pytorch(res, xb, xq, k, D=None, I=None,
     I_ptr = swig_ptr_from_LongTensor(I)
 
     faiss.bruteForceKnn(res, metric,
-                        xb_ptr, xb_row_major, nb,
-                        xq_ptr, xq_row_major, nq,
-                        d, k, D_ptr, I_ptr)
+                xb_ptr, xb_row_major, nb,
+                xq_ptr, xq_row_major, nq,
+                d, k, D_ptr, I_ptr)
 
     return D, I
-
 
 def index_init_gpu(ngpus, feat_dim):
     flat_config = []
@@ -107,7 +104,6 @@ def index_init_gpu(ngpus, feat_dim):
         index.add_shard(sub_index)
     index.reset()
     return index
-
 
 def index_init_cpu(feat_dim):
     return faiss.IndexFlatL2(feat_dim)

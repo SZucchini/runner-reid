@@ -2,8 +2,9 @@ import collections
 import numpy as np
 from abc import ABC
 import torch
+import torch.nn.functional as F
 from torch import nn, autograd
-from .losses import CrossEntropyLabelSmooth
+from .losses import CrossEntropyLabelSmooth, FocalTopLoss
 
 
 class CM(autograd.Function):
@@ -144,8 +145,8 @@ class CM_Hybrid_v2(autograd.Function):
         for k, (instance_feature, index) in enumerate(zip(inputs, targets.tolist())):
             batch_centers[index].append(instance_feature)
             if index not in updated:
-                indexes = [index + nums*i for i in range(1, (targets == index).sum()+1)]
-                ctx.features[indexes] = inputs[targets == index]
+                indexes = [index + nums*i for i in range(1, (targets==index).sum()+1)]
+                ctx.features[indexes] = inputs[targets==index]
                 # ctx.features[indexes] = ctx.features[indexes] * ctx.momentum + (1 - ctx.momentum) * inputs[targets==index]
                 # ctx.features[indexes] /= ctx.features[indexes].norm(dim=1, keepdim=True)
                 updated.add(index)
@@ -154,7 +155,7 @@ class CM_Hybrid_v2(autograd.Function):
             mean = torch.stack(features, dim=0).mean(0)
             ctx.features[index] = ctx.features[index] * ctx.momentum + (1 - ctx.momentum) * mean
             ctx.features[index] /= ctx.features[index].norm()
-
+        
         return grad_inputs, None, None, None, None
 
 
@@ -163,10 +164,10 @@ def cm_hybrid_v2(inputs, indexes, features, momentum=0.5, num_instances=16, *arg
 
 
 class ClusterMemory(nn.Module, ABC):
-
+    
     __CMfactory = {
         'CM': cm,
-        'CMhard': cm_hard,
+        'CMhard':cm_hard,
     }
 
     def __init__(self, num_features, num_samples, temp=0.05, momentum=0.2, mode='CM', hard_weight=0.5, smooth=0., num_instances=1):
@@ -178,19 +179,19 @@ class ClusterMemory(nn.Module, ABC):
         self.temp = temp
         self.cm_type = mode
 
-        if smooth > 0:
+        if smooth>0:
             self.cross_entropy = CrossEntropyLabelSmooth(self.num_samples, 0.1, True)
             print('>>> Using CrossEntropy with Label Smoothing.')
-        else:
-            self.cross_entropy = nn.CrossEntropyLoss().cuda()
+        else: 
+            self.cross_entropy = nn.CrossEntropyLoss().cuda() 
 
         if self.cm_type in ['CM', 'CMhard']:
             self.register_buffer('features', torch.zeros(num_samples, num_features))
-        elif self.cm_type == 'CMhybrid':
+        elif self.cm_type=='CMhybrid':
             self.hard_weight = hard_weight
             print('hard_weight: {}'.format(self.hard_weight))
             self.register_buffer('features', torch.zeros(2*num_samples, num_features))
-        elif self.cm_type == 'CMhybrid_v2':
+        elif self.cm_type=='CMhybrid_v2':
             self.hard_weight = hard_weight
             self.num_instances = num_instances
             self.register_buffer('features', torch.zeros((self.num_instances+1)*num_samples, num_features))
@@ -205,14 +206,14 @@ class ClusterMemory(nn.Module, ABC):
             loss = self.cross_entropy(outputs, targets)
             return loss
 
-        elif self.cm_type == 'CMhybrid':
+        elif self.cm_type=='CMhybrid':
             outputs = cm_hybrid(inputs, targets, self.features, self.momentum)
             outputs /= self.temp
             output_hard, output_mean = torch.chunk(outputs, 2, dim=1)
             loss = self.hard_weight * (self.cross_entropy(output_hard, targets) + (1 - self.hard_weight) * self.cross_entropy(output_mean, targets))
             return loss
 
-        elif self.cm_type == 'CMhybrid_v2':
+        elif self.cm_type=='CMhybrid_v2':
             outputs = cm_hybrid_v2(inputs, targets, self.features, self.momentum, self.num_instances)
             out_list = torch.chunk(outputs, self.num_instances+1, dim=1)
             out = torch.stack(out_list[1:], dim=0)

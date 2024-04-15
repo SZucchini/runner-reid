@@ -1,5 +1,3 @@
-import math
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -7,85 +5,85 @@ from torch.nn import Parameter
 
 
 class CrossEntropyLabelSmooth(nn.Module):
-    """Cross entropy loss with label smoothing regularizer.
-    Reference:
-    Szegedy et al. Rethinking the Inception Architecture for Computer Vision. CVPR 2016.
-    Equation: y = (1 - epsilon) * y + epsilon / K.
-    Args:
-        num_classes (int): number of classes.
-        epsilon (float): weight.
-    """
+	"""Cross entropy loss with label smoothing regularizer.
+	Reference:
+	Szegedy et al. Rethinking the Inception Architecture for Computer Vision. CVPR 2016.
+	Equation: y = (1 - epsilon) * y + epsilon / K.
+	Args:
+		num_classes (int): number of classes.
+		epsilon (float): weight.
+	"""
 
-    def __init__(self, num_classes=0, epsilon=0.1, topk_smoothing=False):
-        super(CrossEntropyLabelSmooth, self).__init__()
-        self.num_classes = num_classes
-        self.epsilon = epsilon
-        self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
-        self.k = 1 if not topk_smoothing else self.num_classes//50
+	def __init__(self, num_classes=0, epsilon=0.1, topk_smoothing=False):
+		super(CrossEntropyLabelSmooth, self).__init__()
+		self.num_classes = num_classes
+		self.epsilon = epsilon
+		self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
+		self.k = 1 if not topk_smoothing else self.num_classes//50
 
-    def forward(self, inputs, targets):
-        """
-        Args:
-            inputs: prediction matrix (before softmax) with shape (batch_size, num_classes)
-            targets: ground truth labels with shape (num_classes)
-        """
-        log_probs = self.logsoftmax(inputs)
-        if self.k > 1:
-            topk = torch.argsort(-log_probs)[:, :self.k]
-            targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1),
-                                                           1 - self.epsilon)
-            targets += torch.zeros_like(log_probs).scatter_(1, topk, self.epsilon / self.k)
-        else:
-            targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1), 1)
-            targets = (1 - self.epsilon) * targets + self.epsilon / self.num_classes
-        loss = (- targets * log_probs).mean(0).sum()
-        return loss
+	def forward(self, inputs, targets):
+		"""
+		Args:
+			inputs: prediction matrix (before softmax) with shape (batch_size, num_classes)
+			targets: ground truth labels with shape (num_classes)
+		"""
+		log_probs = self.logsoftmax(inputs)
+		if self.k >1:
+			topk = torch.argsort(-log_probs)[:,:self.k]
+			targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1), 1 - self.epsilon)
+			targets += torch.zeros_like(log_probs).scatter_(1, topk, self.epsilon / self.k)
+		else:
+			targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1), 1)
+			targets = (1 - self.epsilon) * targets + self.epsilon / self.num_classes
+		loss = (- targets * log_probs).mean(0).sum()
+		return loss
 
 
 class SoftEntropy(nn.Module):
-    def __init__(self, input_prob=False):
-        super(SoftEntropy, self).__init__()
-        self.input_prob = input_prob
-        self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
+	def __init__(self, input_prob=False):
+		super(SoftEntropy, self).__init__()
+		self.input_prob = input_prob
+		self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
 
-    def forward(self, inputs, targets):
-        log_probs = self.logsoftmax(inputs)
-        if self.input_prob:
-            loss = (- targets.detach() * log_probs).mean(0).sum()
-        else:
-            loss = (- F.softmax(targets, dim=1).detach() * log_probs).mean(0).sum()
-        return loss
+	def forward(self, inputs, targets):
+		log_probs = self.logsoftmax(inputs)
+		if self.input_prob:
+			loss = (- targets.detach() * log_probs).mean(0).sum()
+		else:
+			loss = (- F.softmax(targets, dim=1).detach() * log_probs).mean(0).sum()
+		return loss
 
 
 class SoftEntropySmooth(nn.Module):
-    def __init__(self, epsilon=0.1):
-        super(SoftEntropySmooth, self).__init__()
-        self.epsilon = epsilon
-        self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
+	def __init__(self, epsilon=0.1):
+		super(SoftEntropySmooth, self).__init__()
+		self.epsilon = epsilon
+		self.logsoftmax = nn.LogSoftmax(dim=1).cuda()
 
-    def forward(self, inputs, soft_targets, targets):
-        log_probs = self.logsoftmax(inputs)
-        targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1), 1)
-        soft_targets = F.softmax(soft_targets, dim=1)
-        smooth_targets = (1 - self.epsilon) * targets + self.epsilon * soft_targets
-        loss = (- smooth_targets.detach() * log_probs).mean(0).sum()
-        return loss
-
+	def forward(self, inputs, soft_targets, targets):
+		log_probs = self.logsoftmax(inputs)
+		targets = torch.zeros_like(log_probs).scatter_(1, targets.unsqueeze(1), 1)
+		soft_targets = F.softmax(soft_targets, dim=1)
+		smooth_targets = (1 - self.epsilon) * targets + self.epsilon * soft_targets
+		loss = (- smooth_targets.detach() * log_probs).mean(0).sum()
+		return loss
+	
 
 class Softmax(nn.Module):
-    def __init__(self, feat_dim, num_class, temp=0.05):
-        super(Softmax, self).__init__()
-        self.weight = Parameter(torch.Tensor(feat_dim, num_class))
-        self.weight.data.uniform_(-1, 1).renorm_(2, 1, 1e-5).mul_(1e5)
-        self.temp = temp
 
-    def forward(self, feats, labels):
-        kernel_norm = F.normalize(self.weight, dim=0)
-        feats = F.normalize(feats)
-        outputs = feats.mm(kernel_norm)
-        outputs /= self.temp
-        loss = F.cross_entropy(outputs, labels)
-        return loss
+	def __init__(self, feat_dim, num_class, temp=0.05):
+		super(Softmax, self).__init__()
+		self.weight = Parameter(torch.Tensor(feat_dim, num_class))
+		self.weight.data.uniform_(-1, 1).renorm_(2, 1, 1e-5).mul_(1e5)
+		self.temp = temp
+
+	def forward(self, feats, labels):
+		kernel_norm = F.normalize(self.weight, dim=0)
+		feats = F.normalize(feats)
+		outputs = feats.mm(kernel_norm)
+		outputs /= self.temp
+		loss = F.cross_entropy(outputs, labels)
+		return loss
 
 
 class CircleLoss(nn.Module):
@@ -107,12 +105,12 @@ class CircleLoss(nn.Module):
     def forward(self, feats, labels):
         kernel_norm = F.normalize(self.weight, dim=0)
         feats = F.normalize(feats)
-        cos_theta = torch.mm(feats, kernel_norm)
+        cos_theta = torch.mm(feats, kernel_norm) 
         cos_theta = cos_theta.clamp(-1, 1)
-        index_pos = torch.zeros_like(cos_theta)
+        index_pos = torch.zeros_like(cos_theta)        
         index_pos.scatter_(1, labels.data.view(-1, 1), 1)
         index_pos = index_pos.bool()
-        index_neg = torch.ones_like(cos_theta)
+        index_neg = torch.ones_like(cos_theta)        
         index_neg.scatter_(1, labels.data.view(-1, 1), 0)
         index_neg = index_neg.bool()
 
@@ -139,7 +137,7 @@ class CosFace(nn.Module):
         m: margin
         cos(theta)-m
     """
-    def __init__(self, feat_dim, num_class, s=64.0, m=0.35):
+    def __init__(self, feat_dim, num_class, s = 64.0, m = 0.35):
         super(CosFace, self).__init__()
         self.in_features = feat_dim
         self.out_features = num_class
@@ -152,14 +150,14 @@ class CosFace(nn.Module):
     def forward(self, input, label):
         # --------------------------- cos(theta) & phi(theta) ---------------------------
         # cosine = F.linear(F.normalize(input), F.normalize(self.weight, dim=1))
-        cosine = torch.mm(F.normalize(input), F.normalize(self.weight, dim=0))
+        cosine = torch.mm(F.normalize(input), F.normalize(self.weight, dim=0)) 
         phi = cosine - self.m
         # --------------------------- convert label to one-hot ---------------------------
-        one_hot = torch.zeros(cosine.size(), device='cuda')
+        one_hot = torch.zeros(cosine.size(), device = 'cuda')
         # one_hot = one_hot.cuda() if cosine.is_cuda else one_hot
         one_hot.scatter_(1, label.view(-1, 1).long(), 1)
         # -------------torch.where(out_i = {x_i if condition_i else y_i) -------------
-        output = (one_hot * phi) + ((1.0 - one_hot) * cosine)
+        output = (one_hot * phi) + ((1.0 - one_hot) * cosine)  # you can use torch.where if your torch.__version__ is 0.4
         output *= self.s
 
         return F.cross_entropy(output, label)
@@ -171,6 +169,8 @@ class CosFace(nn.Module):
                + ', s = ' + str(self.s) \
                + ', m = ' + str(self.m) + ')'
 
+
+import math
 
 class InstanceLoss(nn.Module):
     def __init__(self, batch_size, temperature, device):
@@ -275,13 +275,13 @@ class FocalLoss(nn.Module):
         assert target.dim() == 1
 
         logpt = F.log_softmax(input, dim=1)
-        logpt_gt = logpt.gather(1, target.unsqueeze(1))
+        logpt_gt = logpt.gather(1,target.unsqueeze(1))
         logpt_gt = logpt_gt.view(-1)
         pt_gt = logpt_gt.exp()
         assert logpt_gt.size() == pt_gt.size()
-
+        
         loss = -self.alpha*(torch.pow((1-pt_gt), self.gamma))*logpt_gt
-
+        
         return loss.mean()
 
 
@@ -290,7 +290,7 @@ class LabelRefineLoss(nn.Module):
         super(LabelRefineLoss, self).__init__()
         self.lambda1 = lambda1
         print('Initializing LabelRefineLoss for training: lambda1={}'.format(self.lambda1))
-
+            
     def forward(self, input, target):
         assert input.dim() == 2
         assert not target.requires_grad
@@ -298,13 +298,13 @@ class LabelRefineLoss(nn.Module):
         assert target.dim() == 1
 
         logpt = F.log_softmax(input, dim=1)
-        logpt_gt = logpt.gather(1, target.unsqueeze(1))
+        logpt_gt = logpt.gather(1,target.unsqueeze(1))
         logpt_gt = logpt_gt.view(-1)
-        logpt_pred, _ = torch.max(logpt, 1)
+        logpt_pred,_ = torch.max(logpt,1)
         logpt_pred = logpt_pred.view(-1)
         assert logpt_gt.size() == logpt_pred.size()
-        loss = - (1-self.lambda1)*logpt_gt - self.lambda1 * logpt_pred
-
+        loss = - (1-self.lambda1)*logpt_gt - self.lambda1* logpt_pred
+        
         return loss.mean()
 
 
@@ -319,25 +319,25 @@ class FocalTopLoss(nn.Module):
 
         one_hot_neg = one_hot_pos.new_ones(size=one_hot_pos.shape)
         one_hot_neg = one_hot_neg - one_hot_pos
-
+        
         neg_exps = exps.new_zeros(size=exps.shape)
-        neg_exps[one_hot_neg > 0] = exps[one_hot_neg > 0]
+        neg_exps[one_hot_neg>0] = exps[one_hot_neg>0]
         ori_neg_exps = neg_exps
         neg_exps = neg_exps/neg_exps.sum(dim=1, keepdim=True)
-
+        
         new_exps = exps.new_zeros(size=exps.shape)
-        new_exps[one_hot_pos > 0] = exps[one_hot_pos > 0]
+        new_exps[one_hot_pos>0] = exps[one_hot_pos>0]
 
         sorted, indices = torch.sort(neg_exps, dim=1, descending=True)
         sorted_cum_sum = torch.cumsum(sorted, dim=1)
         sorted_cum_diff = (sorted_cum_sum - self.top_percent).abs()
         sorted_cum_min_indices = sorted_cum_diff.argmin(dim=1)
-
+        
         min_values = sorted[torch.range(0, sorted.shape[0]-1).long(), sorted_cum_min_indices]
         min_values = min_values.unsqueeze(dim=-1) * ori_neg_exps.sum(dim=1, keepdim=True)
-        ori_neg_exps[ori_neg_exps < min_values] = 0
+        ori_neg_exps[ori_neg_exps<min_values] = 0
 
-        new_exps[one_hot_neg > 0] = ori_neg_exps[one_hot_neg > 0]
+        new_exps[one_hot_neg>0] = ori_neg_exps[one_hot_neg>0]
 
         masked_sums = exps.sum(dim, keepdim=True)
         return new_exps / masked_sums

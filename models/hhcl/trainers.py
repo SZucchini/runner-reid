@@ -1,18 +1,8 @@
+from __future__ import print_function, absolute_import
 import time
-from logging import getLogger, StreamHandler, DEBUG, Formatter
-
+import torch
+import torch.nn.functional as F
 from .utils.meters import AverageMeter
-
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-handler_format = Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(handler_format)
-logger = getLogger("Log")
-logger.setLevel(DEBUG)
-for h in logger.handlers[:]:
-    logger.removeHandler(h)
-    h.close()
-logger.addHandler(handler)
 
 
 class Trainer(object):
@@ -31,12 +21,15 @@ class Trainer(object):
 
         end = time.time()
         for i in range(train_iters):
+            # load data
             inputs = data_loader.next()
             data_time.update(time.time() - end)
 
+            # process inputs
             inputs, labels, indexes = self._parse_data(inputs)
 
             loss = 0
+            # forward
             f_out = self._forward(inputs)
             loss += self.memory(f_out, labels)
 
@@ -46,18 +39,19 @@ class Trainer(object):
 
             losses.update(loss.item())
 
+            # print log
             batch_time.update(time.time() - end)
             end = time.time()
 
             if (i + 1) % print_freq == 0:
-                logger.debug('Epoch: [{}][{}/{}]\t'
-                             'Time {:.3f} ({:.3f})\t'
-                             'Data {:.3f} ({:.3f})\t'
-                             'Loss {:.3f} ({:.3f})'
-                             .format(epoch, i + 1, train_iters,
-                                     batch_time.val, batch_time.avg,
-                                     data_time.val, data_time.avg,
-                                     losses.val, losses.avg))
+                print('Epoch: [{}][{}/{}]\t'
+                      'Time {:.3f} ({:.3f})\t'
+                      'Data {:.3f} ({:.3f})\t'
+                      'Loss {:.3f} ({:.3f})'
+                      .format(epoch, i + 1, len(data_loader),
+                              batch_time.val, batch_time.avg,
+                              data_time.val, data_time.avg,
+                              losses.val, losses.avg))
 
     def _parse_data(self, inputs):
         imgs, _, pids, _, indexes = inputs
