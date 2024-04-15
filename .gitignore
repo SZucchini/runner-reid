@@ -1,14 +1,15 @@
 .DS_Store
+.neptune/
+.vscode/
 @eaDir/
-run/
+data/
+notebook/
 output/gruae/*/checkpoint/
 output/gruae/*/images/
 output/gruae/*/log.txt
 output/hhcl/
-data/
+run/
 token/
-.neptune/
-.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
