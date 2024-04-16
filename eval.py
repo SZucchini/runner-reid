@@ -5,7 +5,6 @@ import random
 import cv2
 import numpy as np
 import torch
-import torch.nn as nn
 import torch.nn.utils.rnn as rnn
 from PIL import Image
 from torch.utils.data import DataLoader
@@ -17,7 +16,6 @@ from dataset.dataset import RunnerDataset
 from hhcl import datasets
 from hhcl.utils.data import transforms as T
 from models.gruae import GRUAutoEncoder
-from train_hhcl import get_test_loader as get_shoes_loader
 
 
 def get_cfg(config):
@@ -37,7 +35,6 @@ def get_hist(cv_img, bins=8, size=None):
     bgr_hist = []
     if size is not None:
         cv_img = cv2.resize(cv_img, size)
-    gray = cv2.cvtColor(cv_img, cv2.COLOR_BGR2GRAY)
     for i in range(3):
         hist = cv2.calcHist([cv_img], [i], None, [bins], [0, 256])
         bgr_hist.append(hist.reshape(bins,))
@@ -109,6 +106,22 @@ def calc_hist_sim(hist1, hist2):
     return corr
 
 
+def cos_sim(v1, v2):
+    cos_sim = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+    return cos_sim
+
+
+def calc_mat(features, candidates):
+    mat = np.zeros((len(features), len(features)))
+    for i in range(len(features)):
+        for j in range(len(features)):
+            sim = cos_sim(features[i], features[j])
+            if j not in candidates[i]:
+                sim = 0
+            mat[i, j] = sim
+    return mat
+
+
 def calc_mAP(mat, gt, annotation_data):
     ave_mAP = 0
     person_mAP = {}
@@ -140,6 +153,33 @@ def calc_mAP(mat, gt, annotation_data):
 
     ave_mAP /= num_persons
     return ave_mAP, person_mAP
+
+
+def rankn_acc(mat, n, annotation_data):
+    cnt = 0
+    skip_cnt = 0
+    for pid in range(len(mat)):
+        query = annotation_data[str(pid)]
+        if 'sprinter' in query:
+            skip_cnt += 1
+            continue
+
+        ans = np.argsort(mat[pid])[::-1][:n]
+        res = []
+        for a in ans:
+            res.append(annotation_data[str(a)])
+
+        if query in res:
+            cnt += 1
+
+    return cnt / (len(mat) - skip_cnt)
+
+
+def cmc_curve(mat, n, annotation_data):
+    res = []
+    for i in range(1, n+1):
+        res.append(rankn_acc(mat, i, annotation_data))
+    return res
 
 
 def set_seed(seed):
@@ -208,54 +248,54 @@ def main():
     hhcl_dataset = RunnerDataset(root_dir, transform=test_transformer)
     shoes_dataset = get_data("custom", f"./data/HHCL/shoes/{args.type}")
 
-    # gruae = GRUAutoEncoder(cfg)
-    # gruae.load_state_dict(torch.load(f"./output/gruae/{args.type}/checkpoint/last_dict.pth"))
-    # gruae.to(cfg.MODEL.DEVICE)
-    # gruae.eval()
+    gruae = GRUAutoEncoder(cfg)
+    gruae.load_state_dict(torch.load(f"./output/gruae/{args.type}/checkpoint/last_dict.pth"))
+    gruae.to(cfg.MODEL.DEVICE)
+    gruae.eval()
 
-    # gru_features = []  # (Query, Dim)
-    # for x in test_loader:
-    #     x = x.to(cfg.MODEL.DEVICE)
-    #     with torch.no_grad():
-    #         _, hidden = gruae(x, 0)
-    #         feature = hidden.squeeze(0).cpu().numpy()
-    #         if len(gru_features) == 0:
-    #             gru_features.append(feature)
-    #             gru_features = np.array(gru_features).squeeze()
-    #         else:
-    #             gru_features = np.concatenate([gru_features, feature], axis=0)
+    gru_features = []  # (Query, Dim)
+    for x in test_loader:
+        x = x.to(cfg.MODEL.DEVICE)
+        with torch.no_grad():
+            _, hidden = gruae(x, 0)
+            feature = hidden.squeeze(0).cpu().numpy()
+            if len(gru_features) == 0:
+                gru_features.append(feature)
+                gru_features = np.array(gru_features).squeeze()
+            else:
+                gru_features = np.concatenate([gru_features, feature], axis=0)
 
-    # del gruae
-    # hhclp = torch.load(f"./output/hhcl/persons/{args.type}/final_model.pth")
-    # hhclp.to(cfg.MODEL.DEVICE)
-    # hhclp.eval()
+    del gruae
+    hhclp = torch.load(f"./output/hhcl/persons/{args.type}/final_model_rep.pth")
+    hhclp.to(cfg.MODEL.DEVICE)
+    hhclp.eval()
 
-    # hhclp_features = []
-    # for i in range(len(hhcl_dataset)):
-    #     x, _ = hhcl_dataset[i]
-    #     x = x.to(cfg.MODEL.DEVICE)
-    #     with torch.no_grad():
-    #         feature = hhclp(x).cpu().numpy()
-    #         feature = np.mean(feature, axis=0)
-    #         hhclp_features.append(feature)
-    # hhclp_features = np.array(hhclp_features)
+    hhclp_features = []
+    for i in range(len(hhcl_dataset)):
+        x, _ = hhcl_dataset[i]
+        x = x.to(cfg.MODEL.DEVICE)
+        with torch.no_grad():
+            feature = hhclp(x).cpu().numpy()
+            feature = np.mean(feature, axis=0)
+            hhclp_features.append(feature)
+    hhclp_features = np.array(hhclp_features)
 
-    # del hhclp, hhcl_dataset
-    # hhcls = torch.load(f"./output/hhcl/shoes/{args.type}/final_model.pth")
-    # hhcls.to(cfg.MODEL.DEVICE)
-    # hhcls.eval()
+    del hhclp, hhcl_dataset
+    hhcls = torch.load(f"./output/hhcl/shoes/{args.type}/final_model_rep.pth")
+    hhcls.to(cfg.MODEL.DEVICE)
+    hhcls.eval()
 
-    # hhcls_features = []
-    # for i in range(len(shoes_dataset.query)):
-    #     shoe_img_path, _, _ = shoes_dataset.query[i]
-    #     shoe_img = Image.open(shoe_img_path)
-    #     x = test_transformer(shoe_img).unsqueeze(0).to(cfg.MODEL.DEVICE)
-    #     with torch.no_grad():
-    #         feature = hhcls(x).squeeze(0).cpu().numpy()
-    #         hhcls_features.append(feature)
-    # hhcls_features = np.array(hhcls_features)
+    hhcls_features = []
+    for i in range(len(shoes_dataset.query)):
+        shoe_img_path, _, _ = shoes_dataset.query[i]
+        shoe_img = Image.open(shoe_img_path)
+        x = test_transformer(shoe_img).unsqueeze(0).to(cfg.MODEL.DEVICE)
+        with torch.no_grad():
+            feature = hhcls(x).squeeze(0).cpu().numpy()
+            hhcls_features.append(feature)
+    hhcls_features = np.array(hhcls_features)
 
-    # del hhcls
+    del hhcls
 
     person_hist = []
     shoes_hist = []
@@ -263,7 +303,6 @@ def main():
         hist, shoe_hist = get_all_hist(gruae_dataset[i][0], shoes_dataset.query[i][0])
         person_hist.append(hist)
         shoes_hist.append(shoe_hist)
-        print("Finished:", i)
     hist_features = np.array(person_hist)
     shoe_hist_features = np.array(shoes_hist)
 
@@ -297,8 +336,56 @@ def main():
                 sim = 0
             mat_hist[i, j] = sim
 
+    mat_gru = calc_mat(gru_features, candidates)
+    mat_hhcl = calc_mat(hhclp_features, candidates)
+
+    mat_gru_hist = np.zeros((len(gru_features), len(gru_features)))
+    for i in range(len(gru_features)):
+        for j in range(len(gru_features)):
+            sim = mat_gru[i, j] * 0.85 + mat_hist[i, j] * 0.15
+            if j not in candidates[i]:
+                sim = 0
+            mat_gru_hist[i, j] = sim
+
+    mat_hhcl_shoe = np.zeros((len(hhclp_features), len(hhclp_features)))
+    for i in range(len(hhclp_features)):
+        for j in range(len(hhclp_features)):
+            sim = (cos_sim(hhclp_features[i], hhclp_features[j]) * 0.75
+                   + cos_sim(hhcls_features[i], hhcls_features[j]) * 0.25)
+            if j not in candidates[i]:
+                sim = 0
+            mat_hhcl_shoe[i, j] = sim
+
+    mAP_histwoshoe, pmAP_histwoshoe = calc_mAP(mat_histwoshoe, gt, annotation_data)
     mAP_hist, pmAP_hist = calc_mAP(mat_hist, gt, annotation_data)
-    print(f"mAP: {mAP_hist}")
+    mAP_gru, pmAP_gru = calc_mAP(mat_gru, gt, annotation_data)
+    mAP_gru_hist, pmAP_gru_hist = calc_mAP(mat_gru_hist, gt, annotation_data)
+    mAP_hhcl, pmAP_hhcl = calc_mAP(mat_hhcl, gt, annotation_data)
+    mAP_hhcl_shoe, pmAP_hhcl_shoe = calc_mAP(mat_hhcl_shoe, gt, annotation_data)
+
+    print("mAP Hist w/o Shoe:", mAP_histwoshoe)
+    print("mAP Hist:", mAP_hist)
+    print("mAP GRU:", mAP_gru)
+    print("mAP GRU Hist:", mAP_gru_hist)
+    print("mAP HHCL:", mAP_hhcl)
+    print("mAP HHCL Shoe:", mAP_hhcl_shoe)
+
+    rank = 10
+    histwoshoe_cmc = cmc_curve(mat_histwoshoe, rank, annotation_data)
+    hist_cmc = cmc_curve(mat_hist, rank, annotation_data)
+    gru_cmc = cmc_curve(mat_gru, rank, annotation_data)
+    gru_hist_cmc = cmc_curve(mat_gru_hist, rank, annotation_data)
+    hhcl_cmc = cmc_curve(mat_hhcl, rank, annotation_data)
+    hhcl_shoe_cmc = cmc_curve(mat_hhcl_shoe, rank, annotation_data)
+
+    for i in range(rank):
+        print(f"Rank {i+1} Acc:")
+        print(f"Hist w/o Shoe: {histwoshoe_cmc[i]}")
+        print(f"Hist: {hist_cmc[i]}")
+        print(f"GRU: {gru_cmc[i]}")
+        print(f"GRU Hist: {gru_hist_cmc[i]}")
+        print(f"HHCL: {hhcl_cmc[i]}")
+        print(f"HHCL Shoe: {hhcl_shoe_cmc[i]}")
 
 
 if __name__ == "__main__":
