@@ -2,6 +2,7 @@ import argparse
 import os
 import random
 
+import cv2
 import numpy as np
 import torch
 import torch.nn as nn
@@ -30,6 +31,46 @@ def get_data(name, data_dir):
     root = data_dir
     dataset = datasets.create(name, root)
     return dataset
+
+
+def get_hist(cv_img, bins=8, size=None):
+    bgr_hist = []
+    if size is not None:
+        cv_img = cv2.resize(cv_img, size)
+    gray = cv2.cvtColor(cv_img, cv2.COLOR_BGR2GRAY)
+    for i in range(3):
+        hist = cv2.calcHist([cv_img], [i], None, [bins], [0, 256])
+        bgr_hist.append(hist.reshape(bins,))
+    bgr_hist = np.array(bgr_hist)
+    return bgr_hist.reshape(-1)
+
+
+def get_upper_hist(cv_img, bins=8, size=None):
+    bgr_hist = []
+    if size is not None:
+        cv_img = cv2.resize(cv_img, size)
+    data = cv_img[:cv_img.shape[0]//2, :, :]
+    gray = cv2.cvtColor(data, cv2.COLOR_BGR2GRAY)
+    mask = (gray > 0).astype(np.uint8)
+    for i in range(3):
+        hist = cv2.calcHist([data], [i], mask, [bins], [0, 1])
+        bgr_hist.append(hist.reshape(bins,))
+    bgr_hist = np.array(bgr_hist)
+    return bgr_hist.reshape(-1)
+
+
+def get_all_hist(images, shoes_file):
+    hist = []
+    for img in images:
+        img = img.permute(1, 2, 0)
+        img = np.array(img)
+        hist.append(get_upper_hist(img))
+    hist = np.array(hist)
+    hist = np.mean(hist, axis=0)
+
+    shoe_img = cv2.imread(shoes_file)
+    shoe_hist = get_hist(shoe_img, size=(200, 100))
+    return hist, shoe_hist
 
 
 def set_seed(seed):
@@ -147,6 +188,16 @@ def main():
 
     # del hhcls
 
+    person_hist = []
+    shoes_hist = []
+    for i in range(len(gruae_dataset)):
+        hist, shoe_hist = get_all_hist(gruae_dataset[i][0], shoes_dataset.query[i][0])
+        person_hist.append(hist)
+        shoes_hist.append(shoe_hist)
+    hist_features = np.array(person_hist)
+    shoe_hist_features = np.array(shoes_hist)
+
+    
 
 if __name__ == "__main__":
     main()
