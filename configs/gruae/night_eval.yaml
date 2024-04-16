@@ -8,6 +8,7 @@ INPUT:
 
 MODEL:
   LATENT_DIM: 128
+  EVAL: True
 
 TRAIN:
   LR: 0.001
