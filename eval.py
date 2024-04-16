@@ -63,7 +63,7 @@ def get_testloader(dataset):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, default="./configs/gruae/night.yaml")
+    parser.add_argument("--config", type=str, default="./configs/gruae/daytime.yaml")
     parser.add_argument("--type", type=str, default="daytime")
     args = parser.parse_args()
 
@@ -88,9 +88,26 @@ def main():
     hhcl_dataset = RunnerDataset(root_dir, transform=test_transformer)
 
     gruae = GRUAutoEncoder(cfg)
+    gruae.load_state_dict(torch.load(f"./output/gruae/{args.type}/checkpoint/last_dict.pth"))
+    gruae.to(cfg.MODEL.DEVICE)
+    gruae.eval()
+
     hhclp = torch.load(f"./output/hhcl/persons/{args.type}/final_model.pth")
     # hhcls = torch.load("./output/hhcl/shoes/{}/final_model.pth")
-    
+
+    gru_features = []
+    for x in test_loader:
+        x = x.to(cfg.MODEL.DEVICE)
+        with torch.no_grad():
+            _, hidden = gruae(x, 0)
+            feature = hidden.squeeze(0).cpu().numpy()
+            if len(gru_features) == 0:
+                gru_features.append(feature)
+                gru_features = np.array(gru_features).squeeze()
+            else:
+                gru_features = np.concatenate([gru_features, feature], axis=0)
+    print(gru_features.shape)
+    del gruae
 
 
 if __name__ == "__main__":
