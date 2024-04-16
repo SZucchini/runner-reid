@@ -73,6 +73,75 @@ def get_all_hist(images, shoes_file):
     return hist, shoe_hist
 
 
+def get_gt(gt_file):
+    gt = {}
+    with open(gt_file) as f:
+        for s_line in f:
+            s_line = s_line.replace("\n", "")
+            key, value = s_line.split(',')
+            gt[key] = [int(value), 0, 0]
+    return gt
+
+
+def get_annotation(annotation_file):
+    annotation = {}
+    start_frames = []
+    end_frames = []
+
+    cnt = 0
+    with open(annotation_file) as f:
+        for s_line in f:
+            s_line = s_line.replace("\n", "")
+            frame_start = int(s_line.split(',')[1])
+            frame_end = int(s_line.split(',')[2])
+
+            value = s_line.split(',')[-1]
+            annotation[str(cnt)] = value
+            start_frames.append(int(frame_start))
+            end_frames.append(int(frame_end))
+            cnt += 1
+
+    return annotation, start_frames, end_frames
+
+
+def calc_hist_sim(hist1, hist2):
+    corr = cv2.compareHist(hist1, hist2, cv2.HISTCMP_CORREL)
+    return corr
+
+
+def calc_mAP(mat, gt, annotation_data):
+    ave_mAP = 0
+    person_mAP = {}
+    num_persons = 0
+    for pid in range(len(mat)):
+        query = annotation_data[str(pid)]
+        if 'sprinter' in query or 'rugby' in query:
+            continue
+        num_persons += 1
+        if query not in person_mAP.keys():
+            person_mAP[query] = [0, 0]
+        num_target = gt[query][0] - 1
+
+        ans = np.argsort(mat[pid])[::-1]
+        mAP = 0
+        cnt = 0
+        for i, a in enumerate(ans):
+            p = annotation_data[str(a)]
+            if p == query:
+                cnt += 1
+                mAP += cnt / (i+1)
+            if cnt == num_target:
+                break
+
+        mAP /= num_target
+        person_mAP[query][0] += mAP
+        person_mAP[query][1] += 1
+        ave_mAP += mAP
+
+    ave_mAP /= num_persons
+    return ave_mAP, person_mAP
+
+
 def set_seed(seed):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -194,10 +263,43 @@ def main():
         hist, shoe_hist = get_all_hist(gruae_dataset[i][0], shoes_dataset.query[i][0])
         person_hist.append(hist)
         shoes_hist.append(shoe_hist)
+        print("Finished:", i)
     hist_features = np.array(person_hist)
     shoe_hist_features = np.array(shoes_hist)
 
-    
+    gt = get_gt(f"./data/evaluation/{args.type}/gt_full.txt")
+    annotation_file = f"./data/evaluation/{args.type}/scene.txt"
+    annotation_data, start_frames, end_frames = get_annotation(annotation_file)
+
+    start_frames = np.array(start_frames)
+    end_frames = np.array(end_frames)
+    candidates = []
+    for i in range(len(start_frames)):
+        candidates.append(np.where((start_frames - start_frames[i] > 3600) |
+                                   (start_frames - start_frames[i] < -3600))[0].tolist())
+
+    mat_histwoshoe = np.zeros((len(hist_features), len(hist_features)))
+    for i in range(len(hist_features)):
+        for j in range(len(hist_features)):
+            img_sim = calc_hist_sim(hist_features[i], hist_features[j])
+            sim = img_sim
+            if j not in candidates[i]:
+                sim = 0
+            mat_histwoshoe[i, j] = sim
+
+    mat_hist = np.zeros((len(hist_features), len(hist_features)))
+    for i in range(len(hist_features)):
+        for j in range(len(hist_features)):
+            img_sim = calc_hist_sim(hist_features[i], hist_features[j])
+            shoe_sim = calc_hist_sim(shoe_hist_features[i], shoe_hist_features[j])
+            sim = img_sim * 0.9 + shoe_sim * 0.1
+            if j not in candidates[i]:
+                sim = 0
+            mat_hist[i, j] = sim
+
+    mAP_hist, pmAP_hist = calc_mAP(mat_hist, gt, annotation_data)
+    print(f"mAP: {mAP_hist}")
+
 
 if __name__ == "__main__":
     main()
