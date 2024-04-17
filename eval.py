@@ -225,86 +225,97 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default="./configs/gruae/daytime.yaml")
     parser.add_argument("--type", type=str, default="daytime")
+    parser.add_argument("--use_embedding", action="store_true")
     args = parser.parse_args()
 
     cfg = get_cfg(args.config)
     set_seed(cfg.SEED)
 
-    root_dir = [f"./data/evaluation/{args.type}/images"]
-    transform = transforms.Compose([
-        transforms.Resize((64, 64)),
-        transforms.ToTensor(),
-    ])
-    gruae_dataset = RunnerDataset(root_dir, transform=transform)
-    test_loader = get_testloader(gruae_dataset)
+    if not args.use_embedding:
+        root_dir = [f"./data/evaluation/{args.type}/images"]
+        transform = transforms.Compose([
+            transforms.Resize((64, 64)),
+            transforms.ToTensor(),
+        ])
+        gruae_dataset = RunnerDataset(root_dir, transform=transform)
+        test_loader = get_testloader(gruae_dataset)
 
-    normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
-                             std=[0.229, 0.224, 0.225])
-    test_transformer = T.Compose([
-        T.Resize((256, 128), interpolation=3),
-        T.ToTensor(),
-        normalizer
-    ])
-    hhcl_dataset = RunnerDataset(root_dir, transform=test_transformer)
-    shoes_dataset = get_data("custom", f"./data/HHCL/shoes/{args.type}")
+        normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+        test_transformer = T.Compose([
+            T.Resize((256, 128), interpolation=3),
+            T.ToTensor(),
+            normalizer
+        ])
+        hhcl_dataset = RunnerDataset(root_dir, transform=test_transformer)
+        shoes_dataset = get_data("custom", f"./data/HHCL/shoes/{args.type}")
 
-    gruae = GRUAutoEncoder(cfg)
-    gruae.load_state_dict(torch.load(f"./output/gruae/{args.type}/checkpoint/last_dict.pth"))
-    gruae.to(cfg.MODEL.DEVICE)
-    gruae.eval()
+        gruae = GRUAutoEncoder(cfg)
+        gruae.load_state_dict(torch.load(f"./output/gruae/{args.type}/checkpoint/last_dict.pth"))
+        gruae.to(cfg.MODEL.DEVICE)
+        gruae.eval()
 
-    gru_features = []  # (Query, Dim)
-    for x in test_loader:
-        x = x.to(cfg.MODEL.DEVICE)
-        with torch.no_grad():
-            _, hidden = gruae(x, 0)
-            feature = hidden.squeeze(0).cpu().numpy()
-            if len(gru_features) == 0:
-                gru_features.append(feature)
-                gru_features = np.array(gru_features).squeeze()
-            else:
-                gru_features = np.concatenate([gru_features, feature], axis=0)
+        gru_features = []  # (Query, Dim)
+        for x in test_loader:
+            x = x.to(cfg.MODEL.DEVICE)
+            with torch.no_grad():
+                _, hidden = gruae(x, 0)
+                feature = hidden.squeeze(0).cpu().numpy()
+                if len(gru_features) == 0:
+                    gru_features.append(feature)
+                    gru_features = np.array(gru_features).squeeze()
+                else:
+                    gru_features = np.concatenate([gru_features, feature], axis=0)
 
-    del gruae
-    hhclp = torch.load(f"./output/hhcl/persons/{args.type}/final_model_rep.pth")
-    hhclp.to(cfg.MODEL.DEVICE)
-    hhclp.eval()
+        del gruae
+        hhclp = torch.load(f"./output/hhcl/persons/{args.type}/checkpoint/final_model_rep.pth")
+        hhclp.to(cfg.MODEL.DEVICE)
+        hhclp.eval()
 
-    hhclp_features = []
-    for i in range(len(hhcl_dataset)):
-        x, _ = hhcl_dataset[i]
-        x = x.to(cfg.MODEL.DEVICE)
-        with torch.no_grad():
-            feature = hhclp(x).cpu().numpy()
-            feature = np.mean(feature, axis=0)
-            hhclp_features.append(feature)
-    hhclp_features = np.array(hhclp_features)
+        hhclp_features = []
+        for i in range(len(hhcl_dataset)):
+            x, _ = hhcl_dataset[i]
+            x = x.to(cfg.MODEL.DEVICE)
+            with torch.no_grad():
+                feature = hhclp(x).cpu().numpy()
+                feature = np.mean(feature, axis=0)
+                hhclp_features.append(feature)
+        hhclp_features = np.array(hhclp_features)
 
-    del hhclp, hhcl_dataset
-    hhcls = torch.load(f"./output/hhcl/shoes/{args.type}/final_model_rep.pth")
-    hhcls.to(cfg.MODEL.DEVICE)
-    hhcls.eval()
+        del hhclp, hhcl_dataset
+        hhcls = torch.load(f"./output/hhcl/shoes/{args.type}/checkpoint/final_model_rep.pth")
+        hhcls.to(cfg.MODEL.DEVICE)
+        hhcls.eval()
 
-    hhcls_features = []
-    for i in range(len(shoes_dataset.query)):
-        shoe_img_path, _, _ = shoes_dataset.query[i]
-        shoe_img = Image.open(shoe_img_path)
-        x = test_transformer(shoe_img).unsqueeze(0).to(cfg.MODEL.DEVICE)
-        with torch.no_grad():
-            feature = hhcls(x).squeeze(0).cpu().numpy()
-            hhcls_features.append(feature)
-    hhcls_features = np.array(hhcls_features)
+        hhcls_features = []
+        for i in range(len(shoes_dataset.query)):
+            shoe_img_path, _, _ = shoes_dataset.query[i]
+            shoe_img = Image.open(shoe_img_path)
+            x = test_transformer(shoe_img).unsqueeze(0).to(cfg.MODEL.DEVICE)
+            with torch.no_grad():
+                feature = hhcls(x).squeeze(0).cpu().numpy()
+                hhcls_features.append(feature)
+        hhcls_features = np.array(hhcls_features)
 
-    del hhcls
+        del hhcls
 
-    person_hist = []
-    shoes_hist = []
-    for i in range(len(gruae_dataset)):
-        hist, shoe_hist = get_all_hist(gruae_dataset[i][0], shoes_dataset.query[i][0])
-        person_hist.append(hist)
-        shoes_hist.append(shoe_hist)
-    hist_features = np.array(person_hist)
-    shoe_hist_features = np.array(shoes_hist)
+        person_hist = []
+        shoes_hist = []
+        for i in range(len(gruae_dataset)):
+            hist, shoe_hist = get_all_hist(gruae_dataset[i][0], shoes_dataset.query[i][0])
+            person_hist.append(hist)
+            shoes_hist.append(shoe_hist)
+        hist_features = np.array(person_hist)
+        shoe_hist_features = np.array(shoes_hist)
+
+    else:
+        gru_features = np.load(f"./data/evaluation/{args.type}/features/gru_features.npy")
+        hhclp_features = np.load(f"./data/evaluation/{args.type}/features/hhclp_features.npy")
+        hhcls_features = np.load(f"./data/evaluation/{args.type}/features/hhcls_features.npy")
+        hist_features = np.load(f"./data/evaluation/{args.type}/features/hist_features.npy")
+        shoe_hist_features = np.load(
+            f"./data/evaluation/{args.type}/features/shoe_hist_features.npy"
+        )
 
     gt = get_gt(f"./data/evaluation/{args.type}/gt_full.txt")
     annotation_file = f"./data/evaluation/{args.type}/scene.txt"
