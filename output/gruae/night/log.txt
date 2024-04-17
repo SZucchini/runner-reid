@@ -1,0 +1,1532 @@
+2024-03-22 20:51:01,210 - Log - DEBUG - Config data
+DATASETS:
+  DAYTIME_ROOT: ./data/GRUAE/large/daytime
+  NIGHT_ROOT: ./data/GRUAE/large/night
+  TYPE: NIGHT
+INPUT:
+  BATCH_SIZE: 32
+  IMAGE_SIZE: [64, 64]
+  MAX_SEQ_LEN: 47
+MODEL:
+  DEVICE: cuda
+  EVAL: False
+  LATENT_DIM: 128
+NEPTUNE: True
+OUTPUT_DIR: ./output/gruae/night
+PROJECT: NUSBG/GRUAE
+SEED: 42
+TOKEN_PATH: ./token/neptune.txt
+TRAIN:
+  EPOCHS: 500
+  LR: 0.001
+  OPTIMIZER: Adam
+
+https://app.neptune.ai/NUSBG/GRUAE/e/GRUAE-22
+2024-03-22 20:51:06,698 - Log - DEBUG - Trainloader length: 28
+2024-03-22 20:51:06,699 - Log - DEBUG - Validloader length: 7
+2024-03-22 20:53:32,612 - Log - DEBUG - Epoch 0 was finished.
+2024-03-22 20:53:32,613 - Log - DEBUG - Training loss: 0.0612
+2024-03-22 20:53:32,613 - Log - DEBUG - Validation loss: 0.0402
+2024-03-22 20:55:53,818 - Log - DEBUG - Epoch 1 was finished.
+2024-03-22 20:55:53,818 - Log - DEBUG - Training loss: 0.0333
+2024-03-22 20:55:53,818 - Log - DEBUG - Validation loss: 0.0315
+2024-03-22 20:58:11,586 - Log - DEBUG - Epoch 2 was finished.
+2024-03-22 20:58:11,587 - Log - DEBUG - Training loss: 0.0307
+2024-03-22 20:58:11,587 - Log - DEBUG - Validation loss: 0.0287
+2024-03-22 21:00:27,560 - Log - DEBUG - Epoch 3 was finished.
+2024-03-22 21:00:27,560 - Log - DEBUG - Training loss: 0.0283
+2024-03-22 21:00:27,560 - Log - DEBUG - Validation loss: 0.0268
+2024-03-22 21:02:47,095 - Log - DEBUG - Epoch 4 was finished.
+2024-03-22 21:02:47,096 - Log - DEBUG - Training loss: 0.0268
+2024-03-22 21:02:47,096 - Log - DEBUG - Validation loss: 0.0257
+2024-03-22 21:05:04,060 - Log - DEBUG - Epoch 5 was finished.
+2024-03-22 21:05:04,060 - Log - DEBUG - Training loss: 0.0258
+2024-03-22 21:05:04,061 - Log - DEBUG - Validation loss: 0.0245
+2024-03-22 21:07:21,558 - Log - DEBUG - Epoch 6 was finished.
+2024-03-22 21:07:21,559 - Log - DEBUG - Training loss: 0.0248
+2024-03-22 21:07:21,559 - Log - DEBUG - Validation loss: 0.0236
+2024-03-22 21:09:38,125 - Log - DEBUG - Epoch 7 was finished.
+2024-03-22 21:09:38,126 - Log - DEBUG - Training loss: 0.0239
+2024-03-22 21:09:38,126 - Log - DEBUG - Validation loss: 0.0233
+2024-03-22 21:11:54,859 - Log - DEBUG - Epoch 8 was finished.
+2024-03-22 21:11:54,859 - Log - DEBUG - Training loss: 0.0230
+2024-03-22 21:11:54,859 - Log - DEBUG - Validation loss: 0.0223
+2024-03-22 21:14:10,789 - Log - DEBUG - Epoch 9 was finished.
+2024-03-22 21:14:10,790 - Log - DEBUG - Training loss: 0.0225
+2024-03-22 21:14:10,790 - Log - DEBUG - Validation loss: 0.0220
+2024-03-22 21:16:29,752 - Log - DEBUG - Epoch 10 was finished.
+2024-03-22 21:16:29,753 - Log - DEBUG - Training loss: 0.0218
+2024-03-22 21:16:29,753 - Log - DEBUG - Validation loss: 0.0213
+2024-03-22 21:18:46,097 - Log - DEBUG - Epoch 11 was finished.
+2024-03-22 21:18:46,098 - Log - DEBUG - Training loss: 0.0214
+2024-03-22 21:18:46,098 - Log - DEBUG - Validation loss: 0.0209
+2024-03-22 21:21:08,543 - Log - DEBUG - Epoch 12 was finished.
+2024-03-22 21:21:08,543 - Log - DEBUG - Training loss: 0.0207
+2024-03-22 21:21:08,543 - Log - DEBUG - Validation loss: 0.0201
+2024-03-22 21:23:26,747 - Log - DEBUG - Epoch 13 was finished.
+2024-03-22 21:23:26,748 - Log - DEBUG - Training loss: 0.0204
+2024-03-22 21:23:26,748 - Log - DEBUG - Validation loss: 0.0199
+2024-03-22 21:25:45,528 - Log - DEBUG - Epoch 14 was finished.
+2024-03-22 21:25:45,528 - Log - DEBUG - Training loss: 0.0201
+2024-03-22 21:25:45,528 - Log - DEBUG - Validation loss: 0.0197
+2024-03-22 21:28:02,176 - Log - DEBUG - Epoch 15 was finished.
+2024-03-22 21:28:02,177 - Log - DEBUG - Training loss: 0.0197
+2024-03-22 21:28:02,177 - Log - DEBUG - Validation loss: 0.0193
+2024-03-22 21:30:20,331 - Log - DEBUG - Epoch 16 was finished.
+2024-03-22 21:30:20,331 - Log - DEBUG - Training loss: 0.0195
+2024-03-22 21:30:20,331 - Log - DEBUG - Validation loss: 0.0191
+2024-03-22 21:32:36,419 - Log - DEBUG - Epoch 17 was finished.
+2024-03-22 21:32:36,420 - Log - DEBUG - Training loss: 0.0192
+2024-03-22 21:32:36,420 - Log - DEBUG - Validation loss: 0.0194
+2024-03-22 21:34:52,345 - Log - DEBUG - Epoch 18 was finished.
+2024-03-22 21:34:52,346 - Log - DEBUG - Training loss: 0.0190
+2024-03-22 21:34:52,346 - Log - DEBUG - Validation loss: 0.0186
+2024-03-22 21:37:09,255 - Log - DEBUG - Epoch 19 was finished.
+2024-03-22 21:37:09,255 - Log - DEBUG - Training loss: 0.0186
+2024-03-22 21:37:09,255 - Log - DEBUG - Validation loss: 0.0187
+2024-03-22 21:39:26,931 - Log - DEBUG - Epoch 20 was finished.
+2024-03-22 21:39:26,931 - Log - DEBUG - Training loss: 0.0183
+2024-03-22 21:39:26,931 - Log - DEBUG - Validation loss: 0.0186
+2024-03-22 21:41:45,240 - Log - DEBUG - Epoch 21 was finished.
+2024-03-22 21:41:45,240 - Log - DEBUG - Training loss: 0.0181
+2024-03-22 21:41:45,240 - Log - DEBUG - Validation loss: 0.0179
+2024-03-22 21:44:09,221 - Log - DEBUG - Epoch 22 was finished.
+2024-03-22 21:44:09,222 - Log - DEBUG - Training loss: 0.0179
+2024-03-22 21:44:09,222 - Log - DEBUG - Validation loss: 0.0178
+2024-03-22 21:46:26,753 - Log - DEBUG - Epoch 23 was finished.
+2024-03-22 21:46:26,753 - Log - DEBUG - Training loss: 0.0177
+2024-03-22 21:46:26,753 - Log - DEBUG - Validation loss: 0.0174
+2024-03-22 21:48:47,766 - Log - DEBUG - Epoch 24 was finished.
+2024-03-22 21:48:47,766 - Log - DEBUG - Training loss: 0.0173
+2024-03-22 21:48:47,766 - Log - DEBUG - Validation loss: 0.0174
+2024-03-22 21:51:08,022 - Log - DEBUG - Epoch 25 was finished.
+2024-03-22 21:51:08,023 - Log - DEBUG - Training loss: 0.0171
+2024-03-22 21:51:08,023 - Log - DEBUG - Validation loss: 0.0172
+2024-03-22 21:53:28,119 - Log - DEBUG - Epoch 26 was finished.
+2024-03-22 21:53:28,120 - Log - DEBUG - Training loss: 0.0169
+2024-03-22 21:53:28,120 - Log - DEBUG - Validation loss: 0.0170
+2024-03-22 21:55:48,861 - Log - DEBUG - Epoch 27 was finished.
+2024-03-22 21:55:48,862 - Log - DEBUG - Training loss: 0.0168
+2024-03-22 21:55:48,862 - Log - DEBUG - Validation loss: 0.0168
+2024-03-22 21:58:07,175 - Log - DEBUG - Epoch 28 was finished.
+2024-03-22 21:58:07,175 - Log - DEBUG - Training loss: 0.0164
+2024-03-22 21:58:07,175 - Log - DEBUG - Validation loss: 0.0168
+2024-03-22 22:00:23,363 - Log - DEBUG - Epoch 29 was finished.
+2024-03-22 22:00:23,363 - Log - DEBUG - Training loss: 0.0164
+2024-03-22 22:00:23,363 - Log - DEBUG - Validation loss: 0.0166
+2024-03-22 22:02:42,680 - Log - DEBUG - Epoch 30 was finished.
+2024-03-22 22:02:42,680 - Log - DEBUG - Training loss: 0.0161
+2024-03-22 22:02:42,680 - Log - DEBUG - Validation loss: 0.0165
+2024-03-22 22:05:00,969 - Log - DEBUG - Epoch 31 was finished.
+2024-03-22 22:05:00,969 - Log - DEBUG - Training loss: 0.0159
+2024-03-22 22:05:00,969 - Log - DEBUG - Validation loss: 0.0163
+2024-03-22 22:07:19,579 - Log - DEBUG - Epoch 32 was finished.
+2024-03-22 22:07:19,579 - Log - DEBUG - Training loss: 0.0157
+2024-03-22 22:07:19,579 - Log - DEBUG - Validation loss: 0.0164
+2024-03-22 22:09:35,205 - Log - DEBUG - Epoch 33 was finished.
+2024-03-22 22:09:35,206 - Log - DEBUG - Training loss: 0.0157
+2024-03-22 22:09:35,206 - Log - DEBUG - Validation loss: 0.0161
+2024-03-22 22:11:53,075 - Log - DEBUG - Epoch 34 was finished.
+2024-03-22 22:11:53,076 - Log - DEBUG - Training loss: 0.0154
+2024-03-22 22:11:53,076 - Log - DEBUG - Validation loss: 0.0160
+2024-03-22 22:14:09,278 - Log - DEBUG - Epoch 35 was finished.
+2024-03-22 22:14:09,278 - Log - DEBUG - Training loss: 0.0152
+2024-03-22 22:14:09,278 - Log - DEBUG - Validation loss: 0.0161
+2024-03-22 22:16:31,048 - Log - DEBUG - Epoch 36 was finished.
+2024-03-22 22:16:31,049 - Log - DEBUG - Training loss: 0.0152
+2024-03-22 22:16:31,049 - Log - DEBUG - Validation loss: 0.0158
+2024-03-22 22:18:51,410 - Log - DEBUG - Epoch 37 was finished.
+2024-03-22 22:18:51,410 - Log - DEBUG - Training loss: 0.0150
+2024-03-22 22:18:51,410 - Log - DEBUG - Validation loss: 0.0158
+2024-03-22 22:21:09,597 - Log - DEBUG - Epoch 38 was finished.
+2024-03-22 22:21:09,597 - Log - DEBUG - Training loss: 0.0149
+2024-03-22 22:21:09,597 - Log - DEBUG - Validation loss: 0.0157
+2024-03-22 22:23:28,652 - Log - DEBUG - Epoch 39 was finished.
+2024-03-22 22:23:28,653 - Log - DEBUG - Training loss: 0.0146
+2024-03-22 22:23:28,653 - Log - DEBUG - Validation loss: 0.0158
+2024-03-22 22:25:53,549 - Log - DEBUG - Epoch 40 was finished.
+2024-03-22 22:25:53,550 - Log - DEBUG - Training loss: 0.0146
+2024-03-22 22:25:53,550 - Log - DEBUG - Validation loss: 0.0156
+2024-03-22 22:28:18,307 - Log - DEBUG - Epoch 41 was finished.
+2024-03-22 22:28:18,308 - Log - DEBUG - Training loss: 0.0145
+2024-03-22 22:28:18,308 - Log - DEBUG - Validation loss: 0.0156
+2024-03-22 22:30:40,958 - Log - DEBUG - Epoch 42 was finished.
+2024-03-22 22:30:40,959 - Log - DEBUG - Training loss: 0.0143
+2024-03-22 22:30:40,959 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 22:33:02,906 - Log - DEBUG - Epoch 43 was finished.
+2024-03-22 22:33:02,906 - Log - DEBUG - Training loss: 0.0141
+2024-03-22 22:33:02,907 - Log - DEBUG - Validation loss: 0.0155
+2024-03-22 22:35:27,236 - Log - DEBUG - Epoch 44 was finished.
+2024-03-22 22:35:27,237 - Log - DEBUG - Training loss: 0.0138
+2024-03-22 22:35:27,237 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 22:37:50,269 - Log - DEBUG - Epoch 45 was finished.
+2024-03-22 22:37:50,270 - Log - DEBUG - Training loss: 0.0140
+2024-03-22 22:37:50,270 - Log - DEBUG - Validation loss: 0.0168
+2024-03-22 22:40:12,051 - Log - DEBUG - Epoch 46 was finished.
+2024-03-22 22:40:12,052 - Log - DEBUG - Training loss: 0.0137
+2024-03-22 22:40:12,052 - Log - DEBUG - Validation loss: 0.0153
+2024-03-22 22:42:31,448 - Log - DEBUG - Epoch 47 was finished.
+2024-03-22 22:42:31,449 - Log - DEBUG - Training loss: 0.0140
+2024-03-22 22:42:31,449 - Log - DEBUG - Validation loss: 0.0160
+2024-03-22 22:44:49,074 - Log - DEBUG - Epoch 48 was finished.
+2024-03-22 22:44:49,075 - Log - DEBUG - Training loss: 0.0136
+2024-03-22 22:44:49,075 - Log - DEBUG - Validation loss: 0.0162
+2024-03-22 22:47:28,485 - Log - DEBUG - Epoch 49 was finished.
+2024-03-22 22:47:28,485 - Log - DEBUG - Training loss: 0.0135
+2024-03-22 22:47:28,485 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 22:49:48,844 - Log - DEBUG - Epoch 50 was finished.
+2024-03-22 22:49:48,845 - Log - DEBUG - Training loss: 0.0133
+2024-03-22 22:49:48,845 - Log - DEBUG - Validation loss: 0.0153
+2024-03-22 22:52:08,443 - Log - DEBUG - Epoch 51 was finished.
+2024-03-22 22:52:08,443 - Log - DEBUG - Training loss: 0.0132
+2024-03-22 22:52:08,443 - Log - DEBUG - Validation loss: 0.0153
+2024-03-22 22:54:27,441 - Log - DEBUG - Epoch 52 was finished.
+2024-03-22 22:54:27,445 - Log - DEBUG - Training loss: 0.0130
+2024-03-22 22:54:27,445 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 22:56:43,892 - Log - DEBUG - Epoch 53 was finished.
+2024-03-22 22:56:43,893 - Log - DEBUG - Training loss: 0.0129
+2024-03-22 22:56:43,893 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 22:59:06,756 - Log - DEBUG - Epoch 54 was finished.
+2024-03-22 22:59:06,756 - Log - DEBUG - Training loss: 0.0129
+2024-03-22 22:59:06,757 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:01:26,164 - Log - DEBUG - Epoch 55 was finished.
+2024-03-22 23:01:26,165 - Log - DEBUG - Training loss: 0.0127
+2024-03-22 23:01:26,165 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:03:50,236 - Log - DEBUG - Epoch 56 was finished.
+2024-03-22 23:03:50,237 - Log - DEBUG - Training loss: 0.0126
+2024-03-22 23:03:50,237 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:06:07,719 - Log - DEBUG - Epoch 57 was finished.
+2024-03-22 23:06:07,720 - Log - DEBUG - Training loss: 0.0125
+2024-03-22 23:06:07,720 - Log - DEBUG - Validation loss: 0.0155
+2024-03-22 23:08:25,781 - Log - DEBUG - Epoch 58 was finished.
+2024-03-22 23:08:25,781 - Log - DEBUG - Training loss: 0.0125
+2024-03-22 23:08:25,781 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:10:44,731 - Log - DEBUG - Epoch 59 was finished.
+2024-03-22 23:10:44,733 - Log - DEBUG - Training loss: 0.0124
+2024-03-22 23:10:44,733 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:13:08,028 - Log - DEBUG - Epoch 60 was finished.
+2024-03-22 23:13:08,029 - Log - DEBUG - Training loss: 0.0122
+2024-03-22 23:13:08,029 - Log - DEBUG - Validation loss: 0.0151
+2024-03-22 23:15:26,880 - Log - DEBUG - Epoch 61 was finished.
+2024-03-22 23:15:26,881 - Log - DEBUG - Training loss: 0.0122
+2024-03-22 23:15:26,881 - Log - DEBUG - Validation loss: 0.0153
+2024-03-22 23:17:44,209 - Log - DEBUG - Epoch 62 was finished.
+2024-03-22 23:17:44,210 - Log - DEBUG - Training loss: 0.0120
+2024-03-22 23:17:44,210 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:20:01,148 - Log - DEBUG - Epoch 63 was finished.
+2024-03-22 23:20:01,148 - Log - DEBUG - Training loss: 0.0119
+2024-03-22 23:20:01,148 - Log - DEBUG - Validation loss: 0.0153
+2024-03-22 23:22:17,530 - Log - DEBUG - Epoch 64 was finished.
+2024-03-22 23:22:17,530 - Log - DEBUG - Training loss: 0.0118
+2024-03-22 23:22:17,531 - Log - DEBUG - Validation loss: 0.0150
+2024-03-22 23:24:39,623 - Log - DEBUG - Epoch 65 was finished.
+2024-03-22 23:24:39,624 - Log - DEBUG - Training loss: 0.0117
+2024-03-22 23:24:39,624 - Log - DEBUG - Validation loss: 0.0151
+2024-03-22 23:26:56,643 - Log - DEBUG - Epoch 66 was finished.
+2024-03-22 23:26:56,643 - Log - DEBUG - Training loss: 0.0116
+2024-03-22 23:26:56,643 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:29:14,771 - Log - DEBUG - Epoch 67 was finished.
+2024-03-22 23:29:14,772 - Log - DEBUG - Training loss: 0.0116
+2024-03-22 23:29:14,772 - Log - DEBUG - Validation loss: 0.0150
+2024-03-22 23:31:31,981 - Log - DEBUG - Epoch 68 was finished.
+2024-03-22 23:31:31,981 - Log - DEBUG - Training loss: 0.0114
+2024-03-22 23:31:31,981 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:33:48,823 - Log - DEBUG - Epoch 69 was finished.
+2024-03-22 23:33:48,824 - Log - DEBUG - Training loss: 0.0114
+2024-03-22 23:33:48,824 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:36:10,211 - Log - DEBUG - Epoch 70 was finished.
+2024-03-22 23:36:10,211 - Log - DEBUG - Training loss: 0.0113
+2024-03-22 23:36:10,211 - Log - DEBUG - Validation loss: 0.0149
+2024-03-22 23:38:28,272 - Log - DEBUG - Epoch 71 was finished.
+2024-03-22 23:38:28,272 - Log - DEBUG - Training loss: 0.0112
+2024-03-22 23:38:28,272 - Log - DEBUG - Validation loss: 0.0150
+2024-03-22 23:40:45,847 - Log - DEBUG - Epoch 72 was finished.
+2024-03-22 23:40:45,847 - Log - DEBUG - Training loss: 0.0112
+2024-03-22 23:40:45,847 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:43:04,718 - Log - DEBUG - Epoch 73 was finished.
+2024-03-22 23:43:04,718 - Log - DEBUG - Training loss: 0.0110
+2024-03-22 23:43:04,719 - Log - DEBUG - Validation loss: 0.0151
+2024-03-22 23:45:20,924 - Log - DEBUG - Epoch 74 was finished.
+2024-03-22 23:45:20,925 - Log - DEBUG - Training loss: 0.0110
+2024-03-22 23:45:20,925 - Log - DEBUG - Validation loss: 0.0162
+2024-03-22 23:47:45,077 - Log - DEBUG - Epoch 75 was finished.
+2024-03-22 23:47:45,078 - Log - DEBUG - Training loss: 0.0111
+2024-03-22 23:47:45,078 - Log - DEBUG - Validation loss: 0.0154
+2024-03-22 23:50:07,145 - Log - DEBUG - Epoch 76 was finished.
+2024-03-22 23:50:07,146 - Log - DEBUG - Training loss: 0.0108
+2024-03-22 23:50:07,146 - Log - DEBUG - Validation loss: 0.0158
+2024-03-22 23:52:27,335 - Log - DEBUG - Epoch 77 was finished.
+2024-03-22 23:52:27,335 - Log - DEBUG - Training loss: 0.0108
+2024-03-22 23:52:27,336 - Log - DEBUG - Validation loss: 0.0149
+2024-03-22 23:54:44,754 - Log - DEBUG - Epoch 78 was finished.
+2024-03-22 23:54:44,755 - Log - DEBUG - Training loss: 0.0107
+2024-03-22 23:54:44,755 - Log - DEBUG - Validation loss: 0.0150
+2024-03-22 23:57:08,387 - Log - DEBUG - Epoch 79 was finished.
+2024-03-22 23:57:08,387 - Log - DEBUG - Training loss: 0.0107
+2024-03-22 23:57:08,387 - Log - DEBUG - Validation loss: 0.0152
+2024-03-22 23:59:33,321 - Log - DEBUG - Epoch 80 was finished.
+2024-03-22 23:59:33,322 - Log - DEBUG - Training loss: 0.0107
+2024-03-22 23:59:33,322 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 00:01:53,231 - Log - DEBUG - Epoch 81 was finished.
+2024-03-23 00:01:53,231 - Log - DEBUG - Training loss: 0.0106
+2024-03-23 00:01:53,231 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:04:07,773 - Log - DEBUG - Epoch 82 was finished.
+2024-03-23 00:04:07,774 - Log - DEBUG - Training loss: 0.0104
+2024-03-23 00:04:07,774 - Log - DEBUG - Validation loss: 0.0150
+2024-03-23 00:06:22,636 - Log - DEBUG - Epoch 83 was finished.
+2024-03-23 00:06:22,636 - Log - DEBUG - Training loss: 0.0103
+2024-03-23 00:06:22,637 - Log - DEBUG - Validation loss: 0.0150
+2024-03-23 00:08:45,643 - Log - DEBUG - Epoch 84 was finished.
+2024-03-23 00:08:45,643 - Log - DEBUG - Training loss: 0.0102
+2024-03-23 00:08:45,643 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:11:06,058 - Log - DEBUG - Epoch 85 was finished.
+2024-03-23 00:11:06,059 - Log - DEBUG - Training loss: 0.0103
+2024-03-23 00:11:06,059 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:13:26,252 - Log - DEBUG - Epoch 86 was finished.
+2024-03-23 00:13:26,252 - Log - DEBUG - Training loss: 0.0102
+2024-03-23 00:13:26,252 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:15:51,620 - Log - DEBUG - Epoch 87 was finished.
+2024-03-23 00:15:51,621 - Log - DEBUG - Training loss: 0.0100
+2024-03-23 00:15:51,621 - Log - DEBUG - Validation loss: 0.0150
+2024-03-23 00:18:13,160 - Log - DEBUG - Epoch 88 was finished.
+2024-03-23 00:18:13,161 - Log - DEBUG - Training loss: 0.0100
+2024-03-23 00:18:13,161 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:20:30,169 - Log - DEBUG - Epoch 89 was finished.
+2024-03-23 00:20:30,169 - Log - DEBUG - Training loss: 0.0099
+2024-03-23 00:20:30,169 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 00:22:51,637 - Log - DEBUG - Epoch 90 was finished.
+2024-03-23 00:22:51,638 - Log - DEBUG - Training loss: 0.0099
+2024-03-23 00:22:51,638 - Log - DEBUG - Validation loss: 0.0150
+2024-03-23 00:25:19,151 - Log - DEBUG - Epoch 91 was finished.
+2024-03-23 00:25:19,151 - Log - DEBUG - Training loss: 0.0097
+2024-03-23 00:25:19,152 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:27:36,751 - Log - DEBUG - Epoch 92 was finished.
+2024-03-23 00:27:36,752 - Log - DEBUG - Training loss: 0.0098
+2024-03-23 00:27:36,752 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:29:50,971 - Log - DEBUG - Epoch 93 was finished.
+2024-03-23 00:29:50,972 - Log - DEBUG - Training loss: 0.0097
+2024-03-23 00:29:50,972 - Log - DEBUG - Validation loss: 0.0152
+2024-03-23 00:32:04,333 - Log - DEBUG - Epoch 94 was finished.
+2024-03-23 00:32:04,333 - Log - DEBUG - Training loss: 0.0097
+2024-03-23 00:32:04,334 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:34:17,709 - Log - DEBUG - Epoch 95 was finished.
+2024-03-23 00:34:17,710 - Log - DEBUG - Training loss: 0.0096
+2024-03-23 00:34:17,710 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:36:34,731 - Log - DEBUG - Epoch 96 was finished.
+2024-03-23 00:36:34,731 - Log - DEBUG - Training loss: 0.0094
+2024-03-23 00:36:34,731 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:38:49,134 - Log - DEBUG - Epoch 97 was finished.
+2024-03-23 00:38:49,134 - Log - DEBUG - Training loss: 0.0094
+2024-03-23 00:38:49,134 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 00:41:02,056 - Log - DEBUG - Epoch 98 was finished.
+2024-03-23 00:41:02,056 - Log - DEBUG - Training loss: 0.0095
+2024-03-23 00:41:02,056 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:43:16,339 - Log - DEBUG - Epoch 99 was finished.
+2024-03-23 00:43:16,340 - Log - DEBUG - Training loss: 0.0094
+2024-03-23 00:43:16,340 - Log - DEBUG - Validation loss: 0.0151
+2024-03-23 00:45:34,140 - Log - DEBUG - Epoch 100 was finished.
+2024-03-23 00:45:34,140 - Log - DEBUG - Training loss: 0.0094
+2024-03-23 00:45:34,140 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:47:48,986 - Log - DEBUG - Epoch 101 was finished.
+2024-03-23 00:47:48,986 - Log - DEBUG - Training loss: 0.0093
+2024-03-23 00:47:48,986 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:50:06,470 - Log - DEBUG - Epoch 102 was finished.
+2024-03-23 00:50:06,471 - Log - DEBUG - Training loss: 0.0092
+2024-03-23 00:50:06,471 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:52:26,672 - Log - DEBUG - Epoch 103 was finished.
+2024-03-23 00:52:26,672 - Log - DEBUG - Training loss: 0.0092
+2024-03-23 00:52:26,672 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 00:54:46,493 - Log - DEBUG - Epoch 104 was finished.
+2024-03-23 00:54:46,493 - Log - DEBUG - Training loss: 0.0091
+2024-03-23 00:54:46,494 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 00:57:03,479 - Log - DEBUG - Epoch 105 was finished.
+2024-03-23 00:57:03,479 - Log - DEBUG - Training loss: 0.0091
+2024-03-23 00:57:03,479 - Log - DEBUG - Validation loss: 0.0152
+2024-03-23 00:59:22,132 - Log - DEBUG - Epoch 106 was finished.
+2024-03-23 00:59:22,133 - Log - DEBUG - Training loss: 0.0089
+2024-03-23 00:59:22,133 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 01:01:44,185 - Log - DEBUG - Epoch 107 was finished.
+2024-03-23 01:01:44,186 - Log - DEBUG - Training loss: 0.0089
+2024-03-23 01:01:44,186 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 01:04:06,726 - Log - DEBUG - Epoch 108 was finished.
+2024-03-23 01:04:06,726 - Log - DEBUG - Training loss: 0.0089
+2024-03-23 01:04:06,726 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:06:31,176 - Log - DEBUG - Epoch 109 was finished.
+2024-03-23 01:06:31,177 - Log - DEBUG - Training loss: 0.0089
+2024-03-23 01:06:31,177 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 01:08:52,534 - Log - DEBUG - Epoch 110 was finished.
+2024-03-23 01:08:52,534 - Log - DEBUG - Training loss: 0.0088
+2024-03-23 01:08:52,534 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 01:11:12,068 - Log - DEBUG - Epoch 111 was finished.
+2024-03-23 01:11:12,069 - Log - DEBUG - Training loss: 0.0088
+2024-03-23 01:11:12,069 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:13:30,898 - Log - DEBUG - Epoch 112 was finished.
+2024-03-23 01:13:30,899 - Log - DEBUG - Training loss: 0.0088
+2024-03-23 01:13:30,899 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:15:48,989 - Log - DEBUG - Epoch 113 was finished.
+2024-03-23 01:15:48,989 - Log - DEBUG - Training loss: 0.0087
+2024-03-23 01:15:48,989 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:18:06,399 - Log - DEBUG - Epoch 114 was finished.
+2024-03-23 01:18:06,399 - Log - DEBUG - Training loss: 0.0086
+2024-03-23 01:18:06,399 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 01:20:23,753 - Log - DEBUG - Epoch 115 was finished.
+2024-03-23 01:20:23,753 - Log - DEBUG - Training loss: 0.0086
+2024-03-23 01:20:23,753 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 01:22:41,000 - Log - DEBUG - Epoch 116 was finished.
+2024-03-23 01:22:41,001 - Log - DEBUG - Training loss: 0.0086
+2024-03-23 01:22:41,001 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:25:00,178 - Log - DEBUG - Epoch 117 was finished.
+2024-03-23 01:25:00,178 - Log - DEBUG - Training loss: 0.0086
+2024-03-23 01:25:00,178 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 01:27:17,226 - Log - DEBUG - Epoch 118 was finished.
+2024-03-23 01:27:17,226 - Log - DEBUG - Training loss: 0.0086
+2024-03-23 01:27:17,227 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:29:33,007 - Log - DEBUG - Epoch 119 was finished.
+2024-03-23 01:29:33,008 - Log - DEBUG - Training loss: 0.0085
+2024-03-23 01:29:33,008 - Log - DEBUG - Validation loss: 0.0153
+2024-03-23 01:31:53,169 - Log - DEBUG - Epoch 120 was finished.
+2024-03-23 01:31:53,170 - Log - DEBUG - Training loss: 0.0084
+2024-03-23 01:31:53,170 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 01:34:15,121 - Log - DEBUG - Epoch 121 was finished.
+2024-03-23 01:34:15,122 - Log - DEBUG - Training loss: 0.0084
+2024-03-23 01:34:15,122 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:36:35,245 - Log - DEBUG - Epoch 122 was finished.
+2024-03-23 01:36:35,250 - Log - DEBUG - Training loss: 0.0084
+2024-03-23 01:36:35,251 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:38:56,990 - Log - DEBUG - Epoch 123 was finished.
+2024-03-23 01:38:56,991 - Log - DEBUG - Training loss: 0.0083
+2024-03-23 01:38:56,991 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:41:17,567 - Log - DEBUG - Epoch 124 was finished.
+2024-03-23 01:41:17,568 - Log - DEBUG - Training loss: 0.0083
+2024-03-23 01:41:17,568 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:43:34,695 - Log - DEBUG - Epoch 125 was finished.
+2024-03-23 01:43:34,695 - Log - DEBUG - Training loss: 0.0083
+2024-03-23 01:43:34,695 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:45:57,787 - Log - DEBUG - Epoch 126 was finished.
+2024-03-23 01:45:57,788 - Log - DEBUG - Training loss: 0.0082
+2024-03-23 01:45:57,788 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 01:48:22,947 - Log - DEBUG - Epoch 127 was finished.
+2024-03-23 01:48:22,948 - Log - DEBUG - Training loss: 0.0082
+2024-03-23 01:48:22,948 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 01:50:43,508 - Log - DEBUG - Epoch 128 was finished.
+2024-03-23 01:50:43,508 - Log - DEBUG - Training loss: 0.0082
+2024-03-23 01:50:43,508 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 01:53:03,488 - Log - DEBUG - Epoch 129 was finished.
+2024-03-23 01:53:03,489 - Log - DEBUG - Training loss: 0.0082
+2024-03-23 01:53:03,489 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 01:55:28,589 - Log - DEBUG - Epoch 130 was finished.
+2024-03-23 01:55:28,589 - Log - DEBUG - Training loss: 0.0081
+2024-03-23 01:55:28,589 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 01:57:53,061 - Log - DEBUG - Epoch 131 was finished.
+2024-03-23 01:57:53,061 - Log - DEBUG - Training loss: 0.0081
+2024-03-23 01:57:53,061 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:00:15,312 - Log - DEBUG - Epoch 132 was finished.
+2024-03-23 02:00:15,314 - Log - DEBUG - Training loss: 0.0080
+2024-03-23 02:00:15,314 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 02:02:37,304 - Log - DEBUG - Epoch 133 was finished.
+2024-03-23 02:02:37,305 - Log - DEBUG - Training loss: 0.0079
+2024-03-23 02:02:37,305 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 02:05:00,161 - Log - DEBUG - Epoch 134 was finished.
+2024-03-23 02:05:00,162 - Log - DEBUG - Training loss: 0.0080
+2024-03-23 02:05:00,162 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:07:18,922 - Log - DEBUG - Epoch 135 was finished.
+2024-03-23 02:07:18,922 - Log - DEBUG - Training loss: 0.0079
+2024-03-23 02:07:18,922 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:09:34,631 - Log - DEBUG - Epoch 136 was finished.
+2024-03-23 02:09:34,632 - Log - DEBUG - Training loss: 0.0078
+2024-03-23 02:09:34,632 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:11:49,119 - Log - DEBUG - Epoch 137 was finished.
+2024-03-23 02:11:49,119 - Log - DEBUG - Training loss: 0.0079
+2024-03-23 02:11:49,119 - Log - DEBUG - Validation loss: 0.0154
+2024-03-23 02:14:05,801 - Log - DEBUG - Epoch 138 was finished.
+2024-03-23 02:14:05,801 - Log - DEBUG - Training loss: 0.0078
+2024-03-23 02:14:05,801 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:16:21,824 - Log - DEBUG - Epoch 139 was finished.
+2024-03-23 02:16:21,824 - Log - DEBUG - Training loss: 0.0078
+2024-03-23 02:16:21,824 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:18:40,456 - Log - DEBUG - Epoch 140 was finished.
+2024-03-23 02:18:40,456 - Log - DEBUG - Training loss: 0.0077
+2024-03-23 02:18:40,457 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:20:59,597 - Log - DEBUG - Epoch 141 was finished.
+2024-03-23 02:20:59,597 - Log - DEBUG - Training loss: 0.0079
+2024-03-23 02:20:59,597 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 02:23:16,537 - Log - DEBUG - Epoch 142 was finished.
+2024-03-23 02:23:16,537 - Log - DEBUG - Training loss: 0.0077
+2024-03-23 02:23:16,537 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:25:35,296 - Log - DEBUG - Epoch 143 was finished.
+2024-03-23 02:25:35,297 - Log - DEBUG - Training loss: 0.0076
+2024-03-23 02:25:35,297 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:27:53,797 - Log - DEBUG - Epoch 144 was finished.
+2024-03-23 02:27:53,797 - Log - DEBUG - Training loss: 0.0076
+2024-03-23 02:27:53,797 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:30:10,441 - Log - DEBUG - Epoch 145 was finished.
+2024-03-23 02:30:10,442 - Log - DEBUG - Training loss: 0.0076
+2024-03-23 02:30:10,442 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 02:32:28,215 - Log - DEBUG - Epoch 146 was finished.
+2024-03-23 02:32:28,216 - Log - DEBUG - Training loss: 0.0075
+2024-03-23 02:32:28,216 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:34:45,975 - Log - DEBUG - Epoch 147 was finished.
+2024-03-23 02:34:45,975 - Log - DEBUG - Training loss: 0.0076
+2024-03-23 02:34:45,975 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 02:37:02,177 - Log - DEBUG - Epoch 148 was finished.
+2024-03-23 02:37:02,178 - Log - DEBUG - Training loss: 0.0075
+2024-03-23 02:37:02,178 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:39:18,955 - Log - DEBUG - Epoch 149 was finished.
+2024-03-23 02:39:18,956 - Log - DEBUG - Training loss: 0.0075
+2024-03-23 02:39:18,956 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 02:41:36,353 - Log - DEBUG - Epoch 150 was finished.
+2024-03-23 02:41:36,354 - Log - DEBUG - Training loss: 0.0075
+2024-03-23 02:41:36,354 - Log - DEBUG - Validation loss: 0.0155
+2024-03-23 02:43:50,451 - Log - DEBUG - Epoch 151 was finished.
+2024-03-23 02:43:50,452 - Log - DEBUG - Training loss: 0.0074
+2024-03-23 02:43:50,452 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 02:46:08,190 - Log - DEBUG - Epoch 152 was finished.
+2024-03-23 02:46:08,190 - Log - DEBUG - Training loss: 0.0076
+2024-03-23 02:46:08,190 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 02:48:22,729 - Log - DEBUG - Epoch 153 was finished.
+2024-03-23 02:48:22,729 - Log - DEBUG - Training loss: 0.0074
+2024-03-23 02:48:22,730 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:50:37,433 - Log - DEBUG - Epoch 154 was finished.
+2024-03-23 02:50:37,433 - Log - DEBUG - Training loss: 0.0073
+2024-03-23 02:50:37,433 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 02:52:53,729 - Log - DEBUG - Epoch 155 was finished.
+2024-03-23 02:52:53,730 - Log - DEBUG - Training loss: 0.0073
+2024-03-23 02:52:53,730 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 02:55:08,422 - Log - DEBUG - Epoch 156 was finished.
+2024-03-23 02:55:08,423 - Log - DEBUG - Training loss: 0.0074
+2024-03-23 02:55:08,423 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 02:57:23,545 - Log - DEBUG - Epoch 157 was finished.
+2024-03-23 02:57:23,546 - Log - DEBUG - Training loss: 0.0073
+2024-03-23 02:57:23,546 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 02:59:40,036 - Log - DEBUG - Epoch 158 was finished.
+2024-03-23 02:59:40,037 - Log - DEBUG - Training loss: 0.0072
+2024-03-23 02:59:40,037 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 03:01:56,186 - Log - DEBUG - Epoch 159 was finished.
+2024-03-23 03:01:56,187 - Log - DEBUG - Training loss: 0.0071
+2024-03-23 03:01:56,187 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 03:04:16,808 - Log - DEBUG - Epoch 160 was finished.
+2024-03-23 03:04:16,808 - Log - DEBUG - Training loss: 0.0072
+2024-03-23 03:04:16,808 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 03:06:32,042 - Log - DEBUG - Epoch 161 was finished.
+2024-03-23 03:06:32,042 - Log - DEBUG - Training loss: 0.0072
+2024-03-23 03:06:32,042 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 03:08:47,372 - Log - DEBUG - Epoch 162 was finished.
+2024-03-23 03:08:47,372 - Log - DEBUG - Training loss: 0.0072
+2024-03-23 03:08:47,372 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 03:11:02,988 - Log - DEBUG - Epoch 163 was finished.
+2024-03-23 03:11:02,988 - Log - DEBUG - Training loss: 0.0073
+2024-03-23 03:11:02,988 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 03:13:21,158 - Log - DEBUG - Epoch 164 was finished.
+2024-03-23 03:13:21,159 - Log - DEBUG - Training loss: 0.0072
+2024-03-23 03:13:21,159 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 03:15:41,195 - Log - DEBUG - Epoch 165 was finished.
+2024-03-23 03:15:41,196 - Log - DEBUG - Training loss: 0.0071
+2024-03-23 03:15:41,196 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 03:18:05,022 - Log - DEBUG - Epoch 166 was finished.
+2024-03-23 03:18:05,022 - Log - DEBUG - Training loss: 0.0071
+2024-03-23 03:18:05,022 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:20:31,042 - Log - DEBUG - Epoch 167 was finished.
+2024-03-23 03:20:31,043 - Log - DEBUG - Training loss: 0.0071
+2024-03-23 03:20:31,043 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 03:22:52,066 - Log - DEBUG - Epoch 168 was finished.
+2024-03-23 03:22:52,067 - Log - DEBUG - Training loss: 0.0070
+2024-03-23 03:22:52,067 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 03:25:14,908 - Log - DEBUG - Epoch 169 was finished.
+2024-03-23 03:25:14,909 - Log - DEBUG - Training loss: 0.0070
+2024-03-23 03:25:14,909 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:27:34,717 - Log - DEBUG - Epoch 170 was finished.
+2024-03-23 03:27:34,718 - Log - DEBUG - Training loss: 0.0069
+2024-03-23 03:27:34,718 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:29:54,221 - Log - DEBUG - Epoch 171 was finished.
+2024-03-23 03:29:54,222 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:29:54,222 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 03:32:15,347 - Log - DEBUG - Epoch 172 was finished.
+2024-03-23 03:32:15,348 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:32:15,348 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 03:34:39,667 - Log - DEBUG - Epoch 173 was finished.
+2024-03-23 03:34:39,667 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:34:39,668 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 03:36:59,567 - Log - DEBUG - Epoch 174 was finished.
+2024-03-23 03:36:59,568 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:36:59,568 - Log - DEBUG - Validation loss: 0.0156
+2024-03-23 03:39:18,175 - Log - DEBUG - Epoch 175 was finished.
+2024-03-23 03:39:18,175 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:39:18,176 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 03:41:33,604 - Log - DEBUG - Epoch 176 was finished.
+2024-03-23 03:41:33,605 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:41:33,605 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:43:49,081 - Log - DEBUG - Epoch 177 was finished.
+2024-03-23 03:43:49,081 - Log - DEBUG - Training loss: 0.0069
+2024-03-23 03:43:49,081 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 03:46:05,570 - Log - DEBUG - Epoch 178 was finished.
+2024-03-23 03:46:05,571 - Log - DEBUG - Training loss: 0.0067
+2024-03-23 03:46:05,571 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 03:48:23,501 - Log - DEBUG - Epoch 179 was finished.
+2024-03-23 03:48:23,502 - Log - DEBUG - Training loss: 0.0067
+2024-03-23 03:48:23,502 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 03:50:40,644 - Log - DEBUG - Epoch 180 was finished.
+2024-03-23 03:50:40,644 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:50:40,645 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:52:57,913 - Log - DEBUG - Epoch 181 was finished.
+2024-03-23 03:52:57,914 - Log - DEBUG - Training loss: 0.0067
+2024-03-23 03:52:57,914 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:55:12,742 - Log - DEBUG - Epoch 182 was finished.
+2024-03-23 03:55:12,742 - Log - DEBUG - Training loss: 0.0068
+2024-03-23 03:55:12,742 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 03:57:28,710 - Log - DEBUG - Epoch 183 was finished.
+2024-03-23 03:57:28,710 - Log - DEBUG - Training loss: 0.0067
+2024-03-23 03:57:28,710 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 03:59:43,274 - Log - DEBUG - Epoch 184 was finished.
+2024-03-23 03:59:43,274 - Log - DEBUG - Training loss: 0.0067
+2024-03-23 03:59:43,275 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 04:02:00,403 - Log - DEBUG - Epoch 185 was finished.
+2024-03-23 04:02:00,404 - Log - DEBUG - Training loss: 0.0066
+2024-03-23 04:02:00,404 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 04:04:16,754 - Log - DEBUG - Epoch 186 was finished.
+2024-03-23 04:04:16,754 - Log - DEBUG - Training loss: 0.0066
+2024-03-23 04:04:16,754 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 04:06:34,441 - Log - DEBUG - Epoch 187 was finished.
+2024-03-23 04:06:34,441 - Log - DEBUG - Training loss: 0.0066
+2024-03-23 04:06:34,441 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:08:49,613 - Log - DEBUG - Epoch 188 was finished.
+2024-03-23 04:08:49,613 - Log - DEBUG - Training loss: 0.0066
+2024-03-23 04:08:49,613 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 04:11:05,046 - Log - DEBUG - Epoch 189 was finished.
+2024-03-23 04:11:05,046 - Log - DEBUG - Training loss: 0.0066
+2024-03-23 04:11:05,047 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 04:13:23,472 - Log - DEBUG - Epoch 190 was finished.
+2024-03-23 04:13:23,472 - Log - DEBUG - Training loss: 0.0065
+2024-03-23 04:13:23,472 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:15:37,951 - Log - DEBUG - Epoch 191 was finished.
+2024-03-23 04:15:37,951 - Log - DEBUG - Training loss: 0.0065
+2024-03-23 04:15:37,952 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 04:17:51,415 - Log - DEBUG - Epoch 192 was finished.
+2024-03-23 04:17:51,415 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:17:51,416 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 04:20:09,024 - Log - DEBUG - Epoch 193 was finished.
+2024-03-23 04:20:09,024 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:20:09,024 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:22:25,184 - Log - DEBUG - Epoch 194 was finished.
+2024-03-23 04:22:25,185 - Log - DEBUG - Training loss: 0.0065
+2024-03-23 04:22:25,185 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:24:40,538 - Log - DEBUG - Epoch 195 was finished.
+2024-03-23 04:24:40,539 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:24:40,539 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 04:26:57,799 - Log - DEBUG - Epoch 196 was finished.
+2024-03-23 04:26:57,799 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:26:57,799 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:29:23,744 - Log - DEBUG - Epoch 197 was finished.
+2024-03-23 04:29:23,744 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:29:23,744 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:31:42,915 - Log - DEBUG - Epoch 198 was finished.
+2024-03-23 04:31:42,916 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:31:42,916 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:34:02,712 - Log - DEBUG - Epoch 199 was finished.
+2024-03-23 04:34:02,712 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:34:02,712 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 04:36:25,361 - Log - DEBUG - Epoch 200 was finished.
+2024-03-23 04:36:25,362 - Log - DEBUG - Training loss: 0.0064
+2024-03-23 04:36:25,362 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:38:45,399 - Log - DEBUG - Epoch 201 was finished.
+2024-03-23 04:38:45,400 - Log - DEBUG - Training loss: 0.0063
+2024-03-23 04:38:45,400 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 04:41:02,514 - Log - DEBUG - Epoch 202 was finished.
+2024-03-23 04:41:02,514 - Log - DEBUG - Training loss: 0.0063
+2024-03-23 04:41:02,515 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:43:17,745 - Log - DEBUG - Epoch 203 was finished.
+2024-03-23 04:43:17,745 - Log - DEBUG - Training loss: 0.0063
+2024-03-23 04:43:17,745 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 04:45:32,717 - Log - DEBUG - Epoch 204 was finished.
+2024-03-23 04:45:32,718 - Log - DEBUG - Training loss: 0.0062
+2024-03-23 04:45:32,718 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 04:47:46,926 - Log - DEBUG - Epoch 205 was finished.
+2024-03-23 04:47:46,926 - Log - DEBUG - Training loss: 0.0062
+2024-03-23 04:47:46,926 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:50:01,839 - Log - DEBUG - Epoch 206 was finished.
+2024-03-23 04:50:01,840 - Log - DEBUG - Training loss: 0.0063
+2024-03-23 04:50:01,840 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 04:52:17,535 - Log - DEBUG - Epoch 207 was finished.
+2024-03-23 04:52:17,536 - Log - DEBUG - Training loss: 0.0063
+2024-03-23 04:52:17,536 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 04:54:32,173 - Log - DEBUG - Epoch 208 was finished.
+2024-03-23 04:54:32,173 - Log - DEBUG - Training loss: 0.0062
+2024-03-23 04:54:32,173 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:56:46,756 - Log - DEBUG - Epoch 209 was finished.
+2024-03-23 04:56:46,756 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 04:56:46,756 - Log - DEBUG - Validation loss: 0.0159
+2024-03-23 04:59:04,190 - Log - DEBUG - Epoch 210 was finished.
+2024-03-23 04:59:04,191 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 04:59:04,191 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:01:18,361 - Log - DEBUG - Epoch 211 was finished.
+2024-03-23 05:01:18,361 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 05:01:18,361 - Log - DEBUG - Validation loss: 0.0157
+2024-03-23 05:03:37,204 - Log - DEBUG - Epoch 212 was finished.
+2024-03-23 05:03:37,205 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 05:03:37,205 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:05:55,857 - Log - DEBUG - Epoch 213 was finished.
+2024-03-23 05:05:55,858 - Log - DEBUG - Training loss: 0.0062
+2024-03-23 05:05:55,858 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:08:18,033 - Log - DEBUG - Epoch 214 was finished.
+2024-03-23 05:08:18,035 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 05:08:18,035 - Log - DEBUG - Validation loss: 0.0158
+2024-03-23 05:10:39,110 - Log - DEBUG - Epoch 215 was finished.
+2024-03-23 05:10:39,111 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:10:39,111 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 05:12:57,148 - Log - DEBUG - Epoch 216 was finished.
+2024-03-23 05:12:57,149 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:12:57,149 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:15:12,452 - Log - DEBUG - Epoch 217 was finished.
+2024-03-23 05:15:12,452 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:15:12,453 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:17:27,179 - Log - DEBUG - Epoch 218 was finished.
+2024-03-23 05:17:27,180 - Log - DEBUG - Training loss: 0.0061
+2024-03-23 05:17:27,180 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:19:44,711 - Log - DEBUG - Epoch 219 was finished.
+2024-03-23 05:19:44,711 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:19:44,711 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:22:06,593 - Log - DEBUG - Epoch 220 was finished.
+2024-03-23 05:22:06,594 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:22:06,594 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:24:21,850 - Log - DEBUG - Epoch 221 was finished.
+2024-03-23 05:24:21,850 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:24:21,851 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 05:26:44,925 - Log - DEBUG - Epoch 222 was finished.
+2024-03-23 05:26:44,926 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:26:44,926 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 05:29:08,035 - Log - DEBUG - Epoch 223 was finished.
+2024-03-23 05:29:08,036 - Log - DEBUG - Training loss: 0.0060
+2024-03-23 05:29:08,036 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:31:27,152 - Log - DEBUG - Epoch 224 was finished.
+2024-03-23 05:31:27,153 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:31:27,153 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:33:43,542 - Log - DEBUG - Epoch 225 was finished.
+2024-03-23 05:33:43,543 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:33:43,543 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:35:58,936 - Log - DEBUG - Epoch 226 was finished.
+2024-03-23 05:35:58,937 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:35:58,937 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:38:14,187 - Log - DEBUG - Epoch 227 was finished.
+2024-03-23 05:38:14,187 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:38:14,187 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:40:29,241 - Log - DEBUG - Epoch 228 was finished.
+2024-03-23 05:40:29,241 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:40:29,241 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 05:42:42,160 - Log - DEBUG - Epoch 229 was finished.
+2024-03-23 05:42:42,160 - Log - DEBUG - Training loss: 0.0059
+2024-03-23 05:42:42,160 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:44:58,932 - Log - DEBUG - Epoch 230 was finished.
+2024-03-23 05:44:58,932 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:44:58,932 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:47:14,324 - Log - DEBUG - Epoch 231 was finished.
+2024-03-23 05:47:14,325 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:47:14,325 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:49:30,049 - Log - DEBUG - Epoch 232 was finished.
+2024-03-23 05:49:30,050 - Log - DEBUG - Training loss: 0.0057
+2024-03-23 05:49:30,050 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 05:51:46,509 - Log - DEBUG - Epoch 233 was finished.
+2024-03-23 05:51:46,509 - Log - DEBUG - Training loss: 0.0057
+2024-03-23 05:51:46,509 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:54:00,911 - Log - DEBUG - Epoch 234 was finished.
+2024-03-23 05:54:00,912 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:54:00,912 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 05:56:18,405 - Log - DEBUG - Epoch 235 was finished.
+2024-03-23 05:56:18,406 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 05:56:18,406 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 05:58:40,923 - Log - DEBUG - Epoch 236 was finished.
+2024-03-23 05:58:40,923 - Log - DEBUG - Training loss: 0.0057
+2024-03-23 05:58:40,923 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:00:59,857 - Log - DEBUG - Epoch 237 was finished.
+2024-03-23 06:00:59,857 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 06:00:59,857 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:03:16,370 - Log - DEBUG - Epoch 238 was finished.
+2024-03-23 06:03:16,371 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 06:03:16,371 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 06:05:34,311 - Log - DEBUG - Epoch 239 was finished.
+2024-03-23 06:05:34,312 - Log - DEBUG - Training loss: 0.0057
+2024-03-23 06:05:34,312 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:07:55,581 - Log - DEBUG - Epoch 240 was finished.
+2024-03-23 06:07:55,581 - Log - DEBUG - Training loss: 0.0058
+2024-03-23 06:07:55,582 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:10:15,446 - Log - DEBUG - Epoch 241 was finished.
+2024-03-23 06:10:15,446 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:10:15,446 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 06:12:34,199 - Log - DEBUG - Epoch 242 was finished.
+2024-03-23 06:12:34,200 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:12:34,200 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:14:50,281 - Log - DEBUG - Epoch 243 was finished.
+2024-03-23 06:14:50,282 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:14:50,282 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 06:17:06,456 - Log - DEBUG - Epoch 244 was finished.
+2024-03-23 06:17:06,457 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:17:06,457 - Log - DEBUG - Validation loss: 0.0160
+2024-03-23 06:19:22,224 - Log - DEBUG - Epoch 245 was finished.
+2024-03-23 06:19:22,224 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:19:22,224 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:21:40,780 - Log - DEBUG - Epoch 246 was finished.
+2024-03-23 06:21:40,781 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:21:40,781 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:23:57,085 - Log - DEBUG - Epoch 247 was finished.
+2024-03-23 06:23:57,085 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:23:57,085 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 06:26:13,762 - Log - DEBUG - Epoch 248 was finished.
+2024-03-23 06:26:13,762 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:26:13,762 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 06:28:33,209 - Log - DEBUG - Epoch 249 was finished.
+2024-03-23 06:28:33,209 - Log - DEBUG - Training loss: 0.0056
+2024-03-23 06:28:33,209 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:30:52,160 - Log - DEBUG - Epoch 250 was finished.
+2024-03-23 06:30:52,160 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:30:52,160 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:33:11,839 - Log - DEBUG - Epoch 251 was finished.
+2024-03-23 06:33:11,839 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:33:11,840 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:35:29,454 - Log - DEBUG - Epoch 252 was finished.
+2024-03-23 06:35:29,455 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:35:29,455 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:37:49,559 - Log - DEBUG - Epoch 253 was finished.
+2024-03-23 06:37:49,560 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:37:49,560 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:40:10,593 - Log - DEBUG - Epoch 254 was finished.
+2024-03-23 06:40:10,593 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 06:40:10,593 - Log - DEBUG - Validation loss: 0.0161
+2024-03-23 06:42:30,687 - Log - DEBUG - Epoch 255 was finished.
+2024-03-23 06:42:30,687 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:42:30,687 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 06:44:48,015 - Log - DEBUG - Epoch 256 was finished.
+2024-03-23 06:44:48,016 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:44:48,016 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:47:04,587 - Log - DEBUG - Epoch 257 was finished.
+2024-03-23 06:47:04,587 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 06:47:04,587 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:49:18,920 - Log - DEBUG - Epoch 258 was finished.
+2024-03-23 06:49:18,920 - Log - DEBUG - Training loss: 0.0055
+2024-03-23 06:49:18,920 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 06:51:34,080 - Log - DEBUG - Epoch 259 was finished.
+2024-03-23 06:51:34,081 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 06:51:34,081 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 06:53:53,348 - Log - DEBUG - Epoch 260 was finished.
+2024-03-23 06:53:53,348 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 06:53:53,349 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 06:56:09,510 - Log - DEBUG - Epoch 261 was finished.
+2024-03-23 06:56:09,510 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 06:56:09,510 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 06:58:25,131 - Log - DEBUG - Epoch 262 was finished.
+2024-03-23 06:58:25,131 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 06:58:25,132 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:00:41,176 - Log - DEBUG - Epoch 263 was finished.
+2024-03-23 07:00:41,177 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 07:00:41,177 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 07:02:55,289 - Log - DEBUG - Epoch 264 was finished.
+2024-03-23 07:02:55,290 - Log - DEBUG - Training loss: 0.0054
+2024-03-23 07:02:55,290 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 07:05:10,542 - Log - DEBUG - Epoch 265 was finished.
+2024-03-23 07:05:10,542 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:05:10,542 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:07:25,863 - Log - DEBUG - Epoch 266 was finished.
+2024-03-23 07:07:25,864 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:07:25,864 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:09:40,452 - Log - DEBUG - Epoch 267 was finished.
+2024-03-23 07:09:40,453 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:09:40,453 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:11:53,758 - Log - DEBUG - Epoch 268 was finished.
+2024-03-23 07:11:53,759 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:11:53,759 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 07:14:09,202 - Log - DEBUG - Epoch 269 was finished.
+2024-03-23 07:14:09,203 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:14:09,203 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:16:28,282 - Log - DEBUG - Epoch 270 was finished.
+2024-03-23 07:16:28,283 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:16:28,283 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:18:48,991 - Log - DEBUG - Epoch 271 was finished.
+2024-03-23 07:18:48,992 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:18:48,992 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:21:07,280 - Log - DEBUG - Epoch 272 was finished.
+2024-03-23 07:21:07,280 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:21:07,280 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:23:34,023 - Log - DEBUG - Epoch 273 was finished.
+2024-03-23 07:23:34,024 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:23:34,024 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:25:51,101 - Log - DEBUG - Epoch 274 was finished.
+2024-03-23 07:25:51,101 - Log - DEBUG - Training loss: 0.0053
+2024-03-23 07:25:51,101 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:28:05,990 - Log - DEBUG - Epoch 275 was finished.
+2024-03-23 07:28:05,990 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:28:05,990 - Log - DEBUG - Validation loss: 0.0162
+2024-03-23 07:30:23,200 - Log - DEBUG - Epoch 276 was finished.
+2024-03-23 07:30:23,201 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:30:23,201 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:32:43,382 - Log - DEBUG - Epoch 277 was finished.
+2024-03-23 07:32:43,382 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:32:43,382 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:35:02,507 - Log - DEBUG - Epoch 278 was finished.
+2024-03-23 07:35:02,508 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:35:02,508 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:37:21,845 - Log - DEBUG - Epoch 279 was finished.
+2024-03-23 07:37:21,846 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:37:21,846 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:39:43,850 - Log - DEBUG - Epoch 280 was finished.
+2024-03-23 07:39:43,850 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:39:43,850 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:42:09,596 - Log - DEBUG - Epoch 281 was finished.
+2024-03-23 07:42:09,596 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:42:09,596 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 07:44:33,264 - Log - DEBUG - Epoch 282 was finished.
+2024-03-23 07:44:33,265 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:44:33,265 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:47:00,380 - Log - DEBUG - Epoch 283 was finished.
+2024-03-23 07:47:00,381 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:47:00,381 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:49:19,815 - Log - DEBUG - Epoch 284 was finished.
+2024-03-23 07:49:19,816 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:49:19,816 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:51:42,303 - Log - DEBUG - Epoch 285 was finished.
+2024-03-23 07:51:42,304 - Log - DEBUG - Training loss: 0.0052
+2024-03-23 07:51:42,304 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:54:01,231 - Log - DEBUG - Epoch 286 was finished.
+2024-03-23 07:54:01,232 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:54:01,232 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 07:56:25,414 - Log - DEBUG - Epoch 287 was finished.
+2024-03-23 07:56:25,415 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 07:56:25,415 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 07:58:46,877 - Log - DEBUG - Epoch 288 was finished.
+2024-03-23 07:58:46,877 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 07:58:46,877 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 08:01:09,290 - Log - DEBUG - Epoch 289 was finished.
+2024-03-23 08:01:09,291 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:01:09,291 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:03:31,015 - Log - DEBUG - Epoch 290 was finished.
+2024-03-23 08:03:31,016 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:03:31,016 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:05:49,542 - Log - DEBUG - Epoch 291 was finished.
+2024-03-23 08:05:49,543 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 08:05:49,543 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:08:09,379 - Log - DEBUG - Epoch 292 was finished.
+2024-03-23 08:08:09,380 - Log - DEBUG - Training loss: 0.0051
+2024-03-23 08:08:09,380 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:10:25,662 - Log - DEBUG - Epoch 293 was finished.
+2024-03-23 08:10:25,663 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:10:25,663 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:12:41,477 - Log - DEBUG - Epoch 294 was finished.
+2024-03-23 08:12:41,477 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:12:41,477 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:14:55,572 - Log - DEBUG - Epoch 295 was finished.
+2024-03-23 08:14:55,572 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:14:55,573 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 08:17:10,030 - Log - DEBUG - Epoch 296 was finished.
+2024-03-23 08:17:10,031 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:17:10,031 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 08:19:25,623 - Log - DEBUG - Epoch 297 was finished.
+2024-03-23 08:19:25,624 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:19:25,624 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:21:39,629 - Log - DEBUG - Epoch 298 was finished.
+2024-03-23 08:21:39,629 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:21:39,630 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:23:53,458 - Log - DEBUG - Epoch 299 was finished.
+2024-03-23 08:23:53,458 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:23:53,459 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:26:09,878 - Log - DEBUG - Epoch 300 was finished.
+2024-03-23 08:26:09,879 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:26:09,879 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 08:28:25,927 - Log - DEBUG - Epoch 301 was finished.
+2024-03-23 08:28:25,928 - Log - DEBUG - Training loss: 0.0050
+2024-03-23 08:28:25,928 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:30:39,006 - Log - DEBUG - Epoch 302 was finished.
+2024-03-23 08:30:39,006 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:30:39,006 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:32:52,959 - Log - DEBUG - Epoch 303 was finished.
+2024-03-23 08:32:52,959 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:32:52,959 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 08:35:09,096 - Log - DEBUG - Epoch 304 was finished.
+2024-03-23 08:35:09,097 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:35:09,097 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 08:37:24,932 - Log - DEBUG - Epoch 305 was finished.
+2024-03-23 08:37:24,933 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:37:24,933 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:39:42,822 - Log - DEBUG - Epoch 306 was finished.
+2024-03-23 08:39:42,822 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:39:42,822 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:42:06,984 - Log - DEBUG - Epoch 307 was finished.
+2024-03-23 08:42:06,985 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:42:06,985 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:44:27,010 - Log - DEBUG - Epoch 308 was finished.
+2024-03-23 08:44:27,011 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:44:27,011 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:46:46,631 - Log - DEBUG - Epoch 309 was finished.
+2024-03-23 08:46:46,632 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 08:46:46,632 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 08:49:08,235 - Log - DEBUG - Epoch 310 was finished.
+2024-03-23 08:49:08,236 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:49:08,236 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 08:51:26,125 - Log - DEBUG - Epoch 311 was finished.
+2024-03-23 08:51:26,126 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:51:26,126 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 08:53:44,336 - Log - DEBUG - Epoch 312 was finished.
+2024-03-23 08:53:44,336 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 08:53:44,337 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 08:56:09,659 - Log - DEBUG - Epoch 313 was finished.
+2024-03-23 08:56:09,660 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 08:56:09,660 - Log - DEBUG - Validation loss: 0.0163
+2024-03-23 08:58:26,015 - Log - DEBUG - Epoch 314 was finished.
+2024-03-23 08:58:26,016 - Log - DEBUG - Training loss: 0.0049
+2024-03-23 08:58:26,016 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:00:46,064 - Log - DEBUG - Epoch 315 was finished.
+2024-03-23 09:00:46,064 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:00:46,065 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:03:10,967 - Log - DEBUG - Epoch 316 was finished.
+2024-03-23 09:03:10,968 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:03:10,968 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 09:05:30,535 - Log - DEBUG - Epoch 317 was finished.
+2024-03-23 09:05:30,536 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:05:30,536 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:07:47,425 - Log - DEBUG - Epoch 318 was finished.
+2024-03-23 09:07:47,426 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:07:47,426 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:10:09,957 - Log - DEBUG - Epoch 319 was finished.
+2024-03-23 09:10:09,957 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:10:09,957 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:12:28,780 - Log - DEBUG - Epoch 320 was finished.
+2024-03-23 09:12:28,781 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:12:28,781 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:14:47,256 - Log - DEBUG - Epoch 321 was finished.
+2024-03-23 09:14:47,257 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:14:47,257 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:17:05,938 - Log - DEBUG - Epoch 322 was finished.
+2024-03-23 09:17:05,938 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:17:05,938 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:19:23,133 - Log - DEBUG - Epoch 323 was finished.
+2024-03-23 09:19:23,133 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:19:23,133 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 09:21:44,592 - Log - DEBUG - Epoch 324 was finished.
+2024-03-23 09:21:44,592 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:21:44,592 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 09:24:08,374 - Log - DEBUG - Epoch 325 was finished.
+2024-03-23 09:24:08,375 - Log - DEBUG - Training loss: 0.0048
+2024-03-23 09:24:08,375 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:26:29,328 - Log - DEBUG - Epoch 326 was finished.
+2024-03-23 09:26:29,328 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:26:29,328 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:28:48,883 - Log - DEBUG - Epoch 327 was finished.
+2024-03-23 09:28:48,884 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:28:48,884 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:31:04,762 - Log - DEBUG - Epoch 328 was finished.
+2024-03-23 09:31:04,762 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:31:04,762 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:33:29,116 - Log - DEBUG - Epoch 329 was finished.
+2024-03-23 09:33:29,117 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:33:29,117 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:35:50,066 - Log - DEBUG - Epoch 330 was finished.
+2024-03-23 09:35:50,066 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:35:50,066 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:38:13,066 - Log - DEBUG - Epoch 331 was finished.
+2024-03-23 09:38:13,066 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:38:13,066 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 09:40:30,403 - Log - DEBUG - Epoch 332 was finished.
+2024-03-23 09:40:30,404 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:40:30,404 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:42:46,583 - Log - DEBUG - Epoch 333 was finished.
+2024-03-23 09:42:46,583 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:42:46,583 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 09:45:04,119 - Log - DEBUG - Epoch 334 was finished.
+2024-03-23 09:45:04,121 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:45:04,121 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:47:20,277 - Log - DEBUG - Epoch 335 was finished.
+2024-03-23 09:47:20,277 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:47:20,277 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 09:49:40,019 - Log - DEBUG - Epoch 336 was finished.
+2024-03-23 09:49:40,019 - Log - DEBUG - Training loss: 0.0047
+2024-03-23 09:49:40,020 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:51:54,356 - Log - DEBUG - Epoch 337 was finished.
+2024-03-23 09:51:54,356 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:51:54,356 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 09:54:13,961 - Log - DEBUG - Epoch 338 was finished.
+2024-03-23 09:54:13,961 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:54:13,962 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:56:33,071 - Log - DEBUG - Epoch 339 was finished.
+2024-03-23 09:56:33,071 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:56:33,071 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 09:58:49,244 - Log - DEBUG - Epoch 340 was finished.
+2024-03-23 09:58:49,244 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 09:58:49,244 - Log - DEBUG - Validation loss: 0.0165
+2024-03-23 10:01:11,169 - Log - DEBUG - Epoch 341 was finished.
+2024-03-23 10:01:11,170 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 10:01:11,170 - Log - DEBUG - Validation loss: 0.0164
+2024-03-23 10:03:40,163 - Log - DEBUG - Epoch 342 was finished.
+2024-03-23 10:03:40,164 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 10:03:40,164 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:05:56,561 - Log - DEBUG - Epoch 343 was finished.
+2024-03-23 10:05:56,562 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 10:05:56,562 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 10:08:14,964 - Log - DEBUG - Epoch 344 was finished.
+2024-03-23 10:08:14,965 - Log - DEBUG - Training loss: 0.0046
+2024-03-23 10:08:14,965 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:10:38,317 - Log - DEBUG - Epoch 345 was finished.
+2024-03-23 10:10:38,317 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:10:38,317 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 10:12:57,918 - Log - DEBUG - Epoch 346 was finished.
+2024-03-23 10:12:57,919 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:12:57,919 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:15:17,275 - Log - DEBUG - Epoch 347 was finished.
+2024-03-23 10:15:17,275 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:15:17,275 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:17:36,701 - Log - DEBUG - Epoch 348 was finished.
+2024-03-23 10:17:36,702 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:17:36,702 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:19:54,491 - Log - DEBUG - Epoch 349 was finished.
+2024-03-23 10:19:54,491 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:19:54,491 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 10:22:11,655 - Log - DEBUG - Epoch 350 was finished.
+2024-03-23 10:22:11,655 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:22:11,655 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:24:28,903 - Log - DEBUG - Epoch 351 was finished.
+2024-03-23 10:24:28,903 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:24:28,904 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:26:53,126 - Log - DEBUG - Epoch 352 was finished.
+2024-03-23 10:26:53,127 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:26:53,127 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:29:14,696 - Log - DEBUG - Epoch 353 was finished.
+2024-03-23 10:29:14,697 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:29:14,697 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:31:32,645 - Log - DEBUG - Epoch 354 was finished.
+2024-03-23 10:31:32,645 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:31:32,645 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 10:33:51,112 - Log - DEBUG - Epoch 355 was finished.
+2024-03-23 10:33:51,112 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:33:51,112 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:36:10,884 - Log - DEBUG - Epoch 356 was finished.
+2024-03-23 10:36:10,885 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:36:10,885 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 10:38:34,356 - Log - DEBUG - Epoch 357 was finished.
+2024-03-23 10:38:34,356 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:38:34,356 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:40:56,011 - Log - DEBUG - Epoch 358 was finished.
+2024-03-23 10:40:56,011 - Log - DEBUG - Training loss: 0.0045
+2024-03-23 10:40:56,012 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:43:13,875 - Log - DEBUG - Epoch 359 was finished.
+2024-03-23 10:43:13,877 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:43:13,877 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:45:38,120 - Log - DEBUG - Epoch 360 was finished.
+2024-03-23 10:45:38,121 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:45:38,121 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:47:58,804 - Log - DEBUG - Epoch 361 was finished.
+2024-03-23 10:47:58,805 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:47:58,805 - Log - DEBUG - Validation loss: 0.0166
+2024-03-23 10:50:15,675 - Log - DEBUG - Epoch 362 was finished.
+2024-03-23 10:50:15,676 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:50:15,676 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:52:33,264 - Log - DEBUG - Epoch 363 was finished.
+2024-03-23 10:52:33,264 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:52:33,264 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:54:54,420 - Log - DEBUG - Epoch 364 was finished.
+2024-03-23 10:54:54,421 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:54:54,421 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 10:57:11,903 - Log - DEBUG - Epoch 365 was finished.
+2024-03-23 10:57:11,903 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:57:11,903 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 10:59:30,605 - Log - DEBUG - Epoch 366 was finished.
+2024-03-23 10:59:30,606 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 10:59:30,606 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:01:51,462 - Log - DEBUG - Epoch 367 was finished.
+2024-03-23 11:01:51,462 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 11:01:51,462 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:04:09,037 - Log - DEBUG - Epoch 368 was finished.
+2024-03-23 11:04:09,038 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 11:04:09,038 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:06:31,932 - Log - DEBUG - Epoch 369 was finished.
+2024-03-23 11:06:31,933 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 11:06:31,933 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:08:54,521 - Log - DEBUG - Epoch 370 was finished.
+2024-03-23 11:08:54,521 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 11:08:54,522 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:11:09,938 - Log - DEBUG - Epoch 371 was finished.
+2024-03-23 11:11:09,939 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:11:09,939 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:13:28,347 - Log - DEBUG - Epoch 372 was finished.
+2024-03-23 11:13:28,348 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:13:28,348 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:15:47,742 - Log - DEBUG - Epoch 373 was finished.
+2024-03-23 11:15:47,743 - Log - DEBUG - Training loss: 0.0044
+2024-03-23 11:15:47,743 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:18:02,070 - Log - DEBUG - Epoch 374 was finished.
+2024-03-23 11:18:02,070 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:18:02,071 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:20:16,837 - Log - DEBUG - Epoch 375 was finished.
+2024-03-23 11:20:16,838 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:20:16,838 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:22:38,271 - Log - DEBUG - Epoch 376 was finished.
+2024-03-23 11:22:38,272 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:22:38,272 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:24:59,584 - Log - DEBUG - Epoch 377 was finished.
+2024-03-23 11:24:59,584 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:24:59,585 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:27:24,434 - Log - DEBUG - Epoch 378 was finished.
+2024-03-23 11:27:24,435 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:27:24,435 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:29:54,574 - Log - DEBUG - Epoch 379 was finished.
+2024-03-23 11:29:54,575 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:29:54,575 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:32:10,519 - Log - DEBUG - Epoch 380 was finished.
+2024-03-23 11:32:10,519 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 11:32:10,519 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:34:25,279 - Log - DEBUG - Epoch 381 was finished.
+2024-03-23 11:34:25,280 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:34:25,280 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:36:39,587 - Log - DEBUG - Epoch 382 was finished.
+2024-03-23 11:36:39,588 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:36:39,588 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:38:53,998 - Log - DEBUG - Epoch 383 was finished.
+2024-03-23 11:38:54,000 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:38:54,000 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:41:10,124 - Log - DEBUG - Epoch 384 was finished.
+2024-03-23 11:41:10,124 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:41:10,124 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 11:43:26,328 - Log - DEBUG - Epoch 385 was finished.
+2024-03-23 11:43:26,329 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 11:43:26,329 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:45:42,206 - Log - DEBUG - Epoch 386 was finished.
+2024-03-23 11:45:42,207 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:45:42,207 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 11:47:57,081 - Log - DEBUG - Epoch 387 was finished.
+2024-03-23 11:47:57,081 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 11:47:57,082 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:50:11,087 - Log - DEBUG - Epoch 388 was finished.
+2024-03-23 11:50:11,088 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:50:11,088 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:52:26,659 - Log - DEBUG - Epoch 389 was finished.
+2024-03-23 11:52:26,659 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:52:26,659 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:54:42,946 - Log - DEBUG - Epoch 390 was finished.
+2024-03-23 11:54:42,947 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 11:54:42,947 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:56:58,576 - Log - DEBUG - Epoch 391 was finished.
+2024-03-23 11:56:58,576 - Log - DEBUG - Training loss: 0.0043
+2024-03-23 11:56:58,576 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 11:59:12,069 - Log - DEBUG - Epoch 392 was finished.
+2024-03-23 11:59:12,069 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 11:59:12,069 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:01:26,421 - Log - DEBUG - Epoch 393 was finished.
+2024-03-23 12:01:26,421 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:01:26,421 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:03:43,416 - Log - DEBUG - Epoch 394 was finished.
+2024-03-23 12:03:43,417 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 12:03:43,417 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:05:58,112 - Log - DEBUG - Epoch 395 was finished.
+2024-03-23 12:05:58,112 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:05:58,112 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:08:14,184 - Log - DEBUG - Epoch 396 was finished.
+2024-03-23 12:08:14,184 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:08:14,185 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 12:10:31,489 - Log - DEBUG - Epoch 397 was finished.
+2024-03-23 12:10:31,490 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:10:31,490 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:12:51,023 - Log - DEBUG - Epoch 398 was finished.
+2024-03-23 12:12:51,024 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:12:51,024 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:15:08,846 - Log - DEBUG - Epoch 399 was finished.
+2024-03-23 12:15:08,847 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:15:08,847 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 12:17:32,667 - Log - DEBUG - Epoch 400 was finished.
+2024-03-23 12:17:32,668 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 12:17:32,668 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:19:49,104 - Log - DEBUG - Epoch 401 was finished.
+2024-03-23 12:19:49,104 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:19:49,104 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:22:09,925 - Log - DEBUG - Epoch 402 was finished.
+2024-03-23 12:22:09,926 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:22:09,926 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:24:34,786 - Log - DEBUG - Epoch 403 was finished.
+2024-03-23 12:24:34,787 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:24:34,787 - Log - DEBUG - Validation loss: 0.0167
+2024-03-23 12:26:57,052 - Log - DEBUG - Epoch 404 was finished.
+2024-03-23 12:26:57,053 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:26:57,053 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 12:29:15,990 - Log - DEBUG - Epoch 405 was finished.
+2024-03-23 12:29:15,991 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:29:15,991 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:31:37,038 - Log - DEBUG - Epoch 406 was finished.
+2024-03-23 12:31:37,039 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:31:37,039 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:33:54,455 - Log - DEBUG - Epoch 407 was finished.
+2024-03-23 12:33:54,455 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 12:33:54,455 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 12:36:20,177 - Log - DEBUG - Epoch 408 was finished.
+2024-03-23 12:36:20,178 - Log - DEBUG - Training loss: 0.0042
+2024-03-23 12:36:20,178 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 12:38:38,800 - Log - DEBUG - Epoch 409 was finished.
+2024-03-23 12:38:38,801 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:38:38,801 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:40:58,310 - Log - DEBUG - Epoch 410 was finished.
+2024-03-23 12:40:58,312 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:40:58,312 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:43:17,430 - Log - DEBUG - Epoch 411 was finished.
+2024-03-23 12:43:17,430 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 12:43:17,430 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:45:35,862 - Log - DEBUG - Epoch 412 was finished.
+2024-03-23 12:45:35,863 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 12:45:35,863 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 12:47:52,912 - Log - DEBUG - Epoch 413 was finished.
+2024-03-23 12:47:52,913 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:47:52,913 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:50:10,041 - Log - DEBUG - Epoch 414 was finished.
+2024-03-23 12:50:10,042 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:50:10,042 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 12:52:26,281 - Log - DEBUG - Epoch 415 was finished.
+2024-03-23 12:52:26,281 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 12:52:26,281 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:54:43,111 - Log - DEBUG - Epoch 416 was finished.
+2024-03-23 12:54:43,111 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 12:54:43,111 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 12:57:01,037 - Log - DEBUG - Epoch 417 was finished.
+2024-03-23 12:57:01,037 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 12:57:01,037 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 12:59:20,408 - Log - DEBUG - Epoch 418 was finished.
+2024-03-23 12:59:20,409 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 12:59:20,409 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 13:01:36,602 - Log - DEBUG - Epoch 419 was finished.
+2024-03-23 13:01:36,603 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:01:36,603 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 13:03:54,047 - Log - DEBUG - Epoch 420 was finished.
+2024-03-23 13:03:54,047 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 13:03:54,047 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:06:07,359 - Log - DEBUG - Epoch 421 was finished.
+2024-03-23 13:06:07,360 - Log - DEBUG - Training loss: 0.0041
+2024-03-23 13:06:07,360 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:08:24,526 - Log - DEBUG - Epoch 422 was finished.
+2024-03-23 13:08:24,527 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:08:24,527 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 13:10:43,096 - Log - DEBUG - Epoch 423 was finished.
+2024-03-23 13:10:43,096 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:10:43,096 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:13:02,463 - Log - DEBUG - Epoch 424 was finished.
+2024-03-23 13:13:02,463 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:13:02,463 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 13:15:20,429 - Log - DEBUG - Epoch 425 was finished.
+2024-03-23 13:15:20,430 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:15:20,430 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:17:44,316 - Log - DEBUG - Epoch 426 was finished.
+2024-03-23 13:17:44,317 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:17:44,317 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 13:20:03,402 - Log - DEBUG - Epoch 427 was finished.
+2024-03-23 13:20:03,402 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:20:03,402 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 13:22:20,875 - Log - DEBUG - Epoch 428 was finished.
+2024-03-23 13:22:20,876 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:22:20,876 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:24:42,906 - Log - DEBUG - Epoch 429 was finished.
+2024-03-23 13:24:42,906 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:24:42,907 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:27:03,895 - Log - DEBUG - Epoch 430 was finished.
+2024-03-23 13:27:03,895 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:27:03,895 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:29:24,508 - Log - DEBUG - Epoch 431 was finished.
+2024-03-23 13:29:24,509 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:29:24,509 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:31:43,304 - Log - DEBUG - Epoch 432 was finished.
+2024-03-23 13:31:43,305 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:31:43,305 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 13:34:03,623 - Log - DEBUG - Epoch 433 was finished.
+2024-03-23 13:34:03,624 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:34:03,624 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 13:36:24,465 - Log - DEBUG - Epoch 434 was finished.
+2024-03-23 13:36:24,465 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:36:24,466 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 13:38:45,544 - Log - DEBUG - Epoch 435 was finished.
+2024-03-23 13:38:45,545 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:38:45,545 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 13:41:04,290 - Log - DEBUG - Epoch 436 was finished.
+2024-03-23 13:41:04,291 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:41:04,291 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:43:19,634 - Log - DEBUG - Epoch 437 was finished.
+2024-03-23 13:43:19,635 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:43:19,635 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:45:34,746 - Log - DEBUG - Epoch 438 was finished.
+2024-03-23 13:45:34,747 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:45:34,747 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 13:47:52,188 - Log - DEBUG - Epoch 439 was finished.
+2024-03-23 13:47:52,188 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:47:52,188 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 13:50:08,706 - Log - DEBUG - Epoch 440 was finished.
+2024-03-23 13:50:08,707 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:50:08,707 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:52:22,957 - Log - DEBUG - Epoch 441 was finished.
+2024-03-23 13:52:22,958 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:52:22,958 - Log - DEBUG - Validation loss: 0.0168
+2024-03-23 13:54:38,901 - Log - DEBUG - Epoch 442 was finished.
+2024-03-23 13:54:38,902 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 13:54:38,902 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 13:56:55,413 - Log - DEBUG - Epoch 443 was finished.
+2024-03-23 13:56:55,413 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:56:55,413 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 13:59:11,569 - Log - DEBUG - Epoch 444 was finished.
+2024-03-23 13:59:11,569 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 13:59:11,569 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 14:01:30,550 - Log - DEBUG - Epoch 445 was finished.
+2024-03-23 14:01:30,551 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:01:30,551 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:03:46,613 - Log - DEBUG - Epoch 446 was finished.
+2024-03-23 14:03:46,614 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:03:46,614 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:06:01,980 - Log - DEBUG - Epoch 447 was finished.
+2024-03-23 14:06:01,980 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:06:01,981 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:08:16,225 - Log - DEBUG - Epoch 448 was finished.
+2024-03-23 14:08:16,225 - Log - DEBUG - Training loss: 0.0040
+2024-03-23 14:08:16,225 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:10:32,120 - Log - DEBUG - Epoch 449 was finished.
+2024-03-23 14:10:32,120 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:10:32,120 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:12:48,710 - Log - DEBUG - Epoch 450 was finished.
+2024-03-23 14:12:48,710 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:12:48,710 - Log - DEBUG - Validation loss: 0.0173
+2024-03-23 14:15:03,822 - Log - DEBUG - Epoch 451 was finished.
+2024-03-23 14:15:03,823 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:15:03,823 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 14:17:20,417 - Log - DEBUG - Epoch 452 was finished.
+2024-03-23 14:17:20,417 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:17:20,417 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:19:37,488 - Log - DEBUG - Epoch 453 was finished.
+2024-03-23 14:19:37,488 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:19:37,488 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 14:21:53,280 - Log - DEBUG - Epoch 454 was finished.
+2024-03-23 14:21:53,280 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:21:53,281 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:24:08,945 - Log - DEBUG - Epoch 455 was finished.
+2024-03-23 14:24:08,945 - Log - DEBUG - Training loss: 0.0039
+2024-03-23 14:24:08,945 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:26:23,297 - Log - DEBUG - Epoch 456 was finished.
+2024-03-23 14:26:23,297 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:26:23,297 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:28:38,033 - Log - DEBUG - Epoch 457 was finished.
+2024-03-23 14:28:38,033 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:28:38,033 - Log - DEBUG - Validation loss: 0.0172
+2024-03-23 14:30:53,004 - Log - DEBUG - Epoch 458 was finished.
+2024-03-23 14:30:53,004 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:30:53,004 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 14:33:08,250 - Log - DEBUG - Epoch 459 was finished.
+2024-03-23 14:33:08,250 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:33:08,250 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:35:23,767 - Log - DEBUG - Epoch 460 was finished.
+2024-03-23 14:35:23,767 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:35:23,767 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:37:38,745 - Log - DEBUG - Epoch 461 was finished.
+2024-03-23 14:37:38,745 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:37:38,745 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:39:53,420 - Log - DEBUG - Epoch 462 was finished.
+2024-03-23 14:39:53,420 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:39:53,420 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:42:08,700 - Log - DEBUG - Epoch 463 was finished.
+2024-03-23 14:42:08,700 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:42:08,700 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:44:24,906 - Log - DEBUG - Epoch 464 was finished.
+2024-03-23 14:44:24,907 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:44:24,907 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 14:46:39,602 - Log - DEBUG - Epoch 465 was finished.
+2024-03-23 14:46:39,602 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:46:39,603 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:48:53,477 - Log - DEBUG - Epoch 466 was finished.
+2024-03-23 14:48:53,478 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 14:48:53,479 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:51:08,465 - Log - DEBUG - Epoch 467 was finished.
+2024-03-23 14:51:08,466 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:51:08,466 - Log - DEBUG - Validation loss: 0.0173
+2024-03-23 14:53:24,749 - Log - DEBUG - Epoch 468 was finished.
+2024-03-23 14:53:24,750 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:53:24,750 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:55:42,974 - Log - DEBUG - Epoch 469 was finished.
+2024-03-23 14:55:42,974 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:55:42,974 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 14:58:01,461 - Log - DEBUG - Epoch 470 was finished.
+2024-03-23 14:58:01,461 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 14:58:01,461 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:00:22,558 - Log - DEBUG - Epoch 471 was finished.
+2024-03-23 15:00:22,559 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:00:22,559 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:02:42,299 - Log - DEBUG - Epoch 472 was finished.
+2024-03-23 15:02:42,300 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:02:42,300 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:04:59,845 - Log - DEBUG - Epoch 473 was finished.
+2024-03-23 15:04:59,846 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 15:04:59,846 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:07:14,901 - Log - DEBUG - Epoch 474 was finished.
+2024-03-23 15:07:14,902 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 15:07:14,902 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:09:29,221 - Log - DEBUG - Epoch 475 was finished.
+2024-03-23 15:09:29,221 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:09:29,221 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:11:43,022 - Log - DEBUG - Epoch 476 was finished.
+2024-03-23 15:11:43,022 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:11:43,022 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 15:14:03,317 - Log - DEBUG - Epoch 477 was finished.
+2024-03-23 15:14:03,317 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:14:03,317 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 15:16:28,229 - Log - DEBUG - Epoch 478 was finished.
+2024-03-23 15:16:28,229 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:16:28,230 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:18:48,040 - Log - DEBUG - Epoch 479 was finished.
+2024-03-23 15:18:48,040 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:18:48,040 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:21:08,701 - Log - DEBUG - Epoch 480 was finished.
+2024-03-23 15:21:08,701 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:21:08,702 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:23:29,298 - Log - DEBUG - Epoch 481 was finished.
+2024-03-23 15:23:29,299 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:23:29,299 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:25:49,632 - Log - DEBUG - Epoch 482 was finished.
+2024-03-23 15:25:49,633 - Log - DEBUG - Training loss: 0.0038
+2024-03-23 15:25:49,633 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:28:05,439 - Log - DEBUG - Epoch 483 was finished.
+2024-03-23 15:28:05,440 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:28:05,440 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:30:25,848 - Log - DEBUG - Epoch 484 was finished.
+2024-03-23 15:30:25,849 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:30:25,849 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:32:43,819 - Log - DEBUG - Epoch 485 was finished.
+2024-03-23 15:32:43,819 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:32:43,819 - Log - DEBUG - Validation loss: 0.0169
+2024-03-23 15:34:58,714 - Log - DEBUG - Epoch 486 was finished.
+2024-03-23 15:34:58,715 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:34:58,715 - Log - DEBUG - Validation loss: 0.0172
+2024-03-23 15:37:14,211 - Log - DEBUG - Epoch 487 was finished.
+2024-03-23 15:37:14,211 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:37:14,211 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:39:31,734 - Log - DEBUG - Epoch 488 was finished.
+2024-03-23 15:39:31,734 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:39:31,734 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:41:52,586 - Log - DEBUG - Epoch 489 was finished.
+2024-03-23 15:41:52,587 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:41:52,587 - Log - DEBUG - Validation loss: 0.0172
+2024-03-23 15:44:18,672 - Log - DEBUG - Epoch 490 was finished.
+2024-03-23 15:44:18,673 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:44:18,673 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:46:37,405 - Log - DEBUG - Epoch 491 was finished.
+2024-03-23 15:46:37,405 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:46:37,405 - Log - DEBUG - Validation loss: 0.0172
+2024-03-23 15:48:55,198 - Log - DEBUG - Epoch 492 was finished.
+2024-03-23 15:48:55,199 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:48:55,199 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:51:10,750 - Log - DEBUG - Epoch 493 was finished.
+2024-03-23 15:51:10,751 - Log - DEBUG - Training loss: 0.0036
+2024-03-23 15:51:10,751 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:53:29,077 - Log - DEBUG - Epoch 494 was finished.
+2024-03-23 15:53:29,077 - Log - DEBUG - Training loss: 0.0036
+2024-03-23 15:53:29,077 - Log - DEBUG - Validation loss: 0.0170
+2024-03-23 15:55:46,304 - Log - DEBUG - Epoch 495 was finished.
+2024-03-23 15:55:46,304 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:55:46,304 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 15:58:05,545 - Log - DEBUG - Epoch 496 was finished.
+2024-03-23 15:58:05,545 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 15:58:05,545 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 16:00:23,771 - Log - DEBUG - Epoch 497 was finished.
+2024-03-23 16:00:23,772 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 16:00:23,772 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 16:02:43,957 - Log - DEBUG - Epoch 498 was finished.
+2024-03-23 16:02:43,958 - Log - DEBUG - Training loss: 0.0037
+2024-03-23 16:02:43,958 - Log - DEBUG - Validation loss: 0.0171
+2024-03-23 16:05:04,810 - Log - DEBUG - Epoch 499 was finished.
+2024-03-23 16:05:04,811 - Log - DEBUG - Training loss: 0.0036
+2024-03-23 16:05:04,811 - Log - DEBUG - Validation loss: 0.0172
+Shutting down background jobs, please wait a moment...
+Done!
+Waiting for the remaining 4 operations to synchronize with Neptune. Do not kill this process.
+All 4 operations synced, thanks for waiting!
+Explore the metadata in the Neptune app:
+https://app.neptune.ai/NUSBG/GRUAE/e/GRUAE-22

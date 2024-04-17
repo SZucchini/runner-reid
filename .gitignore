@@ -6,8 +6,9 @@ data/
 notebook/
 output/gruae/*/checkpoint/
 output/gruae/*/images/
-output/gruae/*/log.txt
-output/hhcl/
+output/hhcl/persons/*/checkpoint/
+output/hhcl/shoes/*/checkpoint/
+
 run/
 token/
 

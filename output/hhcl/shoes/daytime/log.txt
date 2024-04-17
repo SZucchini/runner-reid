@@ -1,0 +1,576 @@
+==========
+Args:Namespace(arch='resnet50', batch_size=32, data_dir='./data/HHCL/shoes/daytime', dataset='custom', dropout=0, epochs=20, eps=0.45, eps_gap=0.02, eval_step=10, features=0, hard_weight=0.5, height=256, iters=200, k1=30, k2=6, logs_dir='./output/hhcl/shoes/daytime', lr=0.00035, memorybank='CMhybrid', momentum=0.1, num_instances=8, pooling_type='avg', print_freq=10, resume='', seed=1, smooth=0, step_size=20, temp=0.05, weight_decay=0.0005, width=128, workers=1)
+==========
+==> Load unlabeled dataset
+=> Custom datasest loaded
+Dataset statistics:
+  ----------------------------------------
+  subset   | # ids | # images | # cameras
+  ----------------------------------------
+  train    |   338 |      338 |         1
+  query    |   338 |      338 |         1
+  gallery  |   338 |      338 |         1
+  ----------------------------------------
+pooling_type: avg
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.7945408821105957
+Clustering criterion eps: 0.450
+hard_weight: 0.5
+==> Statistics for epoch 0: 17 clusters
+Got train loader!
+New epoch!
+Epoch: [0][10/200]	Time 0.095 (0.267)	Data 0.000 (0.103)	Loss 3.138 (2.833)
+Epoch: [0][20/200]	Time 0.087 (0.233)	Data 0.000 (0.100)	Loss 3.436 (2.933)
+Epoch: [0][30/200]	Time 0.097 (0.236)	Data 0.000 (0.115)	Loss 3.041 (3.119)
+Epoch: [0][40/200]	Time 0.097 (0.220)	Data 0.000 (0.103)	Loss 4.367 (3.224)
+Epoch: [0][50/200]	Time 0.092 (0.218)	Data 0.000 (0.103)	Loss 2.578 (3.283)
+Epoch: [0][60/200]	Time 0.093 (0.209)	Data 0.000 (0.098)	Loss 3.139 (3.327)
+Epoch: [0][70/200]	Time 0.102 (0.210)	Data 0.000 (0.099)	Loss 2.374 (3.321)
+Epoch: [0][80/200]	Time 0.093 (0.204)	Data 0.000 (0.095)	Loss 4.318 (3.339)
+Epoch: [0][90/200]	Time 0.097 (0.203)	Data 0.000 (0.095)	Loss 2.851 (3.365)
+Epoch: [0][100/200]	Time 0.092 (0.199)	Data 0.000 (0.093)	Loss 3.141 (3.385)
+Epoch: [0][110/200]	Time 0.098 (0.200)	Data 0.000 (0.094)	Loss 3.901 (3.405)
+Epoch: [0][120/200]	Time 0.084 (0.197)	Data 0.000 (0.092)	Loss 3.616 (3.405)
+Epoch: [0][130/200]	Time 0.104 (0.197)	Data 0.000 (0.093)	Loss 3.117 (3.412)
+Epoch: [0][140/200]	Time 0.089 (0.195)	Data 0.000 (0.091)	Loss 3.128 (3.411)
+Epoch: [0][150/200]	Time 0.096 (0.196)	Data 0.000 (0.093)	Loss 3.084 (3.399)
+Epoch: [0][160/200]	Time 0.103 (0.195)	Data 0.000 (0.092)	Loss 3.770 (3.378)
+Epoch: [0][170/200]	Time 0.096 (0.196)	Data 0.000 (0.093)	Loss 4.182 (3.398)
+Epoch: [0][180/200]	Time 0.090 (0.194)	Data 0.000 (0.091)	Loss 4.116 (3.413)
+Epoch: [0][190/200]	Time 0.101 (0.195)	Data 0.000 (0.092)	Loss 3.124 (3.401)
+Epoch: [0][200/200]	Time 0.111 (0.194)	Data 0.000 (0.091)	Loss 4.036 (3.422)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.5477759838104248
+hard_weight: 0.5
+==> Statistics for epoch 1: 10 clusters
+Got train loader!
+New epoch!
+Epoch: [1][10/200]	Time 0.098 (0.239)	Data 0.000 (0.140)	Loss 2.892 (2.956)
+Epoch: [1][20/200]	Time 0.088 (0.265)	Data 0.000 (0.163)	Loss 1.825 (2.846)
+Epoch: [1][30/200]	Time 0.109 (0.268)	Data 0.000 (0.165)	Loss 2.985 (2.761)
+Epoch: [1][40/200]	Time 0.091 (0.275)	Data 0.000 (0.171)	Loss 3.082 (2.765)
+Epoch: [1][50/200]	Time 0.093 (0.275)	Data 0.000 (0.171)	Loss 2.248 (2.743)
+Epoch: [1][60/200]	Time 0.094 (0.274)	Data 0.000 (0.170)	Loss 2.645 (2.704)
+Epoch: [1][70/200]	Time 0.097 (0.274)	Data 0.000 (0.170)	Loss 3.286 (2.731)
+Epoch: [1][80/200]	Time 0.095 (0.274)	Data 0.000 (0.171)	Loss 2.835 (2.717)
+Epoch: [1][90/200]	Time 0.099 (0.275)	Data 0.000 (0.172)	Loss 3.639 (2.715)
+Epoch: [1][100/200]	Time 0.091 (0.275)	Data 0.000 (0.172)	Loss 2.587 (2.708)
+Epoch: [1][110/200]	Time 0.093 (0.275)	Data 0.000 (0.172)	Loss 3.309 (2.701)
+Epoch: [1][120/200]	Time 0.105 (0.276)	Data 0.000 (0.172)	Loss 1.633 (2.685)
+Epoch: [1][130/200]	Time 0.095 (0.276)	Data 0.000 (0.173)	Loss 3.215 (2.689)
+Epoch: [1][140/200]	Time 0.087 (0.275)	Data 0.000 (0.173)	Loss 3.028 (2.686)
+Epoch: [1][150/200]	Time 0.092 (0.275)	Data 0.000 (0.173)	Loss 2.200 (2.687)
+Epoch: [1][160/200]	Time 0.096 (0.274)	Data 0.000 (0.172)	Loss 2.611 (2.669)
+Epoch: [1][170/200]	Time 0.091 (0.274)	Data 0.000 (0.173)	Loss 2.511 (2.644)
+Epoch: [1][180/200]	Time 0.081 (0.273)	Data 0.000 (0.172)	Loss 1.725 (2.627)
+Epoch: [1][190/200]	Time 0.081 (0.274)	Data 0.000 (0.173)	Loss 2.555 (2.609)
+Epoch: [1][200/200]	Time 0.101 (0.274)	Data 0.000 (0.173)	Loss 2.465 (2.605)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4989132881164551
+hard_weight: 0.5
+==> Statistics for epoch 2: 9 clusters
+Got train loader!
+New epoch!
+Epoch: [2][10/200]	Time 0.086 (0.248)	Data 0.000 (0.149)	Loss 3.514 (2.429)
+Epoch: [2][20/200]	Time 0.091 (0.268)	Data 0.000 (0.167)	Loss 3.153 (2.277)
+Epoch: [2][30/200]	Time 0.083 (0.273)	Data 0.000 (0.172)	Loss 2.592 (2.200)
+Epoch: [2][40/200]	Time 0.114 (0.278)	Data 0.000 (0.177)	Loss 2.736 (2.244)
+Epoch: [2][50/200]	Time 0.099 (0.277)	Data 0.000 (0.176)	Loss 2.270 (2.271)
+Epoch: [2][60/200]	Time 0.093 (0.279)	Data 0.000 (0.178)	Loss 1.526 (2.244)
+Epoch: [2][70/200]	Time 0.091 (0.282)	Data 0.000 (0.182)	Loss 2.081 (2.259)
+Epoch: [2][80/200]	Time 0.100 (0.280)	Data 0.000 (0.180)	Loss 1.841 (2.250)
+Epoch: [2][90/200]	Time 0.087 (0.280)	Data 0.000 (0.180)	Loss 1.463 (2.209)
+Epoch: [2][100/200]	Time 0.090 (0.281)	Data 0.000 (0.180)	Loss 0.884 (2.203)
+Epoch: [2][110/200]	Time 0.092 (0.281)	Data 0.000 (0.180)	Loss 2.480 (2.216)
+Epoch: [2][120/200]	Time 0.092 (0.281)	Data 0.000 (0.180)	Loss 1.401 (2.192)
+Epoch: [2][130/200]	Time 0.086 (0.280)	Data 0.000 (0.180)	Loss 2.099 (2.190)
+Epoch: [2][140/200]	Time 0.091 (0.279)	Data 0.000 (0.179)	Loss 1.535 (2.162)
+Epoch: [2][150/200]	Time 0.082 (0.278)	Data 0.000 (0.178)	Loss 1.883 (2.158)
+Epoch: [2][160/200]	Time 0.092 (0.277)	Data 0.000 (0.178)	Loss 2.981 (2.148)
+Epoch: [2][170/200]	Time 0.101 (0.279)	Data 0.000 (0.178)	Loss 2.141 (2.121)
+Epoch: [2][180/200]	Time 0.094 (0.279)	Data 0.000 (0.179)	Loss 1.150 (2.100)
+Epoch: [2][190/200]	Time 0.092 (0.279)	Data 0.000 (0.179)	Loss 2.643 (2.092)
+Epoch: [2][200/200]	Time 0.097 (0.280)	Data 0.000 (0.180)	Loss 2.560 (2.095)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.5053970813751221
+hard_weight: 0.5
+==> Statistics for epoch 3: 10 clusters
+Got train loader!
+New epoch!
+Epoch: [3][10/200]	Time 0.095 (0.240)	Data 0.000 (0.142)	Loss 3.486 (2.106)
+Epoch: [3][20/200]	Time 0.084 (0.253)	Data 0.000 (0.155)	Loss 1.875 (2.221)
+Epoch: [3][30/200]	Time 0.090 (0.260)	Data 0.000 (0.160)	Loss 1.335 (2.103)
+Epoch: [3][40/200]	Time 0.090 (0.262)	Data 0.000 (0.163)	Loss 1.431 (2.144)
+Epoch: [3][50/200]	Time 0.097 (0.266)	Data 0.000 (0.167)	Loss 2.207 (2.130)
+Epoch: [3][60/200]	Time 0.090 (0.268)	Data 0.000 (0.169)	Loss 2.087 (2.147)
+Epoch: [3][70/200]	Time 0.081 (0.269)	Data 0.000 (0.170)	Loss 1.263 (2.098)
+Epoch: [3][80/200]	Time 0.095 (0.270)	Data 0.000 (0.171)	Loss 2.831 (2.108)
+Epoch: [3][90/200]	Time 0.092 (0.269)	Data 0.000 (0.170)	Loss 2.508 (2.112)
+Epoch: [3][100/200]	Time 0.101 (0.268)	Data 0.000 (0.170)	Loss 2.469 (2.104)
+Epoch: [3][110/200]	Time 0.099 (0.269)	Data 0.000 (0.169)	Loss 1.907 (2.103)
+Epoch: [3][120/200]	Time 0.085 (0.270)	Data 0.000 (0.171)	Loss 2.388 (2.111)
+Epoch: [3][130/200]	Time 0.094 (0.271)	Data 0.000 (0.172)	Loss 2.025 (2.101)
+Epoch: [3][140/200]	Time 0.089 (0.272)	Data 0.000 (0.173)	Loss 2.086 (2.070)
+Epoch: [3][150/200]	Time 0.098 (0.272)	Data 0.000 (0.173)	Loss 2.476 (2.071)
+Epoch: [3][160/200]	Time 0.089 (0.273)	Data 0.000 (0.174)	Loss 1.441 (2.057)
+Epoch: [3][170/200]	Time 0.097 (0.273)	Data 0.000 (0.174)	Loss 1.169 (2.032)
+Epoch: [3][180/200]	Time 0.091 (0.274)	Data 0.000 (0.175)	Loss 1.945 (2.020)
+Epoch: [3][190/200]	Time 0.083 (0.275)	Data 0.000 (0.176)	Loss 1.415 (1.997)
+Epoch: [3][200/200]	Time 0.082 (0.276)	Data 0.000 (0.176)	Loss 1.442 (1.973)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.49136948585510254
+hard_weight: 0.5
+==> Statistics for epoch 4: 13 clusters
+Got train loader!
+New epoch!
+Epoch: [4][10/200]	Time 0.462 (0.207)	Data 0.348 (0.113)	Loss 1.814 (1.819)
+Epoch: [4][20/200]	Time 0.094 (0.203)	Data 0.000 (0.108)	Loss 2.666 (2.034)
+Epoch: [4][30/200]	Time 0.098 (0.203)	Data 0.000 (0.107)	Loss 2.514 (2.111)
+Epoch: [4][40/200]	Time 0.429 (0.211)	Data 0.331 (0.115)	Loss 1.961 (2.144)
+Epoch: [4][50/200]	Time 0.096 (0.209)	Data 0.000 (0.113)	Loss 1.567 (2.090)
+Epoch: [4][60/200]	Time 0.088 (0.210)	Data 0.000 (0.113)	Loss 2.154 (2.107)
+Epoch: [4][70/200]	Time 0.416 (0.215)	Data 0.323 (0.117)	Loss 2.348 (2.091)
+Epoch: [4][80/200]	Time 0.093 (0.213)	Data 0.000 (0.115)	Loss 1.642 (2.099)
+Epoch: [4][90/200]	Time 0.092 (0.211)	Data 0.000 (0.113)	Loss 1.454 (2.059)
+Epoch: [4][100/200]	Time 0.442 (0.214)	Data 0.335 (0.116)	Loss 2.227 (2.054)
+Epoch: [4][110/200]	Time 0.098 (0.215)	Data 0.000 (0.116)	Loss 1.935 (2.068)
+Epoch: [4][120/200]	Time 0.093 (0.213)	Data 0.000 (0.115)	Loss 2.025 (2.082)
+Epoch: [4][130/200]	Time 0.475 (0.216)	Data 0.345 (0.116)	Loss 2.254 (2.077)
+Epoch: [4][140/200]	Time 0.112 (0.216)	Data 0.000 (0.116)	Loss 2.170 (2.069)
+Epoch: [4][150/200]	Time 0.098 (0.215)	Data 0.000 (0.115)	Loss 2.156 (2.075)
+Epoch: [4][160/200]	Time 0.456 (0.216)	Data 0.354 (0.116)	Loss 2.320 (2.053)
+Epoch: [4][170/200]	Time 0.090 (0.216)	Data 0.000 (0.115)	Loss 2.475 (2.042)
+Epoch: [4][180/200]	Time 0.098 (0.215)	Data 0.000 (0.115)	Loss 2.195 (2.033)
+Epoch: [4][190/200]	Time 0.446 (0.217)	Data 0.331 (0.116)	Loss 2.231 (2.036)
+Epoch: [4][200/200]	Time 0.097 (0.216)	Data 0.000 (0.116)	Loss 1.762 (2.033)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.8375847339630127
+hard_weight: 0.5
+==> Statistics for epoch 5: 13 clusters
+Got train loader!
+New epoch!
+Epoch: [5][10/200]	Time 0.503 (0.229)	Data 0.378 (0.121)	Loss 2.257 (1.942)
+Epoch: [5][20/200]	Time 0.103 (0.214)	Data 0.000 (0.111)	Loss 3.186 (1.981)
+Epoch: [5][30/200]	Time 0.096 (0.213)	Data 0.000 (0.109)	Loss 2.037 (1.997)
+Epoch: [5][40/200]	Time 0.429 (0.217)	Data 0.327 (0.114)	Loss 1.528 (1.961)
+Epoch: [5][50/200]	Time 0.099 (0.214)	Data 0.000 (0.112)	Loss 1.869 (1.945)
+Epoch: [5][60/200]	Time 0.105 (0.214)	Data 0.000 (0.110)	Loss 2.214 (1.917)
+Epoch: [5][70/200]	Time 0.456 (0.218)	Data 0.330 (0.114)	Loss 2.037 (1.913)
+Epoch: [5][80/200]	Time 0.096 (0.218)	Data 0.000 (0.114)	Loss 2.462 (1.902)
+Epoch: [5][90/200]	Time 0.097 (0.217)	Data 0.000 (0.113)	Loss 2.431 (1.908)
+Epoch: [5][100/200]	Time 0.435 (0.219)	Data 0.322 (0.116)	Loss 2.373 (1.885)
+Epoch: [5][110/200]	Time 0.097 (0.218)	Data 0.000 (0.114)	Loss 1.492 (1.878)
+Epoch: [5][120/200]	Time 0.090 (0.217)	Data 0.000 (0.114)	Loss 1.397 (1.868)
+Epoch: [5][130/200]	Time 0.428 (0.218)	Data 0.331 (0.115)	Loss 1.105 (1.862)
+Epoch: [5][140/200]	Time 0.100 (0.216)	Data 0.000 (0.114)	Loss 1.327 (1.846)
+Epoch: [5][150/200]	Time 0.095 (0.215)	Data 0.000 (0.113)	Loss 1.632 (1.855)
+Epoch: [5][160/200]	Time 0.436 (0.216)	Data 0.339 (0.115)	Loss 0.752 (1.841)
+Epoch: [5][170/200]	Time 0.097 (0.215)	Data 0.000 (0.114)	Loss 0.902 (1.827)
+Epoch: [5][180/200]	Time 0.092 (0.214)	Data 0.000 (0.113)	Loss 2.307 (1.818)
+Epoch: [5][190/200]	Time 0.506 (0.216)	Data 0.384 (0.115)	Loss 1.888 (1.810)
+Epoch: [5][200/200]	Time 0.089 (0.216)	Data 0.000 (0.115)	Loss 2.043 (1.804)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4447147846221924
+hard_weight: 0.5
+==> Statistics for epoch 6: 14 clusters
+Got train loader!
+New epoch!
+Epoch: [6][10/200]	Time 0.458 (0.211)	Data 0.346 (0.112)	Loss 2.344 (1.469)
+Epoch: [6][20/200]	Time 0.095 (0.211)	Data 0.000 (0.109)	Loss 0.632 (1.549)
+Epoch: [6][30/200]	Time 0.087 (0.212)	Data 0.000 (0.111)	Loss 1.771 (1.563)
+Epoch: [6][40/200]	Time 0.461 (0.218)	Data 0.344 (0.116)	Loss 1.973 (1.597)
+Epoch: [6][50/200]	Time 0.098 (0.213)	Data 0.000 (0.113)	Loss 0.937 (1.578)
+Epoch: [6][60/200]	Time 0.081 (0.210)	Data 0.000 (0.111)	Loss 2.347 (1.620)
+Epoch: [6][70/200]	Time 0.410 (0.214)	Data 0.310 (0.114)	Loss 1.716 (1.628)
+Epoch: [6][80/200]	Time 0.093 (0.211)	Data 0.000 (0.113)	Loss 1.849 (1.655)
+Epoch: [6][90/200]	Time 0.085 (0.210)	Data 0.000 (0.112)	Loss 1.762 (1.671)
+Epoch: [6][100/200]	Time 0.459 (0.213)	Data 0.355 (0.115)	Loss 2.051 (1.670)
+Epoch: [6][110/200]	Time 0.089 (0.211)	Data 0.000 (0.113)	Loss 2.020 (1.667)
+Epoch: [6][120/200]	Time 0.081 (0.209)	Data 0.000 (0.112)	Loss 1.391 (1.654)
+Epoch: [6][130/200]	Time 0.475 (0.212)	Data 0.357 (0.114)	Loss 1.740 (1.654)
+Epoch: [6][140/200]	Time 0.100 (0.211)	Data 0.000 (0.113)	Loss 1.248 (1.647)
+Epoch: [6][150/200]	Time 0.084 (0.211)	Data 0.000 (0.113)	Loss 2.492 (1.651)
+Epoch: [6][160/200]	Time 0.459 (0.212)	Data 0.347 (0.115)	Loss 1.174 (1.649)
+Epoch: [6][170/200]	Time 0.095 (0.211)	Data 0.000 (0.114)	Loss 2.048 (1.649)
+Epoch: [6][180/200]	Time 0.090 (0.210)	Data 0.000 (0.114)	Loss 1.102 (1.650)
+Epoch: [6][190/200]	Time 0.437 (0.212)	Data 0.327 (0.115)	Loss 1.650 (1.653)
+Epoch: [6][200/200]	Time 0.091 (0.211)	Data 0.000 (0.114)	Loss 1.400 (1.650)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.48572325706481934
+hard_weight: 0.5
+==> Statistics for epoch 7: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [7][10/200]	Time 0.461 (0.211)	Data 0.367 (0.118)	Loss 2.152 (1.430)
+Epoch: [7][20/200]	Time 0.098 (0.202)	Data 0.000 (0.110)	Loss 2.097 (1.588)
+Epoch: [7][30/200]	Time 0.096 (0.203)	Data 0.000 (0.107)	Loss 0.786 (1.651)
+Epoch: [7][40/200]	Time 0.463 (0.213)	Data 0.340 (0.114)	Loss 2.467 (1.697)
+Epoch: [7][50/200]	Time 0.094 (0.212)	Data 0.000 (0.112)	Loss 1.676 (1.713)
+Epoch: [7][60/200]	Time 0.094 (0.211)	Data 0.000 (0.110)	Loss 1.284 (1.713)
+Epoch: [7][70/200]	Time 0.462 (0.215)	Data 0.342 (0.114)	Loss 2.178 (1.693)
+Epoch: [7][80/200]	Time 0.102 (0.214)	Data 0.000 (0.112)	Loss 1.384 (1.679)
+Epoch: [7][90/200]	Time 0.095 (0.212)	Data 0.000 (0.111)	Loss 1.416 (1.669)
+Epoch: [7][100/200]	Time 0.451 (0.214)	Data 0.345 (0.113)	Loss 1.769 (1.665)
+Epoch: [7][110/200]	Time 0.087 (0.214)	Data 0.000 (0.113)	Loss 1.639 (1.671)
+Epoch: [7][120/200]	Time 0.093 (0.213)	Data 0.000 (0.112)	Loss 1.402 (1.659)
+Epoch: [7][130/200]	Time 0.450 (0.216)	Data 0.346 (0.115)	Loss 0.915 (1.644)
+Epoch: [7][140/200]	Time 0.091 (0.214)	Data 0.000 (0.114)	Loss 1.097 (1.631)
+Epoch: [7][150/200]	Time 0.085 (0.213)	Data 0.000 (0.113)	Loss 1.832 (1.636)
+Epoch: [7][160/200]	Time 0.436 (0.215)	Data 0.334 (0.115)	Loss 1.008 (1.629)
+Epoch: [7][170/200]	Time 0.099 (0.214)	Data 0.000 (0.114)	Loss 1.342 (1.627)
+Epoch: [7][180/200]	Time 0.090 (0.213)	Data 0.000 (0.113)	Loss 1.453 (1.627)
+Epoch: [7][190/200]	Time 0.483 (0.214)	Data 0.364 (0.114)	Loss 2.352 (1.630)
+Epoch: [7][200/200]	Time 0.104 (0.214)	Data 0.000 (0.114)	Loss 1.814 (1.626)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.9272010326385498
+hard_weight: 0.5
+==> Statistics for epoch 8: 17 clusters
+Got train loader!
+New epoch!
+Epoch: [8][10/200]	Time 0.100 (0.171)	Data 0.000 (0.075)	Loss 2.483 (1.423)
+Epoch: [8][20/200]	Time 0.095 (0.169)	Data 0.000 (0.070)	Loss 1.876 (1.578)
+Epoch: [8][30/200]	Time 0.096 (0.183)	Data 0.000 (0.082)	Loss 1.783 (1.603)
+Epoch: [8][40/200]	Time 0.091 (0.179)	Data 0.000 (0.079)	Loss 1.116 (1.575)
+Epoch: [8][50/200]	Time 0.095 (0.184)	Data 0.000 (0.084)	Loss 1.464 (1.587)
+Epoch: [8][60/200]	Time 0.094 (0.182)	Data 0.000 (0.081)	Loss 1.610 (1.551)
+Epoch: [8][70/200]	Time 0.110 (0.185)	Data 0.000 (0.085)	Loss 1.966 (1.556)
+Epoch: [8][80/200]	Time 0.093 (0.183)	Data 0.000 (0.083)	Loss 1.648 (1.595)
+Epoch: [8][90/200]	Time 0.094 (0.184)	Data 0.000 (0.085)	Loss 2.212 (1.603)
+Epoch: [8][100/200]	Time 0.094 (0.183)	Data 0.000 (0.083)	Loss 1.943 (1.614)
+Epoch: [8][110/200]	Time 0.099 (0.184)	Data 0.000 (0.084)	Loss 1.754 (1.607)
+Epoch: [8][120/200]	Time 0.111 (0.183)	Data 0.000 (0.083)	Loss 0.938 (1.590)
+Epoch: [8][130/200]	Time 0.101 (0.184)	Data 0.000 (0.084)	Loss 2.122 (1.598)
+Epoch: [8][140/200]	Time 0.094 (0.183)	Data 0.000 (0.083)	Loss 0.707 (1.605)
+Epoch: [8][150/200]	Time 0.103 (0.184)	Data 0.000 (0.084)	Loss 1.132 (1.607)
+Epoch: [8][160/200]	Time 0.098 (0.183)	Data 0.000 (0.083)	Loss 1.086 (1.615)
+Epoch: [8][170/200]	Time 0.104 (0.185)	Data 0.000 (0.085)	Loss 1.854 (1.609)
+Epoch: [8][180/200]	Time 0.092 (0.184)	Data 0.000 (0.084)	Loss 0.920 (1.606)
+Epoch: [8][190/200]	Time 0.094 (0.185)	Data 0.000 (0.085)	Loss 1.907 (1.594)
+Epoch: [8][200/200]	Time 0.105 (0.184)	Data 0.000 (0.084)	Loss 1.666 (1.602)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.6532838344573975
+hard_weight: 0.5
+==> Statistics for epoch 9: 14 clusters
+Got train loader!
+New epoch!
+Epoch: [9][10/200]	Time 0.443 (0.210)	Data 0.332 (0.108)	Loss 1.928 (1.223)
+Epoch: [9][20/200]	Time 0.097 (0.207)	Data 0.000 (0.103)	Loss 1.552 (1.241)
+Epoch: [9][30/200]	Time 0.093 (0.204)	Data 0.000 (0.101)	Loss 0.586 (1.293)
+Epoch: [9][40/200]	Time 0.569 (0.220)	Data 0.459 (0.117)	Loss 1.345 (1.345)
+Epoch: [9][50/200]	Time 0.094 (0.218)	Data 0.000 (0.116)	Loss 1.923 (1.383)
+Epoch: [9][60/200]	Time 0.107 (0.216)	Data 0.000 (0.114)	Loss 1.368 (1.441)
+Epoch: [9][70/200]	Time 0.430 (0.218)	Data 0.335 (0.116)	Loss 1.932 (1.488)
+Epoch: [9][80/200]	Time 0.087 (0.216)	Data 0.000 (0.114)	Loss 1.631 (1.487)
+Epoch: [9][90/200]	Time 0.088 (0.214)	Data 0.000 (0.113)	Loss 0.597 (1.479)
+Epoch: [9][100/200]	Time 0.555 (0.218)	Data 0.431 (0.117)	Loss 1.553 (1.472)
+Epoch: [9][110/200]	Time 0.089 (0.217)	Data 0.000 (0.116)	Loss 1.258 (1.479)
+Epoch: [9][120/200]	Time 0.115 (0.216)	Data 0.000 (0.115)	Loss 1.438 (1.474)
+Epoch: [9][130/200]	Time 0.470 (0.218)	Data 0.355 (0.117)	Loss 1.779 (1.475)
+Epoch: [9][140/200]	Time 0.143 (0.217)	Data 0.000 (0.116)	Loss 1.598 (1.467)
+Epoch: [9][150/200]	Time 0.103 (0.216)	Data 0.000 (0.115)	Loss 1.168 (1.465)
+Epoch: [9][160/200]	Time 0.440 (0.218)	Data 0.337 (0.117)	Loss 1.449 (1.473)
+Epoch: [9][170/200]	Time 0.097 (0.217)	Data 0.000 (0.116)	Loss 0.905 (1.480)
+Epoch: [9][180/200]	Time 0.099 (0.216)	Data 0.000 (0.115)	Loss 0.961 (1.475)
+Epoch: [9][190/200]	Time 0.489 (0.218)	Data 0.370 (0.117)	Loss 1.209 (1.469)
+Epoch: [9][200/200]	Time 0.103 (0.217)	Data 0.000 (0.116)	Loss 1.323 (1.480)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.47156810760498047
+hard_weight: 0.5
+==> Statistics for epoch 10: 14 clusters
+Got train loader!
+New epoch!
+Epoch: [10][10/200]	Time 0.489 (0.229)	Data 0.381 (0.126)	Loss 1.644 (1.065)
+Epoch: [10][20/200]	Time 0.105 (0.222)	Data 0.000 (0.118)	Loss 1.795 (1.235)
+Epoch: [10][30/200]	Time 0.092 (0.217)	Data 0.000 (0.114)	Loss 1.058 (1.277)
+Epoch: [10][40/200]	Time 0.451 (0.222)	Data 0.331 (0.119)	Loss 1.324 (1.283)
+Epoch: [10][50/200]	Time 0.107 (0.218)	Data 0.000 (0.115)	Loss 0.466 (1.288)
+Epoch: [10][60/200]	Time 0.101 (0.215)	Data 0.000 (0.113)	Loss 0.742 (1.261)
+Epoch: [10][70/200]	Time 0.438 (0.217)	Data 0.323 (0.116)	Loss 1.850 (1.273)
+Epoch: [10][80/200]	Time 0.094 (0.215)	Data 0.000 (0.114)	Loss 2.770 (1.310)
+Epoch: [10][90/200]	Time 0.087 (0.213)	Data 0.000 (0.113)	Loss 1.756 (1.309)
+Epoch: [10][100/200]	Time 0.466 (0.216)	Data 0.352 (0.116)	Loss 1.417 (1.312)
+Epoch: [10][110/200]	Time 0.089 (0.214)	Data 0.000 (0.114)	Loss 0.758 (1.310)
+Epoch: [10][120/200]	Time 0.092 (0.213)	Data 0.000 (0.113)	Loss 0.916 (1.313)
+Epoch: [10][130/200]	Time 0.446 (0.214)	Data 0.341 (0.115)	Loss 1.728 (1.315)
+Epoch: [10][140/200]	Time 0.100 (0.213)	Data 0.000 (0.114)	Loss 1.358 (1.310)
+Epoch: [10][150/200]	Time 0.088 (0.213)	Data 0.000 (0.113)	Loss 0.897 (1.309)
+Epoch: [10][160/200]	Time 0.465 (0.214)	Data 0.370 (0.116)	Loss 1.470 (1.319)
+Epoch: [10][170/200]	Time 0.101 (0.214)	Data 0.000 (0.116)	Loss 1.313 (1.325)
+Epoch: [10][180/200]	Time 0.090 (0.213)	Data 0.000 (0.115)	Loss 1.052 (1.314)
+Epoch: [10][190/200]	Time 0.427 (0.214)	Data 0.314 (0.115)	Loss 1.579 (1.310)
+Epoch: [10][200/200]	Time 0.095 (0.214)	Data 0.000 (0.115)	Loss 1.570 (1.317)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4956784248352051
+hard_weight: 0.5
+==> Statistics for epoch 11: 14 clusters
+Got train loader!
+New epoch!
+Epoch: [11][10/200]	Time 0.460 (0.215)	Data 0.343 (0.112)	Loss 1.947 (1.010)
+Epoch: [11][20/200]	Time 0.100 (0.210)	Data 0.000 (0.107)	Loss 1.285 (1.171)
+Epoch: [11][30/200]	Time 0.093 (0.212)	Data 0.000 (0.109)	Loss 1.260 (1.178)
+Epoch: [11][40/200]	Time 0.437 (0.218)	Data 0.323 (0.116)	Loss 1.399 (1.260)
+Epoch: [11][50/200]	Time 0.093 (0.215)	Data 0.000 (0.113)	Loss 0.997 (1.301)
+Epoch: [11][60/200]	Time 0.089 (0.213)	Data 0.000 (0.111)	Loss 1.241 (1.332)
+Epoch: [11][70/200]	Time 0.421 (0.217)	Data 0.322 (0.115)	Loss 1.264 (1.336)
+Epoch: [11][80/200]	Time 0.094 (0.214)	Data 0.000 (0.113)	Loss 1.411 (1.359)
+Epoch: [11][90/200]	Time 0.088 (0.212)	Data 0.000 (0.111)	Loss 1.026 (1.364)
+Epoch: [11][100/200]	Time 0.486 (0.215)	Data 0.362 (0.114)	Loss 1.536 (1.347)
+Epoch: [11][110/200]	Time 0.098 (0.214)	Data 0.000 (0.113)	Loss 1.392 (1.339)
+Epoch: [11][120/200]	Time 0.085 (0.213)	Data 0.000 (0.112)	Loss 1.542 (1.326)
+Epoch: [11][130/200]	Time 0.431 (0.215)	Data 0.331 (0.114)	Loss 1.296 (1.310)
+Epoch: [11][140/200]	Time 0.094 (0.213)	Data 0.000 (0.113)	Loss 1.050 (1.311)
+Epoch: [11][150/200]	Time 0.088 (0.212)	Data 0.000 (0.112)	Loss 1.303 (1.330)
+Epoch: [11][160/200]	Time 0.435 (0.214)	Data 0.327 (0.114)	Loss 1.545 (1.335)
+Epoch: [11][170/200]	Time 0.088 (0.213)	Data 0.000 (0.113)	Loss 1.410 (1.335)
+Epoch: [11][180/200]	Time 0.092 (0.212)	Data 0.000 (0.112)	Loss 1.437 (1.337)
+Epoch: [11][190/200]	Time 0.489 (0.215)	Data 0.366 (0.115)	Loss 1.357 (1.338)
+Epoch: [11][200/200]	Time 0.099 (0.214)	Data 0.000 (0.114)	Loss 1.330 (1.340)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4803965091705322
+hard_weight: 0.5
+==> Statistics for epoch 12: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [12][10/200]	Time 0.461 (0.222)	Data 0.353 (0.120)	Loss 1.009 (1.116)
+Epoch: [12][20/200]	Time 0.101 (0.219)	Data 0.000 (0.115)	Loss 1.220 (1.279)
+Epoch: [12][30/200]	Time 0.101 (0.216)	Data 0.000 (0.112)	Loss 1.633 (1.312)
+Epoch: [12][40/200]	Time 0.441 (0.222)	Data 0.320 (0.118)	Loss 1.684 (1.327)
+Epoch: [12][50/200]	Time 0.103 (0.217)	Data 0.000 (0.115)	Loss 1.523 (1.311)
+Epoch: [12][60/200]	Time 0.089 (0.214)	Data 0.000 (0.112)	Loss 1.359 (1.300)
+Epoch: [12][70/200]	Time 0.516 (0.217)	Data 0.375 (0.115)	Loss 1.224 (1.320)
+Epoch: [12][80/200]	Time 0.095 (0.214)	Data 0.000 (0.113)	Loss 1.687 (1.365)
+Epoch: [12][90/200]	Time 0.106 (0.212)	Data 0.000 (0.112)	Loss 1.653 (1.374)
+Epoch: [12][100/200]	Time 0.459 (0.214)	Data 0.361 (0.114)	Loss 1.729 (1.364)
+Epoch: [12][110/200]	Time 0.092 (0.213)	Data 0.000 (0.113)	Loss 1.403 (1.362)
+Epoch: [12][120/200]	Time 0.090 (0.211)	Data 0.000 (0.112)	Loss 1.130 (1.352)
+Epoch: [12][130/200]	Time 0.458 (0.213)	Data 0.358 (0.114)	Loss 0.557 (1.355)
+Epoch: [12][140/200]	Time 0.097 (0.212)	Data 0.000 (0.113)	Loss 1.655 (1.344)
+Epoch: [12][150/200]	Time 0.088 (0.211)	Data 0.000 (0.113)	Loss 1.177 (1.342)
+Epoch: [12][160/200]	Time 0.450 (0.212)	Data 0.333 (0.114)	Loss 1.065 (1.337)
+Epoch: [12][170/200]	Time 0.095 (0.212)	Data 0.000 (0.113)	Loss 1.213 (1.322)
+Epoch: [12][180/200]	Time 0.095 (0.211)	Data 0.000 (0.113)	Loss 1.236 (1.327)
+Epoch: [12][190/200]	Time 0.460 (0.213)	Data 0.341 (0.114)	Loss 1.278 (1.319)
+Epoch: [12][200/200]	Time 0.090 (0.212)	Data 0.000 (0.113)	Loss 0.592 (1.313)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4739112854003906
+hard_weight: 0.5
+==> Statistics for epoch 13: 14 clusters
+Got train loader!
+New epoch!
+Epoch: [13][10/200]	Time 0.503 (0.225)	Data 0.374 (0.123)	Loss 1.501 (1.090)
+Epoch: [13][20/200]	Time 0.100 (0.217)	Data 0.000 (0.117)	Loss 1.864 (1.243)
+Epoch: [13][30/200]	Time 0.100 (0.214)	Data 0.000 (0.112)	Loss 1.835 (1.178)
+Epoch: [13][40/200]	Time 0.442 (0.220)	Data 0.336 (0.117)	Loss 1.720 (1.260)
+Epoch: [13][50/200]	Time 0.097 (0.216)	Data 0.000 (0.114)	Loss 1.314 (1.264)
+Epoch: [13][60/200]	Time 0.096 (0.213)	Data 0.000 (0.111)	Loss 0.557 (1.276)
+Epoch: [13][70/200]	Time 0.491 (0.219)	Data 0.373 (0.117)	Loss 1.147 (1.263)
+Epoch: [13][80/200]	Time 0.101 (0.217)	Data 0.000 (0.115)	Loss 1.368 (1.253)
+Epoch: [13][90/200]	Time 0.090 (0.215)	Data 0.000 (0.113)	Loss 1.855 (1.258)
+Epoch: [13][100/200]	Time 0.444 (0.217)	Data 0.340 (0.115)	Loss 2.075 (1.271)
+Epoch: [13][110/200]	Time 0.098 (0.215)	Data 0.000 (0.114)	Loss 1.349 (1.267)
+Epoch: [13][120/200]	Time 0.095 (0.215)	Data 0.000 (0.113)	Loss 0.895 (1.262)
+Epoch: [13][130/200]	Time 0.446 (0.216)	Data 0.339 (0.115)	Loss 1.791 (1.259)
+Epoch: [13][140/200]	Time 0.095 (0.216)	Data 0.000 (0.114)	Loss 1.200 (1.263)
+Epoch: [13][150/200]	Time 0.112 (0.215)	Data 0.000 (0.113)	Loss 1.641 (1.257)
+Epoch: [13][160/200]	Time 0.440 (0.216)	Data 0.339 (0.115)	Loss 1.047 (1.268)
+Epoch: [13][170/200]	Time 0.093 (0.215)	Data 0.000 (0.114)	Loss 1.477 (1.259)
+Epoch: [13][180/200]	Time 0.084 (0.214)	Data 0.000 (0.113)	Loss 0.847 (1.245)
+Epoch: [13][190/200]	Time 0.459 (0.215)	Data 0.335 (0.115)	Loss 0.889 (1.231)
+Epoch: [13][200/200]	Time 0.095 (0.214)	Data 0.000 (0.114)	Loss 0.955 (1.225)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4876589775085449
+hard_weight: 0.5
+==> Statistics for epoch 14: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [14][10/200]	Time 0.437 (0.201)	Data 0.335 (0.112)	Loss 1.005 (0.953)
+Epoch: [14][20/200]	Time 0.096 (0.196)	Data 0.000 (0.106)	Loss 1.168 (1.275)
+Epoch: [14][30/200]	Time 0.084 (0.197)	Data 0.000 (0.105)	Loss 1.097 (1.295)
+Epoch: [14][40/200]	Time 0.457 (0.205)	Data 0.358 (0.113)	Loss 0.965 (1.322)
+Epoch: [14][50/200]	Time 0.097 (0.203)	Data 0.000 (0.111)	Loss 1.227 (1.342)
+Epoch: [14][60/200]	Time 0.088 (0.203)	Data 0.000 (0.110)	Loss 1.506 (1.372)
+Epoch: [14][70/200]	Time 0.490 (0.210)	Data 0.381 (0.115)	Loss 1.338 (1.349)
+Epoch: [14][80/200]	Time 0.095 (0.211)	Data 0.000 (0.115)	Loss 1.292 (1.339)
+Epoch: [14][90/200]	Time 0.085 (0.210)	Data 0.000 (0.114)	Loss 1.665 (1.326)
+Epoch: [14][100/200]	Time 0.430 (0.212)	Data 0.327 (0.116)	Loss 1.534 (1.339)
+Epoch: [14][110/200]	Time 0.093 (0.211)	Data 0.000 (0.114)	Loss 1.043 (1.321)
+Epoch: [14][120/200]	Time 0.095 (0.210)	Data 0.000 (0.113)	Loss 1.749 (1.323)
+Epoch: [14][130/200]	Time 0.436 (0.212)	Data 0.322 (0.115)	Loss 0.789 (1.327)
+Epoch: [14][140/200]	Time 0.099 (0.211)	Data 0.000 (0.114)	Loss 1.710 (1.330)
+Epoch: [14][150/200]	Time 0.092 (0.211)	Data 0.000 (0.113)	Loss 0.835 (1.334)
+Epoch: [14][160/200]	Time 0.440 (0.213)	Data 0.334 (0.115)	Loss 1.955 (1.338)
+Epoch: [14][170/200]	Time 0.088 (0.212)	Data 0.000 (0.114)	Loss 0.852 (1.332)
+Epoch: [14][180/200]	Time 0.091 (0.211)	Data 0.000 (0.113)	Loss 1.257 (1.339)
+Epoch: [14][190/200]	Time 0.475 (0.213)	Data 0.373 (0.115)	Loss 2.183 (1.333)
+Epoch: [14][200/200]	Time 0.102 (0.213)	Data 0.000 (0.114)	Loss 1.514 (1.331)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4914877414703369
+hard_weight: 0.5
+==> Statistics for epoch 15: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [15][10/200]	Time 0.476 (0.218)	Data 0.355 (0.116)	Loss 1.152 (0.990)
+Epoch: [15][20/200]	Time 0.102 (0.211)	Data 0.000 (0.109)	Loss 1.798 (1.178)
+Epoch: [15][30/200]	Time 0.098 (0.206)	Data 0.000 (0.106)	Loss 0.414 (1.207)
+Epoch: [15][40/200]	Time 0.456 (0.212)	Data 0.334 (0.113)	Loss 1.838 (1.223)
+Epoch: [15][50/200]	Time 0.098 (0.211)	Data 0.000 (0.112)	Loss 1.479 (1.258)
+Epoch: [15][60/200]	Time 0.096 (0.209)	Data 0.000 (0.110)	Loss 1.620 (1.238)
+Epoch: [15][70/200]	Time 0.450 (0.213)	Data 0.342 (0.114)	Loss 1.574 (1.251)
+Epoch: [15][80/200]	Time 0.092 (0.212)	Data 0.000 (0.113)	Loss 1.799 (1.265)
+Epoch: [15][90/200]	Time 0.086 (0.211)	Data 0.000 (0.111)	Loss 2.173 (1.270)
+Epoch: [15][100/200]	Time 0.433 (0.213)	Data 0.325 (0.113)	Loss 1.115 (1.263)
+Epoch: [15][110/200]	Time 0.099 (0.211)	Data 0.000 (0.112)	Loss 1.858 (1.278)
+Epoch: [15][120/200]	Time 0.091 (0.210)	Data 0.000 (0.111)	Loss 1.733 (1.288)
+Epoch: [15][130/200]	Time 0.448 (0.212)	Data 0.341 (0.113)	Loss 1.346 (1.293)
+Epoch: [15][140/200]	Time 0.097 (0.210)	Data 0.000 (0.112)	Loss 1.661 (1.294)
+Epoch: [15][150/200]	Time 0.091 (0.210)	Data 0.000 (0.111)	Loss 1.112 (1.291)
+Epoch: [15][160/200]	Time 0.446 (0.211)	Data 0.343 (0.112)	Loss 0.949 (1.289)
+Epoch: [15][170/200]	Time 0.099 (0.211)	Data 0.000 (0.112)	Loss 0.908 (1.275)
+Epoch: [15][180/200]	Time 0.089 (0.211)	Data 0.000 (0.111)	Loss 1.737 (1.285)
+Epoch: [15][190/200]	Time 0.457 (0.212)	Data 0.339 (0.113)	Loss 0.977 (1.284)
+Epoch: [15][200/200]	Time 0.139 (0.212)	Data 0.000 (0.112)	Loss 1.106 (1.283)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.48006415367126465
+hard_weight: 0.5
+==> Statistics for epoch 16: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [16][10/200]	Time 0.435 (0.207)	Data 0.323 (0.109)	Loss 1.425 (0.901)
+Epoch: [16][20/200]	Time 0.095 (0.200)	Data 0.000 (0.104)	Loss 1.866 (1.136)
+Epoch: [16][30/200]	Time 0.088 (0.200)	Data 0.000 (0.105)	Loss 1.532 (1.188)
+Epoch: [16][40/200]	Time 0.451 (0.208)	Data 0.349 (0.112)	Loss 1.207 (1.150)
+Epoch: [16][50/200]	Time 0.100 (0.205)	Data 0.000 (0.110)	Loss 1.278 (1.176)
+Epoch: [16][60/200]	Time 0.087 (0.202)	Data 0.000 (0.108)	Loss 0.566 (1.172)
+Epoch: [16][70/200]	Time 0.463 (0.206)	Data 0.353 (0.112)	Loss 2.455 (1.205)
+Epoch: [16][80/200]	Time 0.088 (0.205)	Data 0.000 (0.111)	Loss 1.028 (1.216)
+Epoch: [16][90/200]	Time 0.085 (0.203)	Data 0.000 (0.110)	Loss 0.844 (1.210)
+Epoch: [16][100/200]	Time 0.424 (0.206)	Data 0.329 (0.112)	Loss 1.221 (1.221)
+Epoch: [16][110/200]	Time 0.090 (0.206)	Data 0.000 (0.112)	Loss 0.896 (1.235)
+Epoch: [16][120/200]	Time 0.100 (0.206)	Data 0.000 (0.110)	Loss 1.247 (1.257)
+Epoch: [16][130/200]	Time 0.450 (0.209)	Data 0.330 (0.112)	Loss 1.073 (1.262)
+Epoch: [16][140/200]	Time 0.087 (0.208)	Data 0.000 (0.111)	Loss 1.665 (1.276)
+Epoch: [16][150/200]	Time 0.083 (0.207)	Data 0.000 (0.111)	Loss 1.321 (1.280)
+Epoch: [16][160/200]	Time 0.460 (0.209)	Data 0.336 (0.112)	Loss 0.997 (1.274)
+Epoch: [16][170/200]	Time 0.098 (0.209)	Data 0.000 (0.112)	Loss 1.553 (1.269)
+Epoch: [16][180/200]	Time 0.084 (0.208)	Data 0.000 (0.111)	Loss 1.466 (1.264)
+Epoch: [16][190/200]	Time 0.426 (0.209)	Data 0.331 (0.112)	Loss 2.014 (1.264)
+Epoch: [16][200/200]	Time 0.089 (0.208)	Data 0.000 (0.111)	Loss 1.607 (1.264)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.4786255359649658
+hard_weight: 0.5
+==> Statistics for epoch 17: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [17][10/200]	Time 0.422 (0.201)	Data 0.329 (0.109)	Loss 0.714 (0.880)
+Epoch: [17][20/200]	Time 0.093 (0.197)	Data 0.000 (0.104)	Loss 1.285 (1.056)
+Epoch: [17][30/200]	Time 0.092 (0.196)	Data 0.000 (0.103)	Loss 0.818 (1.080)
+Epoch: [17][40/200]	Time 0.430 (0.206)	Data 0.331 (0.111)	Loss 1.355 (1.131)
+Epoch: [17][50/200]	Time 0.090 (0.203)	Data 0.000 (0.108)	Loss 1.365 (1.122)
+Epoch: [17][60/200]	Time 0.090 (0.202)	Data 0.000 (0.107)	Loss 0.948 (1.111)
+Epoch: [17][70/200]	Time 0.444 (0.206)	Data 0.339 (0.111)	Loss 0.904 (1.112)
+Epoch: [17][80/200]	Time 0.100 (0.205)	Data 0.000 (0.110)	Loss 1.484 (1.138)
+Epoch: [17][90/200]	Time 0.092 (0.205)	Data 0.000 (0.109)	Loss 0.921 (1.134)
+Epoch: [17][100/200]	Time 0.431 (0.207)	Data 0.334 (0.111)	Loss 1.570 (1.128)
+Epoch: [17][110/200]	Time 0.095 (0.207)	Data 0.000 (0.111)	Loss 1.008 (1.150)
+Epoch: [17][120/200]	Time 0.085 (0.206)	Data 0.000 (0.110)	Loss 0.539 (1.145)
+Epoch: [17][130/200]	Time 0.415 (0.209)	Data 0.319 (0.112)	Loss 1.307 (1.148)
+Epoch: [17][140/200]	Time 0.097 (0.208)	Data 0.000 (0.111)	Loss 1.513 (1.177)
+Epoch: [17][150/200]	Time 0.087 (0.207)	Data 0.000 (0.111)	Loss 1.446 (1.192)
+Epoch: [17][160/200]	Time 0.434 (0.208)	Data 0.338 (0.112)	Loss 1.526 (1.200)
+Epoch: [17][170/200]	Time 0.096 (0.208)	Data 0.000 (0.112)	Loss 1.320 (1.198)
+Epoch: [17][180/200]	Time 0.093 (0.208)	Data 0.000 (0.111)	Loss 0.748 (1.210)
+Epoch: [17][190/200]	Time 0.434 (0.209)	Data 0.339 (0.113)	Loss 1.356 (1.208)
+Epoch: [17][200/200]	Time 0.103 (0.208)	Data 0.000 (0.112)	Loss 1.108 (1.194)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.47152161598205566
+hard_weight: 0.5
+==> Statistics for epoch 18: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [18][10/200]	Time 0.443 (0.208)	Data 0.338 (0.106)	Loss 1.839 (0.914)
+Epoch: [18][20/200]	Time 0.093 (0.206)	Data 0.000 (0.106)	Loss 1.867 (1.050)
+Epoch: [18][30/200]	Time 0.085 (0.208)	Data 0.000 (0.107)	Loss 0.964 (1.095)
+Epoch: [18][40/200]	Time 0.463 (0.213)	Data 0.355 (0.113)	Loss 1.402 (1.109)
+Epoch: [18][50/200]	Time 0.096 (0.211)	Data 0.000 (0.111)	Loss 1.302 (1.114)
+Epoch: [18][60/200]	Time 0.089 (0.210)	Data 0.000 (0.109)	Loss 1.220 (1.119)
+Epoch: [18][70/200]	Time 0.441 (0.213)	Data 0.332 (0.112)	Loss 1.036 (1.124)
+Epoch: [18][80/200]	Time 0.100 (0.212)	Data 0.000 (0.111)	Loss 1.613 (1.130)
+Epoch: [18][90/200]	Time 0.093 (0.211)	Data 0.000 (0.110)	Loss 0.916 (1.139)
+Epoch: [18][100/200]	Time 0.434 (0.213)	Data 0.317 (0.111)	Loss 1.425 (1.160)
+Epoch: [18][110/200]	Time 0.101 (0.212)	Data 0.000 (0.110)	Loss 1.142 (1.172)
+Epoch: [18][120/200]	Time 0.097 (0.211)	Data 0.000 (0.110)	Loss 0.757 (1.176)
+Epoch: [18][130/200]	Time 0.436 (0.213)	Data 0.316 (0.111)	Loss 1.149 (1.188)
+Epoch: [18][140/200]	Time 0.100 (0.213)	Data 0.000 (0.111)	Loss 1.720 (1.192)
+Epoch: [18][150/200]	Time 0.088 (0.213)	Data 0.000 (0.111)	Loss 0.701 (1.194)
+Epoch: [18][160/200]	Time 0.429 (0.214)	Data 0.324 (0.113)	Loss 1.455 (1.191)
+Epoch: [18][170/200]	Time 0.096 (0.213)	Data 0.000 (0.112)	Loss 1.051 (1.202)
+Epoch: [18][180/200]	Time 0.094 (0.213)	Data 0.000 (0.112)	Loss 1.023 (1.198)
+Epoch: [18][190/200]	Time 0.466 (0.214)	Data 0.341 (0.113)	Loss 1.270 (1.196)
+Epoch: [18][200/200]	Time 0.097 (0.213)	Data 0.000 (0.112)	Loss 1.298 (1.204)
+Trained!
+==> Create pseudo labels for unlabeled data
+Computing jaccard distance...
+Jaccard distance computing time cost: 0.42284584045410156
+hard_weight: 0.5
+==> Statistics for epoch 19: 15 clusters
+Got train loader!
+New epoch!
+Epoch: [19][10/200]	Time 0.471 (0.219)	Data 0.372 (0.120)	Loss 1.487 (1.128)
+Epoch: [19][20/200]	Time 0.101 (0.213)	Data 0.000 (0.115)	Loss 1.218 (1.120)
+Epoch: [19][30/200]	Time 0.094 (0.209)	Data 0.000 (0.112)	Loss 0.929 (1.083)
+Epoch: [19][40/200]	Time 0.439 (0.213)	Data 0.322 (0.116)	Loss 0.632 (1.065)
+Epoch: [19][50/200]	Time 0.095 (0.208)	Data 0.000 (0.113)	Loss 0.893 (1.123)
+Epoch: [19][60/200]	Time 0.097 (0.207)	Data 0.000 (0.111)	Loss 1.660 (1.118)
+Epoch: [19][70/200]	Time 0.498 (0.212)	Data 0.343 (0.115)	Loss 1.247 (1.134)
+Epoch: [19][80/200]	Time 0.097 (0.210)	Data 0.000 (0.113)	Loss 1.219 (1.142)
+Epoch: [19][90/200]	Time 0.093 (0.210)	Data 0.000 (0.113)	Loss 1.145 (1.148)
+Epoch: [19][100/200]	Time 0.482 (0.214)	Data 0.383 (0.116)	Loss 1.012 (1.163)
+Epoch: [19][110/200]	Time 0.097 (0.213)	Data 0.000 (0.115)	Loss 1.139 (1.167)
+Epoch: [19][120/200]	Time 0.092 (0.212)	Data 0.000 (0.114)	Loss 1.434 (1.159)
+Epoch: [19][130/200]	Time 0.434 (0.214)	Data 0.336 (0.115)	Loss 1.040 (1.159)
+Epoch: [19][140/200]	Time 0.095 (0.212)	Data 0.000 (0.114)	Loss 1.225 (1.165)
+Epoch: [19][150/200]	Time 0.099 (0.211)	Data 0.000 (0.113)	Loss 1.301 (1.161)
+Epoch: [19][160/200]	Time 0.449 (0.213)	Data 0.339 (0.115)	Loss 0.648 (1.170)
+Epoch: [19][170/200]	Time 0.094 (0.213)	Data 0.000 (0.115)	Loss 1.055 (1.179)
+Epoch: [19][180/200]	Time 0.087 (0.212)	Data 0.000 (0.114)	Loss 0.428 (1.183)
+Epoch: [19][190/200]	Time 0.473 (0.214)	Data 0.347 (0.115)	Loss 1.211 (1.185)
+Epoch: [19][200/200]	Time 0.092 (0.213)	Data 0.000 (0.115)	Loss 1.225 (1.183)
+Trained!
+Total running time:  0:15:23.156108
