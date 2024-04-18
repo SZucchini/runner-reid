@@ -1,10 +1,6 @@
 # Runner re-identification from single-view running video in the open-world setting
 This repository contains the official implementation of "[Runner re-identification from single-view running video in the open-world setting.](https://link.springer.com/article/10.1007/s11042-024-18881-x)" The code supports the methods and experiments presented in the paper. [[arXiv]](https://arxiv.org/abs/2310.11700)
 
-<div align="center">
-  <img src="https://github.com/SZucchini/runner-reid/assets/78769319/9000d856-b904-45e4-99ca-3e0e1d70c92c" alt="reid_demo">
-</div>
-
 ## Overview
 This repository contains the following:
 - Training code for GRUAE
