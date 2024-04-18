@@ -1,3 +1,7 @@
+"""
+This training script and other hhcl scripts are copied from
+the original HHCL repository: https://github.com/bupt-ai-cz/HHCL-ReID
+"""
 # -*- coding: utf-8 -*-
 from __future__ import print_function, absolute_import
 import argparse
