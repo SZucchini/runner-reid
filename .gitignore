@@ -12,6 +12,8 @@ data/*
 !data/evaluation/*/gt_full.txt
 !data/evaluation/*/scene.txt
 **/.DS_Store
+data/evaluation/*/images/
+data/evaluation/*/shoes/
 notebook/
 output/gruae/*/checkpoint/
 output/gruae/*/images/
