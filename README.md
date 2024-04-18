@@ -18,8 +18,14 @@ From above reasons, you can not reproduce the results in the paper from scratch.
 
 ## Getting Started
 ### Installation
-1. Clone this repository: `$ git clone https://github.com/SZucchini/runner-reid.git`
-2. Create conda environment: `$ conda env create --file env.frozen.yaml`
+1. Clone this repository:
+```
+$ git clone https://github.com/SZucchini/runner-reid.git
+```
+2. Create conda environment:
+```
+$ conda env create --file env.yaml
+```
 
 ### Evaluation
 Example of evaluation:
