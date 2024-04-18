@@ -3,14 +3,16 @@ This repository contains the official implementation of "[Runner re-identificati
 
 ## Overview
 This repository contains the following:
-- Training code for GRUAE and HHCL with runner dataset.
-- Evaluation code for GRUAE and HHCL with runner dataset.
-- Trained weights for GRUAE and HHCL with runner dataset.
-- Feature vectors for evaluation.
-- Limited image dataset for evaluation.
+- Training code for GRUAE
+- Evaluation code with runner dataset
+- Trained weights for GRUAE and HHCL with runner dataset
+- Feature vectors for evaluation
+- Limited image dataset for evaluation
+- Customized [HHCL](https://github.com/bupt-ai-cz/HHCL-ReID) scripts for our dataset
 
 This repository does not contain the following:
-- Full dataset used in the paper (because of privacy issues).
+- Full dataset used in the paper (due to privacy issues)
+- Original evaluation dataset (anonymized due to privacy issues)
 
 From above reasons, you can not reproduce the results in the paper from scratch. However, you can reproduce the results in the paper using evaluation script and pre-calculated features.
 
@@ -18,14 +20,30 @@ From above reasons, you can not reproduce the results in the paper from scratch.
 ### Installation
 
 
-### Download checkpoints
-
-
 ### Evaluation
+Example of evaluation:
+```
+python ./eval.py --type daytime \
+    --config ./configs/gruae/daytime_eval.yaml \
+    --use_embedding
+```
 
+### Optional
+You can download trained weights [[here]](https://drive.google.com/drive/folders/11M49cKsJ2jWcpfYu1YwHbNmeVNiBok0r?usp=sharing) and evaluation images example [[here]](https://drive.google.com/drive/folders/1YZgXD8Ey1NVaiifksGaiBPwXlYNePD0n?usp=sharing) from Google Drive.
 
-- We published GRUAE training code. (2024.03.22)
-- We published HHCL training code using our dataset. (2024.04.15)
-- We published evaluation script. (2024.04.16)
-- We published some data for evaluation. (2024.04.17)
-- We are preparing data now.
+## Citation
+If you find this repository useful, please cite our paper:
+```
+@article{suzuki2024runner,
+  title={Runner re-identification from single-view running video in the open-world setting},
+  author={Suzuki, Tomohiro and Tsutsui, Kazushi and Takeda, Kazuya and Fujii, Keisuke},
+  journal={Multimedia Tools and Applications},
+  pages={1--17},
+  year={2024},
+  publisher={Springer}
+}
+```
+
+## Contact
+If you have any questions, please contact author:
+- Tomohiro Suzuki (suzuki.tomohiro[at]g.sp.m.is.nagoya-u.ac.jp)
