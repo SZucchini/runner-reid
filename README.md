@@ -55,6 +55,10 @@ If you find this repository useful, please cite our paper:
 }
 ```
 
+## Acknowledgements
+We appreciate the following repository:
+- [bupt-ai-cz/HHCL-ReID](https://github.com/bupt-ai-cz/HHCL-ReID)
+
 ## Contact
 If you have any questions, please contact author:
 - Tomohiro Suzuki (suzuki.tomohiro[at]g.sp.m.is.nagoya-u.ac.jp)
